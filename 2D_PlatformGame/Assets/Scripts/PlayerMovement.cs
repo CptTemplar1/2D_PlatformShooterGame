@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
+    public Animator animator;
+
     public float runSpeed = 40f; // prêdkoœæ gracza
 
     float horizontalMove = 0f; // kierunek zwrotu gracza
@@ -19,9 +21,14 @@ public class PlayerMovement : MonoBehaviour
         // strza³ka w prawo lub D zwraza 1
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
+        //aktualizacja zmiennej okreœlaj¹cej prêdkoœæ gracza w celu zmiany animacji na bieg
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            //zmiana na true podczaswykonania przez gracza skoku
+            animator.SetBool("IsJumping", true);
         }
 
         if (Input.GetButtonDown("Crouch"))
@@ -43,5 +50,17 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         //skok siê wykona tylko raz po klikniêciu przycisku (nawet jak bêdziemy go trzymaæ wciœniêtego)
         jump = false;
+    }
+
+    public void OnLanding()
+    {
+        //ustawieie zmiennej skoku na false podczas l¹dowania na ziemi
+        animator.SetBool("IsJumping", false);
+    }
+
+    public void OnCrouching(bool isCrouching)
+    {
+        //ustawieie zmiennej kucania na podstawie Eventu podczas kucania 
+        animator.SetBool("IsCrouching", isCrouching);
     }
 }
