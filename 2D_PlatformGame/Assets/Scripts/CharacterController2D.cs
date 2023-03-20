@@ -53,7 +53,6 @@ public class CharacterController2D : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
             {
-                Debug.Log("dziala") ;
                 m_Grounded = true;
                 if (wasGrounded)
                     OnLandEvent.Invoke();
