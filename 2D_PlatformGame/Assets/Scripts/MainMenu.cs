@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     // metoda zamykania gry
     public void QuitGame()
     {
+        // wyjœcie z gry nie dzia³a w Unity, wiêc sprawdzamy debugiem
         Debug.Log("Wychodzenie z gry dzia³a");
         Application.Quit();
     }
