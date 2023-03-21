@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false; // zmienna u¿ywana w metodzie Move, aby wykonaæ skok
     bool crouch = false; // zmienna u¿ywana w metodzie Move, aby wykonaæ kucniêcie
 
+    public GameObject firePoint; // zmienna przechowuj¹ca obiekt okreœlaj¹cy sk¹d wylatuj¹ pociski
 
     // Update is called once per frame
     void Update()
@@ -34,10 +35,21 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
+
+            // Utworzenie nowego wektora pozycji firePoint z przesuniêciem w dó³ o 0.6 jednostek
+            Vector2 crouchFirePointPosition = new Vector2(firePoint.transform.position.x, firePoint.transform.position.y - 0.8f);
+
+            // Przypisanie nowej pozycji i aktualnej rotacji do firePoint
+            firePoint.transform.SetPositionAndRotation(crouchFirePointPosition, firePoint.transform.rotation);
         }
         // wy³¹czenie kucania po puszczeniu  przycisku
         else if (Input.GetButtonUp("Crouch")) 
         {
+            // Utworzenie nowego wektora pozycji firePoint z przesuniêciem w dó³ o 0.6 jednostek
+            Vector2 crouchFirePointPosition = new Vector2(firePoint.transform.position.x, firePoint.transform.position.y + 0.8f);
+
+            // Przypisanie nowej pozycji i aktualnej rotacji do firePoint
+            firePoint.transform.SetPositionAndRotation(crouchFirePointPosition, firePoint.transform.rotation);
             crouch = false;
         }
     }
