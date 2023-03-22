@@ -123,6 +123,21 @@ public class CharacterController2D : MonoBehaviour
                 // ... flip the player.
                 Flip();
             }
+
+
+            //#### // kod odpowiedzialny za obracanie postaci, jeœli myszka znajdzie siê po jego bokach
+            // Rotate character based on mouse position
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mousePosition.x < transform.position.x && m_FacingRight)
+            {
+                Flip();
+            }
+            else if (mousePosition.x > transform.position.x && !m_FacingRight)
+            {
+                Flip();
+            }
+            //####
+
         }
         // If the player should jump...
         if (m_Grounded && jump)
