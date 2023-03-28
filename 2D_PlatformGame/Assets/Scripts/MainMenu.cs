@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public string gameSceneName;
+
     // metoda sprawdzaj¹ca jaka jest aktualna scena gry i ³aduj¹ca nastêpn¹
     public void PlayGame() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(gameSceneName);
     }
 
     // metoda zamykania gry
