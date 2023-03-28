@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Metal
+  - Sand
+  - Barrel
   layers:
   - Default
   - TransparentFX
