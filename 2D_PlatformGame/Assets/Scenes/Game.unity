@@ -1004,25 +1004,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000010434551902, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
   m_PrefabInstance: {fileID: 448822486}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &805614602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000011849760346, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
-  m_PrefabInstance: {fileID: 448822486}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &805614604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805614602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eac2671419271684aac08516c2427cca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 1737838048}
-  bulletPrefab: {fileID: 939813775615585362, guid: 4fcabc27b6d13344880a000f2da2af2e, type: 3}
 --- !u!1 &995871980
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,11 +3645,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 4, y: -4}
   m_UseGraphicAlpha: 1
---- !u!4 &1737838048 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000010696114204, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
-  m_PrefabInstance: {fileID: 448822486}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1744856147
 GameObject:
   m_ObjectHideFlags: 0
