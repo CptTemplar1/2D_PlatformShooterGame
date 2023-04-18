@@ -9,7 +9,7 @@
 /2D_PlatformGame/[Bb]uilds/
 /2D_PlatformGame/[Ll]ogs/
 /2D_PlatformGame/[Mm]emoryCaptures/
-/2D_PlatformGame/[Aa]ssets/[Ee]xternal/
+
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
