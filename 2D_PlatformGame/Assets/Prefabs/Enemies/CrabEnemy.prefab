@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 165602645527711146}
   - component: {fileID: 927340855891287885}
   - component: {fileID: 2758278367276008961}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CrabEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bfc62105c123f0145b72eca4ff0b4082, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

@@ -23,17 +23,22 @@ public class WalkingEnemyController : Enemy
             Vector2 direction = player.position - transform.position;
             direction = new Vector2(Mathf.Sign(direction.x), 0f);
 
+            // obracanie potwora w lewo lub prawo w zale¿noœci od kierunku, w którym znajduje siê gracz
+            if (direction.x > 0 && transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
+            else if (direction.x < 0 && transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
+
             // poruszanie potwora w kierunku gracza tylko w prawo lub w lewo
-            if (direction.x > 0 && transform.position.x < player.position.x)
-            {
-                transform.Translate(direction * speed * Time.deltaTime);
-            }
-            else if (direction.x < 0 && transform.position.x > player.position.x)
-            {
-                transform.Translate(direction * speed * Time.deltaTime);
-            }
+            transform.Translate(direction * speed * Time.deltaTime);
         }
         else
+        {
             animator.SetBool("isWalking", false);
+        }
     }
 }

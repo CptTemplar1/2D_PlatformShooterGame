@@ -64,9 +64,13 @@ public class F3DMelee : F3DGenericWeapon
         _meleeTriggerCollider2D.enabled = false;
     }
 
-    public void OnMeleeHit(Collider2D other)
+    public void OnMeleeHit(Collider2D collision)
     {
-        F3DGenericProjectile.DealDamage(5, Type, other.transform, BarrelSpark, 1f,
-            other.bounds.ClosestPoint(FXSocket.position), FXSocket.up);
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+            enemy.TakeDamage(20);
+
+        //F3DGenericProjectile.DealDamage(5, Type, collision.transform, BarrelSpark, 1f,
+        //collision.bounds.ClosestPoint(FXSocket.position), FXSocket.up);
     }
 }
