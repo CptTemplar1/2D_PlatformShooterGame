@@ -8,8 +8,10 @@ public class Enemy : MonoBehaviour
     public GameObject deathEffect;
     public float detectionRange; // odleg³oœæ, w której potwór zacznie œcigaæ gracza
     protected Transform player; //do obliczania odleg³oœci od gracza
-    public Animator animator;  
-
+    public Animator animator;
+    public float walkingDistance = 2;
+    public Transform spawnPoint = null;
+    
     public void TakeDamage(int damage)
     {
         health -= damage;
