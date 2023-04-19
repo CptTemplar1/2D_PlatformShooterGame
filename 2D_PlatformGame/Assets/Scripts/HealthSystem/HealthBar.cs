@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CodeMoney_HowToHealthSystem_1_Final {
+public class HealthBar : MonoBehaviour
+{
+    //obiekt komponentu Enemy, gdzie znajduje się aktualne zdrowie przeciwnika
+    private Enemy enemy;
 
-    public class HealthBar : MonoBehaviour {
+    //zainicjalizowanie paska zdrowia aktualnym stanem zdrowia (na początku max)
+    //oraz określenie zachowania podczas wystąpienia Eventu
+    private void Start()
+    {
+        enemy = GetComponentInParent<Enemy>();
+        enemy.OnHealthChanged += OnHealthChanged;
+        UpdateHealthBar();
+    }
 
-        private HealthSystem healthSystem;
-
-        public void Setup(HealthSystem healthSystem) {
-            this.healthSystem = healthSystem;
-
-            healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
-            UpdateHealthBar();
-        }
-
-        private void HealthSystem_OnHealthChanged(object sender, System.EventArgs e) {
-            UpdateHealthBar();
-        }
-        private void UpdateHealthBar() {
-            transform.Find("Bar").localScale = new Vector3(healthSystem.GetHealthPercent(), 1);
-        }
-
+    private void OnHealthChanged(object sender, System.EventArgs e)
+    {
+        UpdateHealthBar();
+    }
+    //aktualizuje stan paska zdrowia
+    private void UpdateHealthBar()
+    {
+        transform.Find("Bar").localScale = new Vector3(enemy.GetHealthPercent(), 1);
     }
 
 }
