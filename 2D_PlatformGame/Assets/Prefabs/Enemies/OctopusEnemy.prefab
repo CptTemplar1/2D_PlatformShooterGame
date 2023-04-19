@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6062026454959131158}
   m_Layer: 7
   m_Name: OctopusEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,9 +170,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthMax: 100
   deathEffect: {fileID: 1755349173569476, guid: eb9ed4f5aa5c3fc4db5d0bbc378cabbc, type: 3}
-  detectionRange: 10
+  detectionRange: 5
   animator: {fileID: 1258873503143055926}
+  walkingDistance: 2
+  spawnPoint: {fileID: 0}
   speed: 5
+  walkingSide: 0
+  isWalkingBack: 0
+  isPatrolling: 0
+  isAfterHunting: 0
+  triggers: []
 --- !u!1001 &7229010351257361897
 PrefabInstance:
   m_ObjectHideFlags: 0

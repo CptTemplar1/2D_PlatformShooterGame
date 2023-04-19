@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8716927775268439488}
   m_Layer: 7
   m_Name: Jumper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,6 +226,8 @@ MonoBehaviour:
   deathEffect: {fileID: 1755349173569476, guid: eb9ed4f5aa5c3fc4db5d0bbc378cabbc, type: 3}
   detectionRange: 8
   animator: {fileID: 2378156683808845420}
+  walkingDistance: 2
+  spawnPoint: {fileID: 0}
   speed: 4
   jumpForce: 8
   OnLandEvent:

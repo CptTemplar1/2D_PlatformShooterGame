@@ -8,6 +8,8 @@ TagManager:
   - Metal
   - Sand
   - Barrel
+  - Enemy
+  - LevelManager
   layers:
   - Default
   - TransparentFX
