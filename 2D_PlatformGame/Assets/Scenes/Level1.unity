@@ -151,8 +151,41 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 1252022971}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &133093177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133093178}
+  m_Layer: 0
+  m_Name: JumperStuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &133093178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133093177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 910683967}
+  - {fileID: 1835022635}
   m_Father: {fileID: 1211981029}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &153965326
 GameObject:
@@ -340,6 +373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrabEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2758278367276008961, guid: e9096997f542d124cab59284d63c7162, type: 3}
+      propertyPath: money
+      value: 
+      objectReference: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
     - target: {fileID: 2758278367276008961, guid: e9096997f542d124cab59284d63c7162, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -566,11 +603,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1211981029}
+    m_TransformParent: {fileID: 133093178}
     m_Modifications:
     - target: {fileID: 244716939890967576, guid: a73515f8f62a610469f37e44772664f6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 244716939890967576, guid: a73515f8f62a610469f37e44772664f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -616,6 +653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jumper
       objectReference: {fileID: 0}
+    - target: {fileID: 8716927775268439488, guid: a73515f8f62a610469f37e44772664f6, type: 3}
+      propertyPath: money
+      value: 
+      objectReference: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
     - target: {fileID: 8716927775268439488, guid: a73515f8f62a610469f37e44772664f6, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -3790,10 +3831,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1112362136}
-  - {fileID: 1358386111}
-  - {fileID: 910683967}
-  - {fileID: 31128109}
-  - {fileID: 1835022635}
+  - {fileID: 1252022971}
+  - {fileID: 133093178}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3843,6 +3882,39 @@ Transform:
   - {fileID: 1849289910}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1252022970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252022971}
+  m_Layer: 0
+  m_Name: OctopusStuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252022971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252022970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1358386111}
+  - {fileID: 31128109}
+  m_Father: {fileID: 1211981029}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337457386
 GameObject:
@@ -4557,8 +4629,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1211981029}
-  m_RootOrder: 4
+  m_Father: {fileID: 133093178}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1849289909
 GameObject:
@@ -4990,11 +5062,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1211981029}
+    m_TransformParent: {fileID: 1252022971}
     m_Modifications:
     - target: {fileID: 244716939890967576, guid: 741b0b1212355b34a9a4ec38599d3469, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 244716939890967576, guid: 741b0b1212355b34a9a4ec38599d3469, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5036,6 +5108,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6062026454959131158, guid: 741b0b1212355b34a9a4ec38599d3469, type: 3}
+      propertyPath: money
+      value: 
+      objectReference: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
     - target: {fileID: 6062026454959131158, guid: 741b0b1212355b34a9a4ec38599d3469, type: 3}
       propertyPath: spawnPoint
       value: 
