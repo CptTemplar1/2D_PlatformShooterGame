@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +24,13 @@ public class LevelManager : MonoBehaviour
         if (numberOfEnemies <= 0)
         {
             // Jeœli tak, to otwórz panel zakoñczenia levelu
-            afterMission.PauseGame();
+            StartCoroutine(pauseAfterLevel());
         }
+    }
+    //metoda wykonywana po zadanym czasie
+    System.Collections.IEnumerator pauseAfterLevel()
+    {
+        yield return new WaitForSeconds(5);
+        afterMission.PauseGame();
     }
 }

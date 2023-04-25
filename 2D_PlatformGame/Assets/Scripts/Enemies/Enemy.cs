@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -13,6 +14,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public float walkingDistance = 2;
     public Transform spawnPoint = null;
+    public GameObject money = null;
 
     public event EventHandler OnHealthChanged; //event podczas zmiany stanu zdrowia
 
@@ -54,6 +56,8 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        GameObject newMoney = Instantiate(money);
+        newMoney.transform.position = transform.position;
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
 

@@ -10,10 +10,14 @@ public class WalkingEnemyController : Enemy
     public bool isWalkingBack = false;
     public bool isPatrolling = false;
     public bool isAfterHunting = false;
-    public List<GameObject> triggers = new List<GameObject>();
+    public bool canPatrol = true;
+    Vector2 LeftPoint = new Vector2();
+    Vector2 RightPoint = new Vector2();
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // znalezienie gracza przez tag
+        canPatrol = true;
     }
 
     void Update()
@@ -43,10 +47,15 @@ public class WalkingEnemyController : Enemy
             isWalkingBack = false;
             isPatrolling = false;
             isAfterHunting = true;
+            canPatrol = true;
         }
         else
         {
-            if (isAfterHunting == true && Vector2.Distance(transform.position, player.position) > detectionRange && Mathf.Abs(transform.position.x - spawnPoint.position.x) > 0.3 && Mathf.Abs(spawnPoint.position.y - transform.position.y) < 0.5)
+            if (isAfterHunting == true && Vector2.Distance(transform.position, player.position) > detectionRange)
+            {
+                animator.SetBool("isWalking", false);
+            }
+            if (isAfterHunting == true && Vector2.Distance(transform.position, player.position) > detectionRange && Mathf.Abs(transform.position.x - spawnPoint.position.x) > 0.1 && Mathf.Abs(spawnPoint.position.y - transform.position.y) < 0.5)
             {
                 isAfterHunting = false;
                 animator.SetBool("isWalking", false);
@@ -56,15 +65,16 @@ public class WalkingEnemyController : Enemy
             {
                 getBack();
             }
-            /*if(isWalkingBack == false && Vector2.Distance(transform.position, player.position) > detectionRange)
+            if(!animator.GetBool("isWalking") && Vector2.Distance(transform.position, player.position) > detectionRange && canPatrol == true && isWalkingBack == false)
             {
+                canPatrol = false;
                 animator.SetBool("isWalking", false);
                 StartCoroutine(setIsPatrolling());
             }
             if (isPatrolling == true && Vector2.Distance(transform.position, player.position) > detectionRange)
             {
                 justWalk();
-            }*/
+            }
         }
     }
 
@@ -81,9 +91,11 @@ public class WalkingEnemyController : Enemy
     //metoda ktora ustawia flage patrolowania dla potwora
     IEnumerator setIsPatrolling()
     {
-        yield return new WaitForSeconds(2);
-        if(isWalkingBack == false)
+        yield return new WaitForSeconds(1);
+        if(isWalkingBack == false && !animator.GetBool("isWalking"))
         {
+            LeftPoint = new Vector2(Mathf.Abs(transform.position.x - walkingDistance), transform.position.y);
+            RightPoint = new Vector2(Mathf.Abs(transform.position.x + walkingDistance), transform.position.y);
             isPatrolling = true;
         }
     }
@@ -92,40 +104,39 @@ public class WalkingEnemyController : Enemy
     //metoda odpowiedzialna za poruszanie przeciwnika w czasie gdy nie goni gracza
     public void justWalk()
     {
-        Vector2 direction = new Vector2(Mathf.Abs(spawnPoint.position.x - walkingDistance), spawnPoint.position.y);
-        Vector2 minus = new Vector2(-1.0f, 0);
-        Vector2 plus = new Vector2(1.0f, 0);
         animator.SetBool("isWalking", true);
-
-        if (Mathf.Abs(transform.position.x - direction.x) >= 0 && walkingSide == false)
+        //speed = (float)(speed * 0.5);
+        if (Vector2.Distance(transform.position, RightPoint) >= 0 && walkingSide == false)
         {
+            Vector2 direction = new Vector2(Mathf.Sign(RightPoint.x), 0f);
             //zmiana kierunku po dotarciu do krawedzi
-            if (Mathf.Abs(transform.position.x - direction.x) <= 0.1)
+            if (Vector2.Distance(transform.position, RightPoint) <= 0.1)
             {
                 walkingSide = true;
                 animator.SetBool("isWalking", false);
                 return;
             }
-            // obracanie potwora w lewo 
+            // obracanie potwora 
             if (direction.x > 0 && transform.localScale.x > 0)
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //poruszanie potwora
-            transform.Translate(plus * speed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime);
         }
-        else if(Mathf.Abs(transform.position.x - direction.x) >= 0 && walkingSide == true)
+        else if(Vector2.Distance(transform.position, LeftPoint) >= 0 && walkingSide == true)
         {
+            Vector2 direction = new Vector2(Mathf.Sign(RightPoint.x), 0f);
             //zmiana kierunku po dotarciu do krawedzi
-            if (Mathf.Abs(transform.position.x - direction.x) <= 0.1)
+            if (Mathf.Abs(transform.position.x - LeftPoint.x) <= 0.1)
             {
                 walkingSide = false;
                 animator.SetBool("isWalking", false);
                 return;
             }
-            // obracanie potwora w prawo
-            if (direction.x < 0 && transform.localScale.x < 0)
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            // obracanie potwora
+            if (-direction.x < 0 && transform.localScale.x < 0)
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //poruszanie potwora
-            transform.Translate(minus * speed * Time.deltaTime);
+            transform.Translate(-direction * speed * Time.deltaTime);
         }    
 
     }
@@ -136,6 +147,7 @@ public class WalkingEnemyController : Enemy
         {
             animator.SetBool("isWalking", false);
             isWalkingBack = false;
+            canPatrol = true;
             return;
         }
         // obliczenie kierunku
