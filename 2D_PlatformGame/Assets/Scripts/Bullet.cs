@@ -57,6 +57,7 @@ public class Bullet : MonoBehaviour
 
     public void Awake()
     {
+        this.tag = "Bullet";
         // Pobranie pozycji myszki i zapisanie jej do zmiennej
         targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

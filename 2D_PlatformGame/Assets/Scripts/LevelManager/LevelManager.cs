@@ -6,12 +6,9 @@ public class LevelManager : MonoBehaviour
 {
     private int numberOfEnemies;
     private AfterMission afterMission; //komponent AfterMission z okna zakoÒczenia levelu
-
     private void Start()
     {
-        // Znajdü wszystkie obiekty w scenie z tagiem "Enemy"
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        numberOfEnemies = enemies.Length;
+        StartCoroutine(findEnemies());
 
         afterMission = GameObject.Find("AfterMission").GetComponent<AfterMission>();
     }
@@ -32,5 +29,14 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         afterMission.PauseGame();
+    }
+
+    //metoda znajdujπca wszystkie obiekty "Enemy"
+    System.Collections.IEnumerator findEnemies()
+    {
+        yield return new WaitForSeconds(1);
+        // Znajdü wszystkie obiekty w scenie z tagiem "Enemy"
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        numberOfEnemies = enemies.Length;
     }
 }

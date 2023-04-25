@@ -38,7 +38,7 @@ public class F3DCharacter : MonoBehaviour
         if (Health > 0)
         {
             //Odrzuć gracza do tyłu po otrzymaniu obrażeń
-            Vector2 knockbackForce = new Vector2(-1f, 1f) * 300000f;
+            Vector2 knockbackForce = new Vector2(-1f, 1f) * 100000f;
             _rBody.AddForce(knockbackForce);
 
             Health -= damageAmount;

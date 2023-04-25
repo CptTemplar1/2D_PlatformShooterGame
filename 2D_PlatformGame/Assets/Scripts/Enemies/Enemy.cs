@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float walkingDistance = 2;
     public Transform spawnPoint = null;
     public GameObject money = null;
+    private bool isDead = false;
 
     public int collisionDamage = 25; //zmienna okreœlaj¹ca iloœæ obra¿eñ zadawanych graczowi podczas kolizji
 
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         health = healthMax;
+        isDead = false;
     }
 
     //zwraca wartoœæ aktualnego zdrowia w skali od 0 do 1
@@ -61,15 +63,19 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        GameObject newMoney = Instantiate(money);
-        newMoney.transform.position = transform.position;
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        if(isDead == false)
+        {
+            isDead = true;
+            GameObject newMoney = Instantiate(money);
+            newMoney.transform.position = transform.position;
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
 
-        // Wywo³aj metodê EnemyKilled() w skrypcie LevelManager
-        GameObject levelManagerObject = GameObject.FindWithTag("LevelManager");
-        LevelManager levelManager = levelManagerObject.GetComponent<LevelManager>();
-        levelManager.EnemyKilled();
+            // Wywo³aj metodê EnemyKilled() w skrypcie LevelManager
+            GameObject levelManagerObject = GameObject.FindWithTag("LevelManager");
+            LevelManager levelManager = levelManagerObject.GetComponent<LevelManager>();
+            levelManager.EnemyKilled();
+        }
     }
 
     //kolizja z playerem i zadanie mu obra¿eñ

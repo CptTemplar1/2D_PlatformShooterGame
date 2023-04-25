@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class StaticCoins
+{
+    static public int coins;
+
+    static public void add()
+    {
+        coins++;
+    }
+
+    static public int get()
+    {
+        return coins;
+    }
+}
