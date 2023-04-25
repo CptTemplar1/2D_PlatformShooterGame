@@ -23,7 +23,7 @@ public class F3DMelee : F3DGenericWeapon
     private int _stateSlashId = UnityEngine.Animator.StringToHash("Slash");
     private int _stateStabId = UnityEngine.Animator.StringToHash("Stab");
 
-    public override void Fire()
+    public override void Fire(bool isSlash)
     {
         // Need MeleeTrigger Component for Melee Weapons
         if (MeleeTrigger == null) return;
@@ -35,14 +35,11 @@ public class F3DMelee : F3DGenericWeapon
         // Set Fire Timer vars
         _fireTimer = 0;
 
-        // Randomize between slash and stab animations
-        var isStab = Random.Range(-10f, 10f) < 0;
-
         // Manually Play the animation to avoid random desync with the melee trail
-        Animator.Play(isStab ? _stateStabId : _stateSlashId);
+        Animator.Play(isSlash ? _stateSlashId : _stateStabId);
 
         // Activate Melee Trail
-        if (MeleeTrail && !isStab)
+        if (MeleeTrail && isSlash)
         {
             MeleeTrail.Simulate(0f, false);
             MeleeTrail.Clear();

@@ -19,27 +19,44 @@ public class F3DCharacter : MonoBehaviour
         _weaponController = GetComponent<F3DWeaponController>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+            Debug.Log(Health);
+    }
+
     public void OnDamage(int damageAmount)
     {
-        if (_controller == null) return;
-        if (_isDead) return;
+        if (_controller == null) 
+            return;
+        if (_isDead) 
+            return;
 
-        // Substract incoming damage
+
+
+        //Zadaj obrażenia i odrzuć gracza do tyłu
         if (Health > 0)
-            Health -= damageAmount;
+        {
+            //Odrzuć gracza do tyłu po otrzymaniu obrażeń
+            Vector2 knockbackForce = new Vector2(-1f, 1f) * 300000f;
+            _rBody.AddForce(knockbackForce);
 
-        // Dead Already?
+            Health -= damageAmount;
+        }
+
+        //obsłuż sytuację, gdy życie spadnie poniżej zera
         if (Health <= 0)
         {
             Health = 0;
             _isDead = true;
 
-            // Player Death sequence
+            //Sekwencja śmierci gracza
             _controller.Character.SetBool(Random.Range(-1f, 1f) > 0 ? "DeathFront" : "DeathBack", true);
 
-            // Dead dont do shit
+            //Wyłączenie sterowania dla gracza po śmierci
             _controller.enabled = false;
-            gameObject.layer = LayerMask.NameToLayer("Dead");
+            //zmiana warstwy martwego ciała z Player na Dead
+            //gameObject.layer = LayerMask.NameToLayer("Dead");
             _rBody.drag = 2f;
 
 //            for (int i = 0; i < _colliders.Length; i++)

@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     public Transform spawnPoint = null;
     public GameObject money = null;
 
+    public int collisionDamage = 25; //zmienna okreœlaj¹ca iloœæ obra¿eñ zadawanych graczowi podczas kolizji
+
+    private float cooldownTime = 1.0f; // d³ugoœæ cooldownu przed nastêpnym otrzymaniem obra¿eñ
+    private float lastHitTime = -Mathf.Infinity; // czas ostatniego otrzymania obra¿eñ
+
     public event EventHandler OnHealthChanged; //event podczas zmiany stanu zdrowia
 
     //zainicjowanie aktualnego ¿ycia wartoœci¹ maksymaln¹
@@ -66,4 +71,25 @@ public class Enemy : MonoBehaviour
         LevelManager levelManager = levelManagerObject.GetComponent<LevelManager>();
         levelManager.EnemyKilled();
     }
+
+    //kolizja z playerem i zadanie mu obra¿eñ
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            // Sprawdzenie, czy up³yn¹³ wystarczaj¹co d³ugi czas od ostatniego uderzenia
+            if (Time.time - lastHitTime > cooldownTime)
+            {
+                F3DCharacter character = collision.GetComponent<F3DCharacter>();
+                if (character != null)
+                {
+                    character.OnDamage(collisionDamage);
+                }
+
+                // Zapisanie czasu ostatniego uderzenia
+                lastHitTime = Time.time;
+            }
+        }
+    }
+
 }

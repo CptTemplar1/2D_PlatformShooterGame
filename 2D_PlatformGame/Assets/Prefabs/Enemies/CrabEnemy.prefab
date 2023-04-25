@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 165602645527711146}
   - component: {fileID: 927340855891287885}
   - component: {fileID: 2758278367276008961}
+  - component: {fileID: 2286193388855713683}
   m_Layer: 7
   m_Name: CrabEnemy
   m_TagString: Enemy
@@ -102,7 +103,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03149724, y: -0.070868015}
+  m_Offset: {x: -0.000015884638, y: -0.3401727}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -113,7 +114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7086177, y: 1.57479}
+  m_Size: {x: 1.4240909, y: 1.0361806}
   m_EdgeRadius: 0
 --- !u!95 &165602645527711146
 Animator:
@@ -174,12 +175,30 @@ MonoBehaviour:
   animator: {fileID: 165602645527711146}
   walkingDistance: 2
   spawnPoint: {fileID: 0}
+  money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
+  collisionDamage: 25
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
   isPatrolling: 0
   isAfterHunting: 0
   canPatrol: 1
+--- !u!58 &2286193388855713683
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165602645527711151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.72448206
 --- !u!1001 &7270103747397275372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,7 +208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1473727354331688, guid: 01a6b42a1d84b664c890d8dcb066becd, type: 3}
       propertyPath: m_Name
-      value: pfHealthBar
+      value: EnemyHealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 4090514546342678, guid: 01a6b42a1d84b664c890d8dcb066becd, type: 3}
       propertyPath: m_RootOrder

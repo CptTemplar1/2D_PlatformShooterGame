@@ -339,7 +339,44 @@ public class F3DGenericWeapon : MonoBehaviour
         }
     }
 
-  
+    //wersja metody dla broni z dwoma atakami (zwykły i specjalny)
+    //u nas jest to póki co nóż
+    public virtual void Fire(bool specialAttack)
+    {
+        // Check before firing
+        if (!Animator.isInitialized) return;
+
+        // 
+        if (FireMode == Mode.Loop)
+        {
+            if (_state == LoopState.EarlyStop && _stateTimer >= 0.99f)
+                _state = LoopState.Loop;
+            else
+            {
+                _state = LoopState.Start;
+                Animator.SetBool("SpinUp", true);
+            }
+        }
+        else
+        {
+            if (_fireTimer < _fireRate)
+            {
+                if (FireQueue) _shotQueued = true;
+                return;
+            }
+            _fireTimer = 0f;
+            if (FireMode == Mode.Auto)
+                _state = LoopState.Auto;
+
+            // Trigger shot animator
+            Animator.SetTrigger("FireTrigger");
+            Animator.SetBool("Fire", true);
+            if (!AnimationFireEvent)
+                OnFire();
+        }
+    }
+
+
     public virtual void Stop()
     {
         if (FireMode == Mode.Loop)

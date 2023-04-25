@@ -165,5 +165,6 @@ public class WalkingEnemyController : Enemy
         }
         transform.Translate(direction * speed * Time.deltaTime);
     }
+
 }
 

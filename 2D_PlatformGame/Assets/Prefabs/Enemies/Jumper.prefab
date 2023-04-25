@@ -228,6 +228,8 @@ MonoBehaviour:
   animator: {fileID: 2378156683808845420}
   walkingDistance: 2
   spawnPoint: {fileID: 0}
+  money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
+  collisionDamage: 25
   speed: 4
   jumpForce: 8
   OnLandEvent:

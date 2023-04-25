@@ -69,10 +69,19 @@ public class F3DWeaponController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // Fire
+        //Obsluga wystrzału/ataku
+        //w przypadku kliknięcia LPM lub PPM sprawdzamy czy gracz nie ma wyekwipowanego noża (6, 0), aby wtedy wywołać metodę z parametrem bool
         if (Input.GetMouseButtonDown(0))
         {
-            Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+            if (EquippedSlot == 6 && EquippedWeapon == 0)
+                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(false);
+            else
+                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (EquippedSlot == 6 && EquippedWeapon == 0)
+                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(true);
         }
 
         // Stop
