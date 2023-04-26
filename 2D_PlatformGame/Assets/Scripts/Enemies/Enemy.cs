@@ -79,14 +79,14 @@ public class Enemy : MonoBehaviour
     }
 
     //kolizja z playerem i zadanie mu obra¿eñ
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             // Sprawdzenie, czy up³yn¹³ wystarczaj¹co d³ugi czas od ostatniego uderzenia
             if (Time.time - lastHitTime > cooldownTime)
             {
-                F3DCharacter character = collision.GetComponent<F3DCharacter>();
+                F3DCharacter character = collision.gameObject.GetComponent<F3DCharacter>();
                 if (character != null)
                 {
                     character.OnDamage(collisionDamage);
