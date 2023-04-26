@@ -10,7 +10,7 @@ public class F3DCharacter : MonoBehaviour
     private F3DWeaponController _weaponController;
     private bool _isDead;
 
-    private HealthStatus healthStatus;
+    private HealthStatus healthStatus; // referencja do komponentu życia
 
     // Use this for initialization
     void Awake()
