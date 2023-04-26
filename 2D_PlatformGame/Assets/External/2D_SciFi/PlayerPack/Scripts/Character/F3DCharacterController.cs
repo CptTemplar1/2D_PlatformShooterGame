@@ -41,6 +41,8 @@ public class F3DCharacterController : MonoBehaviour
     private F3DCharacter _character;
     private F3DCharacterAudio _audio;
 
+    private HealthStatus healthStatus;
+
     //
     private bool _facingRight = true;
 
@@ -68,12 +70,15 @@ public class F3DCharacterController : MonoBehaviour
     private void Awake()
     {
         _character = GetComponent<F3DCharacter>();
+
         _weaponController = GetComponent<F3DWeaponController>();
         _rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<F3DCharacterAudio>();
         _speed = MaxSpeed;
         if (Shadow != null)
             _shadowBaseScale = Shadow.transform.localScale;
+
+        healthStatus = _character.GetComponent<HealthStatus>();
     }
 
     private float _lastShadowDrawDist;
@@ -84,7 +89,7 @@ public class F3DCharacterController : MonoBehaviour
         if (Shadow == null) return;
         if (ShadowL == null) return;
         if (ShadowR == null) return;
-        if (_character.Health <= 0)
+        if (healthStatus.health <= 0)
             return;
 
         // Linecast each side
