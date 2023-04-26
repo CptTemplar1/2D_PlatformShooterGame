@@ -10,7 +10,8 @@ public static class NewGameStatic
     {
         if (!isStarted)
         {
-            StaticWepaonSkin.reset();
+            StaticWepaonSkin.resetWeapon();
+            StaticWepaonSkin.resetArmor();
         }
         isStarted = true;
     }

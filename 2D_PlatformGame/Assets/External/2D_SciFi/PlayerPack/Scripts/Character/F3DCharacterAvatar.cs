@@ -57,7 +57,7 @@ public class F3DCharacterAvatar : MonoBehaviour
     // DEBUG 
     private void DebugSwitchCharacter()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha8))
+        /*if(Input.GetKeyDown(KeyCode.Alpha8))
         {
             CharacterId++;
             if (CharacterId > 5)
@@ -70,9 +70,9 @@ public class F3DCharacterAvatar : MonoBehaviour
             if (CharacterId < 0)
                 CharacterId = 5;
             SwitchCharacter(CharacterId);
-        }
+        }*/
          
-        /*
+        
         if (Input.GetKeyDown(KeyCode.F1))
         {
             CharacterId = 0;
@@ -102,6 +102,6 @@ public class F3DCharacterAvatar : MonoBehaviour
         {
             CharacterId = 5;
             SwitchCharacter(CharacterId);
-        }*/
+        }
     }
 }
