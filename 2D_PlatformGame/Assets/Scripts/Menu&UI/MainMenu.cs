@@ -11,6 +11,11 @@ public class MainMenu : MonoBehaviour
     public void PlayGame() 
     {
         SceneManager.LoadScene(gameSceneName);
+    }
+
+    //metoda u¿ywana do resetowania poiadanej broni na pocz¹tku rozgrywki
+    public void StartNewGame()
+    {
         NewGameStatic.setNewGame();
     }
 
