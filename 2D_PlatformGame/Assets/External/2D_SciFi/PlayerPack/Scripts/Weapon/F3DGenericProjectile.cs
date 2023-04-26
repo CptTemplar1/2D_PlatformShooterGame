@@ -39,6 +39,11 @@ public class F3DGenericProjectile : MonoBehaviour
         if (enemy != null)
             enemy.TakeDamage(10);
 
+        //Pobranie kolizji pocisku z bossem
+        Boss boss = collision.gameObject.GetComponent<Boss>();
+        if (boss != null)
+            boss.TakeDamage(10);
+
         //DealDamage(5, WeaponType, contact.collider.transform, Hit, HitLifeTime, contact.point, contact.normal);
 
         // Play hit sound
