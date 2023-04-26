@@ -232,6 +232,7 @@ MonoBehaviour:
   collisionDamage: 25
   speed: 4
   jumpForce: 8
+  jumpCooldown: 2
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []

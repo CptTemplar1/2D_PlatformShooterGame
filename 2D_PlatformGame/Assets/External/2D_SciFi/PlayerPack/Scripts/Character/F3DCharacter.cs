@@ -3,7 +3,6 @@ using System.Collections;
 
 public class F3DCharacter : MonoBehaviour
 {
-    public int Health;
     private F3DCharacterController _controller;
     private int _hitTriggerCounter;
     private float _hitTriggerTimer;
@@ -11,18 +10,22 @@ public class F3DCharacter : MonoBehaviour
     private F3DWeaponController _weaponController;
     private bool _isDead;
 
+    private HealthStatus healthStatus;
+
     // Use this for initialization
     void Awake()
     {
         _rBody = GetComponent<Rigidbody2D>();
         _controller = GetComponent<F3DCharacterController>();
         _weaponController = GetComponent<F3DWeaponController>();
+
+        healthStatus = GetComponent<HealthStatus>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
-            Debug.Log(Health);
+            Debug.Log(healthStatus.health);
     }
 
     public void OnDamage(int damageAmount)
@@ -35,19 +38,19 @@ public class F3DCharacter : MonoBehaviour
 
 
         //Zadaj obrażenia i odrzuć gracza do tyłu
-        if (Health > 0)
+        if (healthStatus.health > 0)
         {
             //Odrzuć gracza do tyłu po otrzymaniu obrażeń
             Vector2 knockbackForce = new Vector2(-1f, 1f) * 300000f;
             _rBody.AddForce(knockbackForce);
 
-            Health -= damageAmount;
+            healthStatus.health -= damageAmount;
         }
 
         //obsłuż sytuację, gdy życie spadnie poniżej zera
-        if (Health <= 0)
+        if (healthStatus.health <= 0)
         {
-            Health = 0;
+            healthStatus.health = 0;
             _isDead = true;
 
             //Sekwencja śmierci gracza
