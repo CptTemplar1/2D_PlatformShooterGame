@@ -6,12 +6,10 @@ using Random = UnityEngine.Random;
 
 public class F3DWeaponController : MonoBehaviour
 {
-    public bool RandomWeaponAtStart;
-
     public int EquippedSlot;
     public int EquippedWeapon;
     public List<WeaponSlot> Slots;
-
+    static public Dictionary<WeaponType, bool> ownedWeapon = new Dictionary<WeaponType, bool>();
     //
     private F3DCharacterAvatar _avatar;
 
@@ -33,31 +31,21 @@ public class F3DWeaponController : MonoBehaviour
     public enum WeaponType
     {
         Pistol,
+        PistolLaser,
+        PistolPlasma,
         Assault,
+        AssaultPlasma,
         Shotgun,
-        Machinegun,
         Sniper,
-        Beam,
-        Launcher,
-        EnergyHeavy,
-        Flamethrower,
-        Tesla,
-        Thrown,
+        Machinegun,
         Knife,
         Melee
     }
 
-    
-
     private void Awake()
     {
+        ownedWeapon = StaticWepaonSkin.getWeapon();
         _avatar = GetComponent<F3DCharacterAvatar>();
-
-        if(RandomWeaponAtStart)
-        {
-            EquippedSlot = UnityEngine.Random.Range(0, 5);
-            EquippedWeapon = UnityEngine.Random.Range(0, 3);
-        }
 
         ActivateWeapon(EquippedSlot, EquippedWeapon);
     }
@@ -73,14 +61,14 @@ public class F3DWeaponController : MonoBehaviour
         //w przypadku kliknięcia LPM lub PPM sprawdzamy czy gracz nie ma wyekwipowanego noża (6, 0), aby wtedy wywołać metodę z parametrem bool
         if (Input.GetMouseButtonDown(0))
         {
-            if (EquippedSlot == 6 && EquippedWeapon == 0)
+            if (EquippedSlot == 8 && EquippedWeapon == 0)
                 Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(false);
             else
                 Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
         }
         if (Input.GetMouseButtonDown(1))
         {
-            if (EquippedSlot == 6 && EquippedWeapon == 0)
+            if (EquippedSlot == 8 && EquippedWeapon == 0)
                 Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(true);
         }
 
@@ -89,22 +77,26 @@ public class F3DWeaponController : MonoBehaviour
         {
             Slots[EquippedSlot].Weapons[EquippedWeapon].Stop();
         }
-
+      
         // Switch Weapon Slot
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && ownedWeapon[WeaponType.Pistol] == true)
             ActivateSlot(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && ownedWeapon[WeaponType.PistolLaser] == true)
             ActivateSlot(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && ownedWeapon[WeaponType.PistolPlasma] == true)
             ActivateSlot(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha4) && ownedWeapon[WeaponType.Assault] == true)
             ActivateSlot(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        if (Input.GetKeyDown(KeyCode.Alpha5) && ownedWeapon[WeaponType.AssaultPlasma] == true)
             ActivateSlot(4);
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-            ActivateSlot(5);
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Alpha6) && ownedWeapon[WeaponType.Shotgun] == true)
+            ActivateSlot(5);    
+        if (Input.GetKeyDown(KeyCode.Alpha7) && ownedWeapon[WeaponType.Sniper] == true)
             ActivateSlot(6);
+        if (Input.GetKeyDown(KeyCode.Alpha8) && ownedWeapon[WeaponType.Machinegun] == true)
+            ActivateSlot(7);
+        if (Input.GetKeyDown(KeyCode.F) && ownedWeapon[WeaponType.Knife] == true)
+            ActivateSlot(8);
     }
 
     private void ActivateSlot(int slot)

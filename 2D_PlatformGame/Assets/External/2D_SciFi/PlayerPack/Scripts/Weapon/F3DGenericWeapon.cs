@@ -422,10 +422,7 @@ public class F3DGenericWeapon : MonoBehaviour
         // Muzzle Flash
         SpawnMuzzleFlash();
 
-        // Spawn Projectile/Beam
-        if (this.Type == F3DWeaponController.WeaponType.Beam)
-            SpawnBeam(Projectile);
-        else
+        // Spawn Projectile
             SpawnProjectile(Projectile);
         SpawnSmoke();
         SpawnBarrelSpark();

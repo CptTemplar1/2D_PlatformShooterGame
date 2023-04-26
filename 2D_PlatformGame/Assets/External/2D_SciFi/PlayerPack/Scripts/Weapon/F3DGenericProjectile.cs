@@ -82,25 +82,19 @@ public class F3DGenericProjectile : MonoBehaviour
                 {
                     case F3DWeaponController.WeaponType.Pistol:
                         break;
+                    case F3DWeaponController.WeaponType.PistolLaser:
+                        break;
+                    case F3DWeaponController.WeaponType.PistolPlasma:
+                        break;
                     case F3DWeaponController.WeaponType.Assault:
+                        break;
+                    case F3DWeaponController.WeaponType.AssaultPlasma:
                         break;
                     case F3DWeaponController.WeaponType.Shotgun:
                         break;
                     case F3DWeaponController.WeaponType.Machinegun:
                         break;
                     case F3DWeaponController.WeaponType.Sniper:
-                        break;
-                    case F3DWeaponController.WeaponType.Beam:
-                        break;
-                    case F3DWeaponController.WeaponType.Launcher:
-                        break;
-                    case F3DWeaponController.WeaponType.EnergyHeavy:
-                        break;
-                    case F3DWeaponController.WeaponType .Flamethrower:
-                        break;
-                    case F3DWeaponController.WeaponType.Tesla:
-                        break;
-                    case F3DWeaponController.WeaponType.Thrown:
                         break;
                     case F3DWeaponController.WeaponType.Knife:
                         break;
