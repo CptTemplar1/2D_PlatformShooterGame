@@ -6,9 +6,11 @@ using UnityEngine;
 public class CoinsHandler : MonoBehaviour
 {
     private TMP_Text coinAmount; //zmienna przechowuj¹ca referencjê do licznika zebranych coinów w Hud
+    public int coins = 0;
     // Start is called before the first frame update
     void Awake()
     {
+        coins = StaticCoins.get();
         coinAmount = GameObject.Find("coinAmount").GetComponent<TMP_Text>();
         coinAmount.text = StaticCoins.get().ToString();
     }
@@ -20,9 +22,9 @@ public class CoinsHandler : MonoBehaviour
         if (coinAmount != null)
         {
             // Zwiêksz wartoœæ liczby monet i zaktualizuj wyœwietlany tekst
-            StaticCoins.add();
+            coins++;
 
-            coinAmount.text = StaticCoins.get().ToString();
+            coinAmount.text = coins.ToString();
         }
     }
 }

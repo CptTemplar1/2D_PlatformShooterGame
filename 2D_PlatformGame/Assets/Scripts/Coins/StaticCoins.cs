@@ -11,6 +11,11 @@ public static class StaticCoins
         coins++;
     }
 
+    static public void add(int amount)
+    {
+        coins = amount;
+    }
+
     static public int get()
     {
         return coins;

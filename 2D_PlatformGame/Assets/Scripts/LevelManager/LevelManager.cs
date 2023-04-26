@@ -6,11 +6,13 @@ public class LevelManager : MonoBehaviour
 {
     private int numberOfEnemies;
     private AfterMission afterMission; //komponent AfterMission z okna zakoñczenia levelu
+    private CoinsHandler coinsHandler; //komponent coinHandler zarzadzajacy coinami
     private void Start()
     {
         StartCoroutine(findEnemies());
 
         afterMission = GameObject.Find("AfterMission").GetComponent<AfterMission>();
+        coinsHandler = GameObject.Find("CollectedMoney").GetComponent<CoinsHandler>();
     }
 
     public void EnemyKilled()
@@ -28,6 +30,8 @@ public class LevelManager : MonoBehaviour
     System.Collections.IEnumerator pauseAfterLevel()
     {
         yield return new WaitForSeconds(5);
+        //dodaj coiny do wszystkich coinow gracza
+        StaticCoins.add(coinsHandler.coins);
         afterMission.PauseGame();
     }
 
