@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,11 @@ public class FillStatusBar : MonoBehaviour
 
     private Slider slider;
 
+    private TMP_Text healthAmount;
+
     private void Awake()
     {
+        healthAmount = GameObject.Find("healthAmount").GetComponent<TMP_Text>();
         slider = GetComponent<Slider>();
     }
 
@@ -37,5 +41,6 @@ public class FillStatusBar : MonoBehaviour
 
         //ustawienie wartoœci na sliderze
         slider.value = fillValue;
+        healthAmount.text = healthStatus.health.ToString();
     }
 }
