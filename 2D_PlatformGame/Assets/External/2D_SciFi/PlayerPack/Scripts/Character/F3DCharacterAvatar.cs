@@ -4,8 +4,6 @@ using System.Collections;
 
 public class F3DCharacterAvatar : MonoBehaviour
 {
-    public bool RandomizeAtStart;
-
     public int CharacterId;
     public SpriteRenderer Head;
     public SpriteRenderer Body;
@@ -30,12 +28,12 @@ public class F3DCharacterAvatar : MonoBehaviour
     //
     private void Awake()
     {
+        CharacterId = StaticWepaonSkin.currentArmor;
         _weaponController = GetComponent<F3DWeaponController>();
-        if (RandomizeAtStart) CharacterId = UnityEngine.Random.Range(0, 6);
         SwitchCharacter(CharacterId);
     }
 
-    private void SwitchCharacter(int id)
+    public void SwitchCharacter(int id)
     {
         if (Head == null) return;
         if (Body == null) return;
@@ -73,7 +71,7 @@ public class F3DCharacterAvatar : MonoBehaviour
         }*/
          
         
-        if (Input.GetKeyDown(KeyCode.F1))
+        /*if (Input.GetKeyDown(KeyCode.F1))
         {
             CharacterId = 0;
             SwitchCharacter(CharacterId);
@@ -102,6 +100,6 @@ public class F3DCharacterAvatar : MonoBehaviour
         {
             CharacterId = 5;
             SwitchCharacter(CharacterId);
-        }
+        }*/
     }
 }
