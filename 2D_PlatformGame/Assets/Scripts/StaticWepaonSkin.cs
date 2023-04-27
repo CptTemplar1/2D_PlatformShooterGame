@@ -7,6 +7,7 @@ public static class StaticWepaonSkin
 {
     static public Dictionary<WeaponType, bool> ownedWeapon = new Dictionary<WeaponType, bool>();
     static public Dictionary<int, bool> ownedArmor = new Dictionary<int, bool>();
+    static public Dictionary<int, int> ownedArmorHp = new Dictionary<int, int>();
     static public int currentArmor;
     static public void resetWeapon()
     {
@@ -31,6 +32,13 @@ public static class StaticWepaonSkin
         ownedArmor.Add(4, false);
         ownedArmor.Add(5, false);
         currentArmor = 0;
+
+        ownedArmorHp.Add(0, 100);
+        ownedArmorHp.Add(1, 150);
+        ownedArmorHp.Add(2, 250);
+        ownedArmorHp.Add(3, 450);
+        ownedArmorHp.Add(4, 700);
+        ownedArmorHp.Add(5, 1000);
     }
 
     static public Dictionary<WeaponType, bool>  getWeapon()

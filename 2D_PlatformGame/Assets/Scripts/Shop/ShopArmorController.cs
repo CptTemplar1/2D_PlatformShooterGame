@@ -10,6 +10,17 @@ public class ShopArmorController : MonoBehaviour
     public List<TMP_Text> texts = new List<TMP_Text>();
     public List<Button> armorToEquip = new List<Button>();
     public List<TMP_Text> equippedTexts = new List<TMP_Text>();
+    public List<TMP_Text> healthText = new List<TMP_Text>();
+
+    void Start()
+    {
+        healthText[0].text = StaticWepaonSkin.ownedArmorHp[0].ToString();
+        healthText[1].text = StaticWepaonSkin.ownedArmorHp[1].ToString();
+        healthText[2].text = StaticWepaonSkin.ownedArmorHp[2].ToString();
+        healthText[3].text = StaticWepaonSkin.ownedArmorHp[3].ToString();
+        healthText[4].text = StaticWepaonSkin.ownedArmorHp[4].ToString();
+        healthText[5].text = StaticWepaonSkin.ownedArmorHp[5].ToString();
+    }
 
     // Update is called once per frame
     void Update()

@@ -16,32 +16,32 @@ public class HealthStatus : MonoBehaviour
 
         if (activeArmor == 0)
         {
-            maxHealth = 100;
+            maxHealth = StaticWepaonSkin.ownedArmorHp[0];
             health = maxHealth;
         }
         else if (activeArmor == 1)
         {
-            maxHealth = 150;
+            maxHealth = StaticWepaonSkin.ownedArmorHp[1];
             health = maxHealth;
         }
         else if (activeArmor == 2)
         {
-            maxHealth = 250;
+            maxHealth = StaticWepaonSkin.ownedArmorHp[2];
             health = maxHealth;
         }
         else if (activeArmor == 3)
         {
-            maxHealth = 450;
+            maxHealth = StaticWepaonSkin.ownedArmorHp[3];
             health = maxHealth;
         }
         else if (activeArmor == 4)
         {
-            maxHealth = 700;
+            maxHealth = StaticWepaonSkin.ownedArmorHp[4];
             health = maxHealth;
         }
         else if (activeArmor == 5)
         {
-            maxHealth = 1000;
+            maxHealth = StaticWepaonSkin.ownedArmorHp[5];
             health = maxHealth;
         }
         else
