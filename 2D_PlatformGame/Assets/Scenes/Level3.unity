@@ -4452,24 +4452,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8237531377445224554, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 8237531377445224563, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
       propertyPath: m_Name
       value: Boss1
       objectReference: {fileID: 0}
-    - target: {fileID: 8237531377758456531, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8237531378035549227, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8237531376505753933, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
 --- !u!1001 &8261291936418762755
 PrefabInstance:
