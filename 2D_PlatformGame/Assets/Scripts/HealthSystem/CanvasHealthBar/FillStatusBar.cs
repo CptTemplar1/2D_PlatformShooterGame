@@ -25,8 +25,11 @@ public class FillStatusBar : MonoBehaviour
     private void Update()
     {
         if (slider.value <= slider.minValue)
+        {
             fillImage.enabled = false;
-        
+            slider.gameObject.gameObject.SetActive(false);
+        }
+
         if (slider.value > slider.minValue && !fillImage.enabled)
             fillImage.enabled = true;
         
