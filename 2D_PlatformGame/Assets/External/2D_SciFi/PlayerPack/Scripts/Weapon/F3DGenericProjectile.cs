@@ -41,6 +41,8 @@ public class F3DGenericProjectile : MonoBehaviour
 
         //Pobranie kolizji pocisku z bossem
         Boss boss = collision.gameObject.GetComponent<Boss>();
+        if(boss == null)
+            boss = collision.gameObject.GetComponentInParent<Boss>();
         if (boss != null)
             boss.TakeDamage(10);
 

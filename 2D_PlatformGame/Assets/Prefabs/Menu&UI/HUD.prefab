@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1397133518286333219, guid: 18470f462241d7e4aba13472894dc4a0, type: 3}
       propertyPath: m_Name
-      value: CanvasHealthBar
+      value: PlayerHealthBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18470f462241d7e4aba13472894dc4a0, type: 3}
