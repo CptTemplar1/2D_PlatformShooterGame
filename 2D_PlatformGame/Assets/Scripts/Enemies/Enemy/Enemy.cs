@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     public event EventHandler OnHealthChanged; //event podczas zmiany stanu zdrowia
 
     //zainicjowanie aktualnego ¿ycia wartoœci¹ maksymaln¹
-    private void Awake()
+    protected virtual void Awake()
     {
         health = healthMax;
         isDead = false;
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
         return (float)health / healthMax;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         health -= damage;
         if (health < 0)
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
     }
 
     //metoda obs³ugi leczenia przeciwnika
-    public void Heal(int amount)
+    protected virtual void Heal(int amount)
     {
         health += amount;
         if (health > healthMax)
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
             OnHealthChanged(this, EventArgs.Empty);
     }
 
-    void Die()
+    protected virtual void Die()
     {
         if(isDead == false)
         {

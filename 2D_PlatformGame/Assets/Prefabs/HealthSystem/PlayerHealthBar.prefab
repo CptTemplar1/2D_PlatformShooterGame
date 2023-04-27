@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 1397133518286333217}
   - component: {fileID: 1397133518286333216}
   m_Layer: 5
-  m_Name: CanvasHealthBar
+  m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

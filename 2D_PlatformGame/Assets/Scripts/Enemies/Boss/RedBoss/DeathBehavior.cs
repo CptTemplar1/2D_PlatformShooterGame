@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DeathBehavior : StateMachineBehaviour {
 
-    private Boss boss;
+    private RedBossController boss;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        boss = animator.GetComponent<Boss>();
+        boss = animator.GetComponent<RedBossController>();
         boss.isDead = true;
 	}
 

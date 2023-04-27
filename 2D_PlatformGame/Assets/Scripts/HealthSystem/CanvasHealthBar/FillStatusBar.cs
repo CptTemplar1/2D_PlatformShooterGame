@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,10 @@ public class FillStatusBar : MonoBehaviour
     private void Update()
     {
         if (slider.value <= slider.minValue)
+        {
             fillImage.enabled = false;
+            slider.gameObject.gameObject.SetActive(false);
+        }
         
         if (slider.value > slider.minValue && !fillImage.enabled)
             fillImage.enabled = true;
