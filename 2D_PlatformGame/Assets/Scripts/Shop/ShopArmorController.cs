@@ -12,6 +12,13 @@ public class ShopArmorController : MonoBehaviour
     public List<TMP_Text> equippedTexts = new List<TMP_Text>();
     public List<TMP_Text> healthText = new List<TMP_Text>();
 
+    public int BasicPrice = 0;
+    public int KnightPrice = 10;
+    public int ToxicPrice = 100;
+    public int SoldierPrice = 500;
+    public int LuxoJrPrice = 1250;
+    public int TitanPrice = 3000;
+
     void Start()
     {
         healthText[0].text = StaticWepaonSkin.ownedArmorHp[0].ToString();
@@ -20,6 +27,16 @@ public class ShopArmorController : MonoBehaviour
         healthText[3].text = StaticWepaonSkin.ownedArmorHp[3].ToString();
         healthText[4].text = StaticWepaonSkin.ownedArmorHp[4].ToString();
         healthText[5].text = StaticWepaonSkin.ownedArmorHp[5].ToString();
+    }
+
+    public void setPrices()
+    {
+        texts[0].text = "BUY   " + BasicPrice;
+        texts[1].text = "BUY   " + KnightPrice;
+        texts[2].text = "BUY   " + ToxicPrice;
+        texts[3].text = "BUY   " + SoldierPrice;
+        texts[4].text = "BUY   " + LuxoJrPrice;
+        texts[5].text = "BUY   " + TitanPrice;
     }
 
     // Update is called once per frame
@@ -107,32 +124,62 @@ public class ShopArmorController : MonoBehaviour
 
     public void buyBasic()
     {
-        StaticWepaonSkin.ownedArmor[0] = true;
+        if (StaticCoins.get() >= BasicPrice)
+        {
+            StaticWepaonSkin.ownedArmor[0] = true;
+            StaticCoins.minus(BasicPrice);
+            FindObjectOfType<CoinsHandler>().refresh();
+        }
     }
 
     public void buyKnight()
     {
-        StaticWepaonSkin.ownedArmor[1] = true;
+        if (StaticCoins.get() >= KnightPrice)
+        {
+            StaticWepaonSkin.ownedArmor[1] = true;
+            StaticCoins.minus(KnightPrice);
+            FindObjectOfType<CoinsHandler>().refresh();
+        }
     }
 
     public void buyToxic()
     {
-        StaticWepaonSkin.ownedArmor[2] = true;
+        if (StaticCoins.get() >= ToxicPrice)
+        {
+            StaticWepaonSkin.ownedArmor[2] = true;
+            StaticCoins.minus(ToxicPrice);
+            FindObjectOfType<CoinsHandler>().refresh();
+        }
     }
 
     public void buySoldier()
     {
-        StaticWepaonSkin.ownedArmor[3] = true;
+        if (StaticCoins.get() >= SoldierPrice)
+        {
+            StaticWepaonSkin.ownedArmor[3] = true;
+            StaticCoins.minus(SoldierPrice);
+            FindObjectOfType<CoinsHandler>().refresh();
+        }
     }
 
     public void buyLuxoJr()
     {
-        StaticWepaonSkin.ownedArmor[4] = true;
+        if (StaticCoins.get() >= LuxoJrPrice)
+        {
+            StaticWepaonSkin.ownedArmor[4] = true;
+            StaticCoins.minus(LuxoJrPrice);
+            FindObjectOfType<CoinsHandler>().refresh();
+        }
     }
 
     public void buyTitan()
     {
-        StaticWepaonSkin.ownedArmor[5] = true;
+        if (StaticCoins.get() >= TitanPrice)
+        {
+            StaticWepaonSkin.ownedArmor[5] = true;
+            StaticCoins.minus(TitanPrice);
+            FindObjectOfType<CoinsHandler>().refresh();
+        }
     }
 
     public void equipBasic()

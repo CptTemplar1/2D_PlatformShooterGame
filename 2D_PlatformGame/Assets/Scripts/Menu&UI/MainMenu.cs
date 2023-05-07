@@ -18,4 +18,16 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Wychodzenie z gry dzia³a");
         Application.Quit();
     }
+
+    //metoda do weapon shop wypisuj¹ca ceny
+    public void setWeaponShop()
+    {
+        ShopController.FindAnyObjectByType<ShopController>().setPrices();
+    }
+
+    //metoda do armor shop wypisuj¹ca ceny
+    public void setArmorShop()
+    {
+        ShopArmorController.FindAnyObjectByType<ShopArmorController>().setPrices();
+    }
 }

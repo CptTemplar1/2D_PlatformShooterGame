@@ -20,4 +20,9 @@ public static class StaticCoins
     {
         return coins;
     }
+
+    static public void minus(int amount)
+    {
+        coins -= amount;
+    }
 }

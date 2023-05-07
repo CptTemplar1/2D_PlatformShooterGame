@@ -27,4 +27,9 @@ public class CoinsHandler : MonoBehaviour
             coinAmount.text = coins.ToString();
         }
     }
+    //metoda oswiezajaca ilosc coinow w handlerze
+    public void refresh()
+    {
+        coinAmount.text = StaticCoins.get().ToString();
+    }
 }
