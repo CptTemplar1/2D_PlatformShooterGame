@@ -20,4 +20,9 @@ public class LevelsController : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    //metoda wczytuj¹ca czwarty poziom
+    public void PlayMercury4()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
