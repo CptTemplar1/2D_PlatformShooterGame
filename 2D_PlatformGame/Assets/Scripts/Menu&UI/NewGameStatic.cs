@@ -12,6 +12,7 @@ public static class NewGameStatic
         {
             StaticWepaonSkin.resetWeapon();
             StaticWepaonSkin.resetArmor();
+            PassedLevels.resetPassedLevels();
         }
         isStarted = true;
     }

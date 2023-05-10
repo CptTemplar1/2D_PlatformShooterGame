@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,15 +33,21 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         //dodaj coiny do wszystkich coinow gracza
         StaticCoins.add(coinsHandler.coins);
+        PassedLevels.setPassedLevel(SceneManager.GetActiveScene().buildIndex);
         afterMission.PauseGame();
     }
 
     //metoda znajdujπca wszystkie obiekty "Enemy"
     System.Collections.IEnumerator findEnemies()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         // Znajdü wszystkie obiekty w scenie z tagiem "Enemy"
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if(enemies.Count() == 0 )
+        {
+            enemies = GameObject.FindGameObjectsWithTag("Boss");
+        }
         numberOfEnemies = enemies.Length;
+        Debug.Log(numberOfEnemies);
     }
 }

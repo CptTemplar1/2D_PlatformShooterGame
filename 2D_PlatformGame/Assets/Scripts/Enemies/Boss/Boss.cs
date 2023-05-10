@@ -70,6 +70,10 @@ public class Boss : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
+            // Wywołaj metodę EnemyKilled() w skrypcie LevelManager
+            GameObject levelManagerObject = GameObject.FindWithTag("LevelManager");
+            LevelManager levelManager = levelManagerObject.GetComponent<LevelManager>();
+            levelManager.EnemyKilled();
         }
     }
 }
