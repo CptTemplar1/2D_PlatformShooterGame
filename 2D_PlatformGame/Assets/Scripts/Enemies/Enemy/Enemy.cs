@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
                 F3DCharacter character = collision.gameObject.GetComponent<F3DCharacter>();
                 if (character != null)
                 {
-                    character.OnDamage(collisionDamage);
+                    character.OnDamage(collisionDamage, false);
                 }
 
                 // Zapisanie czasu ostatniego uderzenia

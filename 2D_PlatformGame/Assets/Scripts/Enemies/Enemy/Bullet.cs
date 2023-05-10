@@ -43,7 +43,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
-    public int damage = 20;
+    public int damage = 10;
 
     public Rigidbody2D rb;
     public GameObject impactEffect;
@@ -83,7 +83,7 @@ public class Bullet : MonoBehaviour
             F3DCharacter player = collision.GetComponent<F3DCharacter>();
             if (player != null)
             {
-                player.OnDamage(damage);
+                player.OnDamage(damage, true);
             }
             // spawnowanie efektu kolizji pocisku
             Instantiate(impactEffect, transform.position, transform.rotation);

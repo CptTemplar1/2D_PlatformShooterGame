@@ -15,6 +15,8 @@ public class ShootingEnemy : Enemy
     public GameObject bulletPrefab;
     private bool isShooting = false;
 
+    public LayerMask groundLayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +33,10 @@ public class ShootingEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
+        Vector2 playerVec = new Vector2(player.transform.position.x, player.transform.position.y + 1.0f); // przeliczenie pozycji gracza na vector2
+
         //jeœli gracz jest w zasiêgu wykrywania
-        if (Vector2.Distance(transform.position, player.position) <= detectionRange)
+        if (Vector2.Distance(transform.position, player.position) <= detectionRange && !Physics2D.Linecast(transform.position, playerVec, groundLayer))
         {
             animator.SetBool("IsRunning", false);
 

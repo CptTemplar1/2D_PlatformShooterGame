@@ -28,7 +28,7 @@ public class F3DCharacter : MonoBehaviour
             Debug.Log(healthStatus.health);
     }
 
-    public void OnDamage(int damageAmount)
+    public void OnDamage(int damageAmount, bool range)
     {
         if (_controller == null) 
             return;
@@ -40,8 +40,12 @@ public class F3DCharacter : MonoBehaviour
         //Zadaj obrażenia i odrzuć gracza do tyłu
         if (healthStatus.health > 0)
         {
+            Vector2 knockbackForce;
             //Odrzuć gracza do tyłu po otrzymaniu obrażeń
-            Vector2 knockbackForce = new Vector2(-1f, 1f) * 100000f;
+            if (range == false)
+                knockbackForce = new Vector2(-1f, 1f) * 100000f;
+            else
+                knockbackForce = new Vector2(-1f, 1f) * 1000f;
             _rBody.AddForce(knockbackForce);
 
             healthStatus.health -= damageAmount;

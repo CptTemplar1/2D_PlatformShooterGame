@@ -199,6 +199,9 @@ MonoBehaviour:
   walkingSide: 0
   firePoint: {fileID: 5642385144424594158}
   bulletPrefab: {fileID: 939813775615585362, guid: 4fcabc27b6d13344880a000f2da2af2e, type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &422928616360618614
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517654297544507722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.88, y: 0.18, z: 0}
+  m_LocalPosition: {x: 0.71, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
