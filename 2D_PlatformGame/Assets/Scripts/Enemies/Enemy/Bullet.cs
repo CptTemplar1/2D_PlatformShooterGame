@@ -37,29 +37,29 @@
 //    }
 //}
 
-
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
-    public int damage = 40;
+    public int damage = 20;
 
     public Rigidbody2D rb;
     public GameObject impactEffect;
 
-    // Zmienna przechowuj¹ca pozycjê myszki w momencie strza³u
+    // Zmienna przechowuj¹ca pozycjê gracza
+    private Transform playerTransform;
     private Vector2 targetPosition;
     private Vector2 direction;
 
     public void Awake()
     {
         this.tag = "Bullet";
-        // Pobranie pozycji myszki i zapisanie jej do zmiennej
-        targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // Pobieranie pozycji gracza
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // znalezienie gracza przez tag
+        // Zamiana na vector2
+        targetPosition = new Vector2(playerTransform.transform.position.x, playerTransform.transform.position.y + 1.0f);
 
         // Pobranie referencji do Rigidbody2D pocisku
         rb = GetComponent<Rigidbody2D>();
@@ -78,14 +78,17 @@ public class Bullet : MonoBehaviour
     // metoda obs³uguj¹ca zniszczenie pocisku po zderzeniu z jak¹œ powierzchni¹
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy != null)
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player"))
         {
-            enemy.TakeDamage(damage);
+            F3DCharacter player = collision.GetComponent<F3DCharacter>();
+            if (player != null)
+            {
+                player.OnDamage(damage);
+            }
+            // spawnowanie efektu kolizji pocisku
+            Instantiate(impactEffect, transform.position, transform.rotation);
+            // usuwanie obiektu pocisku
+            Destroy(gameObject);
         }
-        // spawnowanie efektu kolizji pocisku
-        Instantiate(impactEffect, transform.position, transform.rotation);
-        // usuwanie obiektu pocisku
-        Destroy(gameObject);
     }
 }
