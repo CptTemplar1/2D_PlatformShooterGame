@@ -8,12 +8,15 @@ public class LevelManager : MonoBehaviour
     private int numberOfEnemies;
     private AfterMission afterMission; //komponent AfterMission z okna zakoñczenia levelu
     private CoinsHandler coinsHandler; //komponent coinHandler zarzadzajacy coinami
+    private EnemiesCounter enemiesCounter; //komponent enemiesCounter zarzadzajacy iloscia przeciwnikow
+
     private void Start()
     {
         StartCoroutine(findEnemies());
 
         afterMission = GameObject.Find("AfterMission").GetComponent<AfterMission>();
         coinsHandler = GameObject.Find("CollectedMoney").GetComponent<CoinsHandler>();
+        enemiesCounter = GameObject.Find("EnemiesCounter").GetComponent<EnemiesCounter>();
     }
 
     public void EnemyKilled()
@@ -40,7 +43,7 @@ public class LevelManager : MonoBehaviour
     //metoda znajduj¹ca wszystkie obiekty "Enemy"
     System.Collections.IEnumerator findEnemies()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         // ZnajdŸ wszystkie obiekty w scenie z tagiem "Enemy"
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if(enemies.Count() == 0 )
@@ -48,6 +51,6 @@ public class LevelManager : MonoBehaviour
             enemies = GameObject.FindGameObjectsWithTag("Boss");
         }
         numberOfEnemies = enemies.Length;
-        Debug.Log(numberOfEnemies);
+        enemiesCounter.setEnemiesCounter(numberOfEnemies);
     }
 }

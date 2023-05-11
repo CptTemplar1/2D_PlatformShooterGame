@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     public event EventHandler OnHealthChanged; //event podczas zmiany stanu zdrowia
 
+    private EnemiesCounter enemiesCounter;
+
     //zainicjowanie aktualnego ¿ycia wartoœci¹ maksymaln¹
     protected virtual void Awake()
     {
@@ -65,6 +67,8 @@ public class Enemy : MonoBehaviour
     {
         if(isDead == false)
         {
+            enemiesCounter = GameObject.Find("EnemiesCounter").GetComponent<EnemiesCounter>();
+            enemiesCounter.decreaseEnemiesCounter();
             isDead = true;
             GameObject newMoney = Instantiate(money);
             newMoney.transform.position = transform.position;

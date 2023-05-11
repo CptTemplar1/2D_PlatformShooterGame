@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     // metoda pauzuj¹ca grê
-    void PauseGame()
+    public void PauseGame()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;

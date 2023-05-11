@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class F3DCharacter : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class F3DCharacter : MonoBehaviour
     private bool _isDead;
 
     private HealthStatus healthStatus; // referencja do komponentu życia
+    
+    private PauseMenu pauseMenu;
 
     // Use this for initialization
     void Awake()
@@ -74,6 +77,7 @@ public class F3DCharacter : MonoBehaviour
             if (_controller.Shadow)
                 _controller.Shadow.enabled = false;
 
+            StartCoroutine(getBackToMenu());
             //
             return;
         }
@@ -82,6 +86,13 @@ public class F3DCharacter : MonoBehaviour
         if (_hitTriggerCounter < 1)
             _controller.Character.SetTrigger("Hit");
         _hitTriggerCounter++;
+    }
+
+    IEnumerator getBackToMenu()
+    {
+        yield return new WaitForSeconds(3);
+        pauseMenu = GameObject.Find("PauseMenu").GetComponent<PauseMenu>();
+        pauseMenu.PauseGame();
     }
 
     private void LateUpdate()

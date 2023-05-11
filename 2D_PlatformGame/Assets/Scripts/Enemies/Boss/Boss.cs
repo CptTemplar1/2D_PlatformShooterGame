@@ -13,6 +13,8 @@ public class Boss : MonoBehaviour
 
     protected HealthStatus healthStatus; // referencja do komponentu życia
 
+    private EnemiesCounter enemiesCounter;
+
     [HideInInspector]
     public bool isDead;
 
@@ -69,6 +71,8 @@ public class Boss : MonoBehaviour
     {
         if (isDead == false)
         {
+            enemiesCounter = GameObject.Find("EnemiesCounter").GetComponent<EnemiesCounter>();
+            enemiesCounter.decreaseEnemiesCounter();
             isDead = true;
             // Wywołaj metodę EnemyKilled() w skrypcie LevelManager
             GameObject levelManagerObject = GameObject.FindWithTag("LevelManager");
