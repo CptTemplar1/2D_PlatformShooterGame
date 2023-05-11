@@ -81,19 +81,19 @@ public class F3DWeaponController : MonoBehaviour
         // Switch Weapon Slot
         if (Input.GetKeyDown(KeyCode.Alpha1) && ownedWeapon[WeaponType.Pistol] == true)
             ActivateSlot(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2) && ownedWeapon[WeaponType.PistolLaser] == true)
+        if (Input.GetKeyDown(KeyCode.Alpha8) && ownedWeapon[WeaponType.PistolLaser] == true)
             ActivateSlot(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3) && ownedWeapon[WeaponType.PistolPlasma] == true)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && ownedWeapon[WeaponType.PistolPlasma] == true)
             ActivateSlot(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4) && ownedWeapon[WeaponType.Assault] == true)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && ownedWeapon[WeaponType.Assault] == true)
             ActivateSlot(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5) && ownedWeapon[WeaponType.AssaultPlasma] == true)
+        if (Input.GetKeyDown(KeyCode.Alpha4) && ownedWeapon[WeaponType.AssaultPlasma] == true)
             ActivateSlot(4);
-        if (Input.GetKeyDown(KeyCode.Alpha6) && ownedWeapon[WeaponType.Shotgun] == true)
+        if (Input.GetKeyDown(KeyCode.Alpha5) && ownedWeapon[WeaponType.Shotgun] == true)
             ActivateSlot(5);    
-        if (Input.GetKeyDown(KeyCode.Alpha7) && ownedWeapon[WeaponType.Sniper] == true)
+        if (Input.GetKeyDown(KeyCode.Alpha6) && ownedWeapon[WeaponType.Sniper] == true)
             ActivateSlot(6);
-        if (Input.GetKeyDown(KeyCode.Alpha8) && ownedWeapon[WeaponType.Machinegun] == true)
+        if (Input.GetKeyDown(KeyCode.Alpha7) && ownedWeapon[WeaponType.Machinegun] == true)
             ActivateSlot(7);
         if (Input.GetKeyDown(KeyCode.F) && ownedWeapon[WeaponType.Knife] == true)
             ActivateSlot(8);
