@@ -62,47 +62,51 @@ public class ShootingEnemy : Enemy
         }
         else
         {
-            if(coroutineBlocker == true)
+            if(runSpeed > 0)
             {
-                coroutineBlocker = false;
-                StartCoroutine(run());
+                if (coroutineBlocker == true)
+                {
+                    coroutineBlocker = false;
+                    StartCoroutine(run());
+                }
+
+                if (isRunning == true)
+                {
+                    animator.SetBool("IsRunning", true);
+
+                    if (Vector2.Distance(transform.position, rightPoint) >= 0 && walkingSide == false)
+                    {
+                        Vector2 direction = new Vector2(1, 0f);
+                        //zmiana kierunku po dotarciu do krawedzi
+                        if (Mathf.Abs(transform.position.x - rightPoint.x) <= 0.1)
+                        {
+                            walkingSide = true;
+                            return;
+                        }
+                        // obracanie potwora 
+                        if (transform.localScale.x < 0)
+                            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                        //poruszanie potwora
+                        transform.Translate(direction * runSpeed * Time.deltaTime);
+                    }
+                    if (Vector2.Distance(transform.position, leftPoint) >= 0 && walkingSide == true)
+                    {
+                        Vector2 direction = new Vector2(-1, 0f);
+                        //zmiana kierunku po dotarciu do krawedzi
+                        if (Mathf.Abs(transform.position.x - leftPoint.x) <= 0.1)
+                        {
+                            walkingSide = false;
+                            return;
+                        }
+                        // obracanie potwora
+                        if (transform.localScale.x > 0)
+                            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                        //poruszanie potwora
+                        transform.Translate(direction * runSpeed * Time.deltaTime);
+                    }
+                }
             }
 
-            if(isRunning == true)
-            {
-                animator.SetBool("IsRunning", true);
-
-                if (Vector2.Distance(transform.position, rightPoint) >= 0 && walkingSide == false)
-                {
-                    Vector2 direction = new Vector2(Mathf.Sign(rightPoint.x), 0f);
-                    //zmiana kierunku po dotarciu do krawedzi
-                    if (Mathf.Abs(transform.position.x - rightPoint.x) <= 0.1)
-                    {
-                        walkingSide = true;
-                        return;
-                    }
-                    // obracanie potwora 
-                    if (transform.localScale.x < 0)
-                        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-                    //poruszanie potwora
-                    transform.Translate(direction * runSpeed * Time.deltaTime);
-                }
-                if (Vector2.Distance(transform.position, leftPoint) >= 0 && walkingSide == true)
-                {
-                    Vector2 direction = new Vector2(Mathf.Sign(rightPoint.x), 0f);
-                    //zmiana kierunku po dotarciu do krawedzi
-                    if (Mathf.Abs(transform.position.x - leftPoint.x) <= 0.1)
-                    {
-                        walkingSide = false;
-                        return;
-                    }
-                    // obracanie potwora
-                    if (transform.localScale.x > 0)
-                        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-                    //poruszanie potwora
-                    transform.Translate(-direction * runSpeed * Time.deltaTime);
-                }
-            }
         }
     }
 

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 97
+  controlID: 107
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 40
+  controlID: 108
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 41
+  controlID: 109
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -362,9 +362,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: d4c3a0603bc495c448ede5d9cfed626e, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 710a40bb25429eb408572f67bf9df804, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107514364477353162, guid: d4c3a0603bc495c448ede5d9cfed626e, type: 2}
+  - m_Target: {fileID: -4466747515655854924, guid: 710a40bb25429eb408572f67bf9df804, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -436,9 +436,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6c620000
-      m_LastClickedID: 25196
-      m_ExpandedIDs: 0ee9ffff4efaffff86610000c2640000cc64000026650000
+      m_SelectedIDs: 7247ffff
+      m_LastClickedID: -47246
+      m_ExpandedIDs: e044ffff1848ffffecf9ffff0efbffff8e70000092700000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -742,9 +742,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 583.0997, y: 324.28354, z: 2.6388474}
+    m_Target: {x: 29.869629, y: -1.9021131, z: -8.6651535}
     speed: 2
-    m_Value: {x: 583.0997, y: 324.28354, z: 2.6388474}
+    m_Value: {x: 29.869629, y: -1.9021131, z: -8.6651535}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -795,9 +795,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 330.55365
+    m_Target: 24.241943
     speed: 2
-    m_Value: 330.55365
+    m_Value: 24.241943
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -955,22 +955,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/External/Cyberpunk street/Version 2
+    - Assets/Scripts/Enemies/Enemy
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/External/Cyberpunk street/Version 2
+  - Assets/Scripts/Enemies/Enemy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\przem\OneDrive\Pulpit\2D_PlatformShooterGame\2D_PlatformGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 115}
-    m_SelectedIDs: e0810000
-    m_LastClickedID: 33248
-    m_ExpandedIDs: 00000000366f0000386f00003a6f00003c6f00003e6f0000406f0000426f0000446f0000466f0000486f00004a6f00004c6f00004e6f0000506f0000526f0000546f0000566f0000586f00005a6f00005c6f00005e6f0000606f0000626f0000646f0000666f0000686f00006a6f00006c6f00006e6f0000746f0000766f00007a6f00007c6f00007e6f0000806f0000826f00003470000000ca9a3b
+    scrollPos: {x: 0, y: 139}
+    m_SelectedIDs: 84aa0000
+    m_LastClickedID: 43652
+    m_ExpandedIDs: 000000004a6e00004c6e00004e6e0000506e0000526e0000546e0000566e0000586e00005c6e00005e6e0000606e0000626e0000646e0000666e0000686e00006a6e00006c6e00006e6e0000706e0000726e0000746e0000766e0000786e00007a6e00007c6e00007e6e0000806e0000826e0000846e0000866e0000886e00008a6e00008c6e00008e6e0000906e0000566f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -998,7 +998,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000366f0000386f00003a6f00003c6f00003e6f0000406f0000426f0000446f0000466f0000486f00004a6f00004c6f00004e6f0000506f0000526f0000546f0000566f0000586f00005a6f00005c6f00005e6f0000606f0000626f0000646f0000666f0000686f00006a6f00006c6f00006e6f0000706f0000726f0000746f0000766f0000786f00007a6f00007c6f00007e6f0000806f0000826f0000
+    m_ExpandedIDs: 000000004a6e00004c6e00004e6e0000506e0000526e0000546e0000566e0000586e00005a6e00005c6e00005e6e0000606e0000626e0000646e0000666e0000686e00006a6e00006c6e00006e6e0000706e0000726e0000746e0000766e0000786e00007a6e00007c6e00007e6e0000806e0000826e0000846e0000866e0000886e00008a6e00008c6e00008e6e0000906e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1042,7 +1042,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 9}
+      m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1084,7 +1084,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -143530
+  m_LastSelectedObjectID: -3196
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1296,7 +1296,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 648
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

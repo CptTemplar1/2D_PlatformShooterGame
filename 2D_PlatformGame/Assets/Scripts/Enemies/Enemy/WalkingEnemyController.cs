@@ -10,7 +10,7 @@ public class WalkingEnemyController : Enemy
     public bool isWalkingBack = false;
     public bool isPatrolling = false;
     public bool isAfterHunting = false;
-    public bool canPatrol = true;
+    public bool canPatrol = false;
     Vector2 LeftPoint = new Vector2();
     Vector2 RightPoint = new Vector2();
 
@@ -94,8 +94,8 @@ public class WalkingEnemyController : Enemy
         yield return new WaitForSeconds(1);
         if(isWalkingBack == false && !animator.GetBool("isWalking"))
         {
-            LeftPoint = new Vector2(Mathf.Abs(transform.position.x - walkingDistance), transform.position.y);
-            RightPoint = new Vector2(Mathf.Abs(transform.position.x + walkingDistance), transform.position.y);
+            LeftPoint = new Vector2(transform.position.x - walkingDistance, transform.position.y);
+            RightPoint = new Vector2(transform.position.x + walkingDistance, transform.position.y);
             isPatrolling = true;
         }
     }
@@ -105,12 +105,12 @@ public class WalkingEnemyController : Enemy
     public void justWalk()
     {
         animator.SetBool("isWalking", true);
-        //speed = (float)(speed * 0.5);
+        
         if (Vector2.Distance(transform.position, RightPoint) >= 0 && walkingSide == false)
         {
-            Vector2 direction = new Vector2(Mathf.Sign(RightPoint.x), 0f);
+            Vector2 direction = new Vector2(1, 0f);
             //zmiana kierunku po dotarciu do krawedzi
-            if (Vector2.Distance(transform.position, RightPoint) <= 0.1)
+            if (Mathf.Abs(transform.position.x - RightPoint.x) <= 0.1)
             {
                 walkingSide = true;
                 animator.SetBool("isWalking", false);
@@ -124,7 +124,7 @@ public class WalkingEnemyController : Enemy
         }
         else if(Vector2.Distance(transform.position, LeftPoint) >= 0 && walkingSide == true)
         {
-            Vector2 direction = new Vector2(Mathf.Sign(RightPoint.x), 0f);
+            Vector2 direction = new Vector2(-1, 0f);
             //zmiana kierunku po dotarciu do krawedzi
             if (Mathf.Abs(transform.position.x - LeftPoint.x) <= 0.1)
             {
@@ -133,10 +133,10 @@ public class WalkingEnemyController : Enemy
                 return;
             }
             // obracanie potwora
-            if (-direction.x < 0 && transform.localScale.x < 0)
+            if (direction.x < 0 && transform.localScale.x < 0)
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             //poruszanie potwora
-            transform.Translate(-direction * speed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime);
         }    
 
     }
