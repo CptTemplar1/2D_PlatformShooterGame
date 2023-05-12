@@ -13,7 +13,7 @@ public class F3DCharacter : MonoBehaviour
 
     private HealthStatus healthStatus; // referencja do komponentu życia
     
-    private PauseMenu pauseMenu;
+    private LevelManager levelManager;
 
     // Use this for initialization
     void Awake()
@@ -77,7 +77,7 @@ public class F3DCharacter : MonoBehaviour
             if (_controller.Shadow)
                 _controller.Shadow.enabled = false;
 
-            StartCoroutine(getBackToMenu());
+            getBackToMenu();
             //
             return;
         }
@@ -88,11 +88,10 @@ public class F3DCharacter : MonoBehaviour
         _hitTriggerCounter++;
     }
 
-    IEnumerator getBackToMenu()
+    void getBackToMenu()
     {
-        yield return new WaitForSeconds(3);
-        pauseMenu = GameObject.Find("PauseMenu").GetComponent<PauseMenu>();
-        pauseMenu.PauseGame();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        levelManager.playerIsDead();
     }
 
     private void LateUpdate()

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +11,59 @@ public class LevelManager : MonoBehaviour
     private AfterMission afterMission; //komponent AfterMission z okna zakoñczenia levelu
     private CoinsHandler coinsHandler; //komponent coinHandler zarzadzajacy coinami
     private EnemiesCounter enemiesCounter; //komponent enemiesCounter zarzadzajacy iloscia przeciwnikow
+    private PauseMenu pauseMenu;
+
+    float time; //czas do odliczania po np zakonczeniu lvla
+    bool startPassedLevelCounter = false;
+    bool startDeathCounter = false;
+    private GameObject timeCounter;
+    private TMP_Text timeCounterText;
 
     private void Start()
     {
         StartCoroutine(findEnemies());
-
+        time = 5;
         afterMission = GameObject.Find("AfterMission").GetComponent<AfterMission>();
         coinsHandler = GameObject.Find("CollectedMoney").GetComponent<CoinsHandler>();
         enemiesCounter = GameObject.Find("EnemiesCounter").GetComponent<EnemiesCounter>();
+        pauseMenu = GameObject.Find("PauseMenu").GetComponent<PauseMenu>();
+
+        timeCounter = GameObject.Find("TimeCounter");
+
+        timeCounterText = GameObject.Find("Counter").GetComponent<TMP_Text>();
+    }
+
+    private void Update()
+    {
+        if(startPassedLevelCounter == true)
+        {
+            time -= Time.deltaTime;
+            timeCounterText.text = Mathf.Clamp(Mathf.CeilToInt(time), 0, int.MaxValue).ToString();
+
+            if (time <= 0)
+            {
+                timeCounter.SetActive(false);
+                pauseAfterLevel();
+                startPassedLevelCounter = false;
+            }
+        }
+        if(startDeathCounter == true)
+        {
+            time -= Time.deltaTime;
+            timeCounterText.text = Mathf.Clamp(Mathf.CeilToInt(time), 0, int.MaxValue).ToString();
+
+            if (time <= 0)
+            {
+                timeCounter.SetActive(false);
+                pauseMenu.PauseGame();
+                startDeathCounter = false;
+            }
+        }
+    }
+
+    public void playerIsDead()
+    {
+        startDeathCounter = true;
     }
 
     public void EnemyKilled()
@@ -27,13 +74,12 @@ public class LevelManager : MonoBehaviour
         if (numberOfEnemies <= 0)
         {
             // Jeœli tak, to otwórz panel zakoñczenia levelu
-            StartCoroutine(pauseAfterLevel());
+            startPassedLevelCounter = true;
         }
     }
     //metoda wykonywana po zadanym czasie
-    System.Collections.IEnumerator pauseAfterLevel()
+    void pauseAfterLevel()
     {
-        yield return new WaitForSeconds(5);
         //dodaj coiny do wszystkich coinow gracza
         StaticCoins.add(coinsHandler.coins);
         PassedLevels.setPassedLevel(SceneManager.GetActiveScene().buildIndex);
