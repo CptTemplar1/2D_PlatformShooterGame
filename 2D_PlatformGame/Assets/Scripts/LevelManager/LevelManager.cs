@@ -29,14 +29,15 @@ public class LevelManager : MonoBehaviour
         pauseMenu = GameObject.Find("PauseMenu").GetComponent<PauseMenu>();
 
         timeCounter = GameObject.Find("TimeCounter");
-
         timeCounterText = GameObject.Find("Counter").GetComponent<TMP_Text>();
+        timeCounter.SetActive(false);
     }
 
     private void Update()
     {
         if(startPassedLevelCounter == true)
         {
+            timeCounter.SetActive(true);
             time -= Time.deltaTime;
             timeCounterText.text = Mathf.Clamp(Mathf.CeilToInt(time), 0, int.MaxValue).ToString();
 
@@ -49,6 +50,7 @@ public class LevelManager : MonoBehaviour
         }
         if(startDeathCounter == true)
         {
+            timeCounter.SetActive(true);
             time -= Time.deltaTime;
             timeCounterText.text = Mathf.Clamp(Mathf.CeilToInt(time), 0, int.MaxValue).ToString();
 

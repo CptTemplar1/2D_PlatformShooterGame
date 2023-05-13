@@ -214,6 +214,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2848068070472287022, guid: 4052d81ec99e1f8428bc91b00401b535, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1563449815}
+    - target: {fileID: 2848068070472287022, guid: 4052d81ec99e1f8428bc91b00401b535, type: 3}
       propertyPath: detectionRange
       value: 30
       objectReference: {fileID: 0}
@@ -2902,6 +2906,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2848068070472287022, guid: 4052d81ec99e1f8428bc91b00401b535, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 2011838300}
+    - target: {fileID: 2848068070472287022, guid: 4052d81ec99e1f8428bc91b00401b535, type: 3}
       propertyPath: detectionRange
       value: 30
       objectReference: {fileID: 0}
@@ -3266,7 +3274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 931062274}
   m_Layer: 0
-  m_Name: ShooterStuff
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22584,7 +22592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1563449815}
   m_Layer: 0
-  m_Name: ShooterStuff
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22958,6 +22966,10 @@ PrefabInstance:
       propertyPath: runSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2848068070472287022, guid: 4052d81ec99e1f8428bc91b00401b535, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 931062274}
     - target: {fileID: 2848068070472287022, guid: 4052d81ec99e1f8428bc91b00401b535, type: 3}
       propertyPath: detectionRange
       value: 30
@@ -24558,7 +24570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2011838300}
   m_Layer: 0
-  m_Name: ShooterStuff
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25043,6 +25055,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 862391727775688473, guid: e18920a398643544daf47a178ddd52ab, type: 3}
+      propertyPath: timeCounter
+      value: 
+      objectReference: {fileID: 1255877114}
     - target: {fileID: 862391727775688478, guid: e18920a398643544daf47a178ddd52ab, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -25328,6 +25344,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261291935052221578, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261291935466626241, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
