@@ -18,16 +18,19 @@ public class SpaceshipBossController : Boss
     public float startingSpeed = 10f; // prêdkoœæ wznoszenia siê na pocz¹tku
 
     private bool isStarting = true; // flaga okreœlaj¹ca, czy statek kosmiczny jest w fazie startowania
-    private bool isMovingLeft = true; // flaga okreœlaj¹ca, czy statek porusza siê w lewo
+    private bool isMovingLeft = true; // flaga okreœlaj¹ca, czy statek porusza siê w lewo (do zmiany kierunku)
     private bool isBombing = false; // flaga okreœlaj¹ca, czy boss aktualnie zrzuca bombê
     private bool isShooting = false; // flaga okreœlaj¹ca, czy boss aktualnie strzela pociskami
     private float bombingTimer = 0f; // timer odliczaj¹cy czas do kolejnego zrzutu bomby
     private float missileTimer = 0f; // timer odliczaj¹cy czas do kolejnego strza³u pociskiem
 
+    private bool isFlyingLeftRight = false; //flaga okreœlaj¹ca czy statek jest w trakcie latania lewo/prawo
+    private bool canDropBomb = true; //flaga okreœlaj¹ca czy statek mo¿e zrzuciæ bombê
+
+
 
     //Tymczasowe dodanie zdrowia graczowi
     public HealthStatus health;
-    private BoxCollider2D boxCollider;
 
 
     protected override void Awake()
@@ -37,19 +40,7 @@ public class SpaceshipBossController : Boss
         //Tymczasowe dodanie zdrowia graczowi
         health.health = 100;
 
-        boxCollider = GetComponent<BoxCollider2D>(); // Pobranie referencji do BoxCollider2D
-    }
-
-    private void AdjustColliderHeight(float height)
-    {
-        // Pobierz pozycjê górnej granicy collidera
-        float topPosition = boxCollider.bounds.max.y;
-
-        // Oblicz now¹ wysokoœæ collidera
-        float newHeight = height - transform.position.y + topPosition;
-
-        // Zaktualizuj wysokoœæ collidera
-        boxCollider.size = new Vector2(boxCollider.size.x, newHeight);
+        //DODAJ AUTOMATYCZNE DOSTOSOWANIE WIELKOŒCI BOXCOLLIDERA2D NA PODSTAWIE ZMIENNEJ StartingHeight
     }
 
 
@@ -63,18 +54,30 @@ public class SpaceshipBossController : Boss
         //obs³uga startowania
         if (isStarting)
         {
-            transform.Translate(Vector2.up * startingSpeed * Time.deltaTime);
+            transform.Translate(startingSpeed * Time.deltaTime * Vector2.up);
 
             if (transform.position.y >= startingHeight)
             {
                 isStarting = false;
+                isFlyingLeftRight = true;
             }
         }
-        else
+        //obs³uga zachowania po wystartowaniu
+        else 
         {
-            Debug.Log("Wystartowano");
-            
+            //obs³uga latania w lewo/prawo
+            if (isFlyingLeftRight)
+            {
+                //poruszanie siê statku w lewo i prawo wed³ug wyznaczonych granic
+                float movement = isMovingLeft ? -1f : 1f;
+                transform.Translate(movement * movementSpeed * Time.deltaTime * Vector2.right);
 
+                if (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary)
+                {
+                    isMovingLeft = !isMovingLeft;
+                    ChangeDirection();
+                }
+            }
         }
 
 
@@ -102,25 +105,41 @@ public class SpaceshipBossController : Boss
         //        missileTimer = 0f;
         //    }
         //}
-        //// Obs³uga poruszania siê bossa w lewo i prawo
-        //else
-        //{
-        //    float movement = isMovingLeft ? -1f : 1f;
-        //    transform.Translate(Vector2.right * movement * movementSpeed * Time.deltaTime);
-
-        //    if (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary)
-        //    {
-        //        isMovingLeft = !isMovingLeft;
-        //        ChangeDirection();
-        //    }
-        //}
     }
 
+    //kolizja gracza z polem do zrzutu bomby
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && canDropBomb)
+        {
+            DropBomb();
+        }
+    }
+
+    //metoda obs³uguj¹ca zrzut bomby przez statek kosmiczny
     private void DropBomb()
     {
-        Instantiate(bombPrefab, bombSpawnPoint.position, Quaternion.identity);
-        Debug.Log("Spuszczam bombê");
+        GameObject bomb = Instantiate(bombPrefab, bombSpawnPoint);
+        bomb.transform.SetParent(null); // Ustawienie rodzica na null, aby bomby by³y niezale¿ne
+        canDropBomb = false; // Ustawienie flagi na false, aby zablokowaæ kolejne zrzuty
+
+        Invoke("ResetBombCooldown", 3f); // Zresetowanie czsu zrzutu bomby po okreœlonym czasie
     }
+
+    //metoda resetuj¹ca flagê od zrzucania bomby (statek mo¿e zrzuciæ kolejn¹)
+    private void ResetBombCooldown()
+    {
+        canDropBomb = true; // Ustawienie flagi na true, aby umo¿liwiæ zrzut kolejnej bomby
+    }
+
+    //metoda zmiany kierunku ruchu statku kosmicznego
+    private void ChangeDirection()
+    {
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
+
+
+
 
     private void ShootMissile()
     {
@@ -128,50 +147,46 @@ public class SpaceshipBossController : Boss
         Debug.Log("Strza³");
     }
 
-    private void ChangeDirection()
-    {
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isBombing = true;
-        }
-        else if (collision.gameObject.CompareTag("Terrain"))
-        {
-            isShooting = true;
-            StartCoroutine(ShootSeries());
-        }
-    }
-    private IEnumerator ShootSeries()
-    {
-        // Zni¿anie siê do wysokoœci terraina
-        while (transform.position.y > terrain.transform.position.y)
-        {
-            transform.Translate(Vector2.down * movementSpeed * Time.deltaTime);
-            yield return null;
-        }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        isBombing = true;
+    //    }
+    //    else if (collision.gameObject.CompareTag("Terrain"))
+    //    {
+    //        isShooting = true;
+    //        StartCoroutine(ShootSeries());
+    //    }
+    //}
+    //private IEnumerator ShootSeries()
+    //{
+    //    // Zni¿anie siê do wysokoœci terraina
+    //    while (transform.position.y > terrain.transform.position.y)
+    //    {
+    //        transform.Translate(Vector2.down * movementSpeed * Time.deltaTime);
+    //        yield return null;
+    //    }
 
-        Debug.Log("Rozpoczynam seriê strza³ów");
+    //    Debug.Log("Rozpoczynam seriê strza³ów");
 
-        // Symulacja serii strza³ów
-        for (int i = 0; i < 5; i++)
-        {
-            ShootMissile();
-            yield return new WaitForSeconds(missileCooldown);
-        }
+    //    // Symulacja serii strza³ów
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        ShootMissile();
+    //        yield return new WaitForSeconds(missileCooldown);
+    //    }
 
-        Debug.Log("Koniec serii strza³ów");
+    //    Debug.Log("Koniec serii strza³ów");
 
-        // Powrót na wy¿sz¹ wysokoœæ
-        while (transform.position.y < 10f)
-        {
-            transform.Translate(Vector2.up * movementSpeed * Time.deltaTime);
-            yield return null;
-        }
+    //    // Powrót na wy¿sz¹ wysokoœæ
+    //    while (transform.position.y < 10f)
+    //    {
+    //        transform.Translate(Vector2.up * movementSpeed * Time.deltaTime);
+    //        yield return null;
+    //    }
 
-        isShooting = false;
-    }
+    //    isShooting = false;
+    //}
 }

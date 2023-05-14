@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2439725721680657917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6680781171086293448}
+  m_Layer: 0
+  m_Name: BombDrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6680781171086293448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439725721680657917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.57, y: -2.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3500367291661896991}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3501609887384743865
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +184,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3500287792062238949}
+  - {fileID: 6680781171086293448}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -409,6 +441,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9d355b0a0b69b43be435fd6dbc833d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionDamage: 10
+  cooldownTime: 1.5
+  isDead: 0
+  movementSpeed: 5
+  leftBoundary: -10
+  rightBoundary: 10
+  bombingCooldown: 5
+  missileCooldown: 1
+  missilePrefab: {fileID: 0}
+  missileSpawnPoint: {fileID: 0}
+  bombPrefab: {fileID: 1084890406425518, guid: cc37bc98d98663343a34aa2a097f4150, type: 3}
+  bombSpawnPoint: {fileID: 6680781171086293448}
+  terrain: {fileID: 0}
+  startingHeight: 20
+  startingSpeed: 10
+  health: {fileID: 0}
 --- !u!1 &3501841023517947917
 GameObject:
   m_ObjectHideFlags: 0
