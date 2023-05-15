@@ -9,7 +9,7 @@ public class IdleBehavior : StateMachineBehaviour {
     public float minTime;
     public float maxTime;
 
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         timer = Random.Range(minTime, maxTime);
 	}
 

@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FillStatusBar : MonoBehaviour
+public class BossFillStatusBar : MonoBehaviour
 {
-    public HealthStatus healthStatus;
+    public BossHealthStatus healthStatus;
 
     public Image fillImage;
 
@@ -15,11 +15,8 @@ public class FillStatusBar : MonoBehaviour
 
     private Slider slider;
 
-    private TMP_Text healthAmount;
-
     private void Awake()
     {
-        healthAmount = GameObject.Find("healthAmount").GetComponent<TMP_Text>();
         slider = GetComponent<Slider>();
     }
 
@@ -33,7 +30,7 @@ public class FillStatusBar : MonoBehaviour
 
         if (slider.value > slider.minValue && !fillImage.enabled)
             fillImage.enabled = true;
-        
+
         //obliczenie procentu wype³nienia slidera ¿ycia
         float fillValue = (float)healthStatus.health / (float)healthStatus.maxHealth;
 
@@ -45,6 +42,5 @@ public class FillStatusBar : MonoBehaviour
 
         //ustawienie wartoœci na sliderze
         slider.value = fillValue;
-        healthAmount.text = healthStatus.health.ToString();
     }
 }

@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour 
 {
-    public int collisionDamage = 10; //zmienna określająca ilość obrażeń zadawanych graczowi podczas kolizji
+    public int collisionDamage = 30; //zmienna określająca ilość obrażeń zadawanych graczowi podczas kolizji
 
     public float cooldownTime = 1.5f; // długość cooldownu przed następnym otrzymaniem obrażeń
     private float lastHitTime = -Mathf.Infinity; // czas ostatniego otrzymania obrażeń
 
-    protected HealthStatus healthStatus; // referencja do komponentu życia
+    protected BossHealthStatus healthStatus; // referencja do komponentu życia
 
     private EnemiesCounter enemiesCounter;
 
@@ -20,7 +20,7 @@ public class Boss : MonoBehaviour
 
     protected virtual void Awake()
     {
-        healthStatus = GetComponent<HealthStatus>();
+        healthStatus = GetComponent<BossHealthStatus>();
     }
 
     protected virtual void Update()

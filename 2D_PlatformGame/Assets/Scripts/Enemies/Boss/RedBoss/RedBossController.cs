@@ -20,9 +20,6 @@ public class RedBossController : Boss
 
     protected override void Update()
     {
-        //wykonanie metody Update z klasy bazowej Boss
-        base.Update();
-
         //instrukcje specyficzne dla nowej klasy dziedzicz¹cej
         if (healthStatus.health <= (float)healthStatus.maxHealth / 3)
         {
@@ -31,6 +28,9 @@ public class RedBossController : Boss
 
         if (healthStatus.health <= 0)
         {
+            anim.ResetTrigger("jump");
+            anim.ResetTrigger("idle");
+            anim.SetTrigger("idle");
             anim.SetTrigger("death");
             if(onceDeath == false)
             {
@@ -39,6 +39,11 @@ public class RedBossController : Boss
                 coinAmount.text = coins.ToString();
                 onceDeath = true;
             }
+        }
+        else
+        {
+            //wykonanie metody Update z klasy bazowej Boss
+            base.Update();
         }
     }
 }

@@ -350,10 +350,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8237531377445224552}
   - component: {fileID: 8237531377445224567}
-  - component: {fileID: 8237531377445224554}
   - component: {fileID: 6523355438536674111}
   - component: {fileID: 8237531377445224565}
   - component: {fileID: 744706611}
+  - component: {fileID: 7952753387836635228}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Boss
@@ -399,20 +399,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &8237531377445224554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8237531377445224563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf62d96d917787479019fafb9f46277, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 0
 --- !u!114 &6523355438536674111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionDamage: 10
   cooldownTime: 1.5
-  healthBar: {fileID: 0}
   isDead: 0
 --- !u!58 &8237531377445224565
 CircleCollider2D:
@@ -466,6 +451,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &7952753387836635228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8237531377445224563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704b1c72cb98fcf40a95ce2e88064d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  health: 0
 --- !u!1 &8237531377758456528
 GameObject:
   m_ObjectHideFlags: 0
