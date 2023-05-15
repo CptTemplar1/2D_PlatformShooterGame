@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class SpaceshipBossController : Boss
 {
@@ -13,21 +15,20 @@ public class SpaceshipBossController : Boss
     public GameObject bombPrefab; // prefabrykat bomby
     public Transform bombSpawnPoint; // punkt, z którego zostanie zrzucona bomba
     public GameObject terrain; // referencja do terenu
+    public LayerMask ignoreLayer; //maska zawieraj¹ca warstwê bossa, ¿eby jego raycast w niego nie trafia³
+
+    public Transform bulletFirePoint; //miejsce wystrza³u zwyk³ego pocisku
+    public GameObject bulletPrefab; //prefab zwyk³ego pocisku
 
     public float startingHeight = 20f; // docelowa wysokoœæ startowa
     public float startingSpeed = 10f; // prêdkoœæ wznoszenia siê na pocz¹tku
 
     private bool isStarting = true; // flaga okreœlaj¹ca, czy statek kosmiczny jest w fazie startowania
     private bool isMovingLeft = true; // flaga okreœlaj¹ca, czy statek porusza siê w lewo (do zmiany kierunku)
-    private bool isBombing = false; // flaga okreœlaj¹ca, czy boss aktualnie zrzuca bombê
-    private bool isShooting = false; // flaga okreœlaj¹ca, czy boss aktualnie strzela pociskami
-    private float bombingTimer = 0f; // timer odliczaj¹cy czas do kolejnego zrzutu bomby
-    private float missileTimer = 0f; // timer odliczaj¹cy czas do kolejnego strza³u pociskiem
-
-    private bool isFlyingLeftRight = false; //flaga okreœlaj¹ca czy statek jest w trakcie latania lewo/prawo
-    private bool canDropBomb = true; //flaga okreœlaj¹ca czy statek mo¿e zrzuciæ bombê
-
-
+    private bool isFlying = false; //flaga okreœlaj¹ca czy statek jest w trakcie latania lewo/prawo
+    private bool canDropBomb = false; //flaga okreœlaj¹ca czy statek mo¿e zrzuciæ bombê
+    private bool isBulletChargeActive = false; //flaga okreœlaj¹ca czy helikopter wykonuje aktualnie szar¿ê pocisków (Zni¿enie siê i du¿a salwa)
+    private bool isChangingDirection = false; //flaga okreœlaj¹ca czy statek w³aœnie nie zmieni³ kierunku lotu, dziêki niej statek nie buguje siê i nie zmienia kierunku wiele razy
 
     //Tymczasowe dodanie zdrowia graczowi
     public HealthStatus health;
@@ -40,7 +41,7 @@ public class SpaceshipBossController : Boss
         //Tymczasowe dodanie zdrowia graczowi
         health.health = 100;
 
-        //DODAJ AUTOMATYCZNE DOSTOSOWANIE WIELKOŒCI BOXCOLLIDERA2D NA PODSTAWIE ZMIENNEJ StartingHeight
+        //TODO: DODAJ AUTOMATYCZNE DOSTOSOWANIE WIELKOŒCI BOXCOLLIDERA2D NA PODSTAWIE ZMIENNEJ StartingHeight
     }
 
 
@@ -58,57 +59,79 @@ public class SpaceshipBossController : Boss
 
             if (transform.position.y >= startingHeight)
             {
+                //zakoñczenie startu i rozpoczêcie ruchu lewo/prawo
                 isStarting = false;
-                isFlyingLeftRight = true;
+                isFlying = true;
+                canDropBomb = true;
+
+                //uruchomienie atakowania gracza po wystartowaniu
+                StartCoroutine(ShootBulletCoroutine());
+                StartCoroutine(ShootMissileCoroutine());
+                StartCoroutine(PerformBulletChargeCoroutine());
             }
         }
         //obs³uga zachowania po wystartowaniu
         else 
         {
             //obs³uga latania w lewo/prawo
-            if (isFlyingLeftRight)
+            if (isFlying)
             {
-                //poruszanie siê statku w lewo i prawo wed³ug wyznaczonych granic
+                // poruszanie siê statku w lewo i prawo wed³ug wyznaczonych granic
                 float movement = isMovingLeft ? -1f : 1f;
                 transform.Translate(movement * movementSpeed * Time.deltaTime * Vector2.right);
 
-                if (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary)
+                if (!isChangingDirection && (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary))
                 {
-                    isMovingLeft = !isMovingLeft;
-                    ChangeDirection();
+                    // Sprawdzanie, czy statek nie jest ju¿ w trakcie zmiany kierunku
+                    isChangingDirection = true;
+
+                    // Odwracanie kierunku tylko wtedy, gdy statek nie jest ju¿ w granicy
+                    if ((transform.position.x <= leftBoundary && isMovingLeft) || (transform.position.x >= rightBoundary && !isMovingLeft))
+                    {
+                        isMovingLeft = !isMovingLeft;
+                        ChangeDirection();
+                    }
+                }
+                else if (isChangingDirection && transform.position.x > leftBoundary && transform.position.x < rightBoundary)
+                {
+                    // Resetowanie zmiennej isChangingDirection, gdy statek opuœci granicê
+                    isChangingDirection = false;
+                }
+            }
+            //obs³uga szar¿y pocisków
+            else if (isBulletChargeActive)
+            {
+                //pojedyncze wykonanie metody odwrócenia statku, przez co nie zmienia ju¿ kierunku po pierwszym zwrocie
+                if (!isChangingDirection)
+                {
+                    ChangeDirectrionToPlayer();
+                }
+                //rzucamy RayCasta pionowo w dó³, ¿eby znaleŸæ miejsce do l¹dowania
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~ignoreLayer);
+                if (hit.collider != null)
+                {
+                    float terrainHeight = hit.point.y;
+                    float targetHeight = terrainHeight + 3f; // podnosimy lekko docelow¹ wysokoœæ, bo transform statku jest na jego œrodku, przez co statek wpad³by w pod³ogê
+                    float currentHeight = transform.position.y;
+
+                    // Zmniejszaj wysokoœæ statku, jeœli jest wy¿ej ni¿ docelowa wysokoœæ
+                    if (currentHeight > targetHeight)
+                    {
+                        float newY = Mathf.MoveTowards(currentHeight, targetHeight, startingSpeed * Time.deltaTime);
+                        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+                    }
+                    //jeœli statek jest ju¿ nad ziemi¹
+                    else
+                    {
+                        Invoke("PerformBulletCharge", 2f); //wystrzelenie serii pocisków po 2 sekundach od wyl¹dowania
+                    }
                 }
             }
         }
-
-
-
-        //// Obs³uga zrzutu bomby
-        //if (isBombing)
-        //{
-        //    bombingTimer += Time.deltaTime;
-
-        //    if (bombingTimer >= bombingCooldown)
-        //    {
-        //        DropBomb();
-        //        bombingTimer = 0f;
-        //        isBombing = false;
-        //    }
-        //}
-        //// Obs³uga strza³u pociskami
-        //else if (isShooting)
-        //{
-        //    missileTimer += Time.deltaTime;
-
-        //    if (missileTimer >= missileCooldown)
-        //    {
-        //        ShootMissile();
-        //        missileTimer = 0f;
-        //    }
-        //}
     }
 
     //kolizja gracza z polem do zrzutu bomby
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player") && canDropBomb)
         {
@@ -138,55 +161,66 @@ public class SpaceshipBossController : Boss
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
-
-
-
-    private void ShootMissile()
+    //metoda zmiany kierunku ruchu statku kosmicznego w taki sposób, aby by³ skierowany frontem do gracza
+    private void ChangeDirectrionToPlayer()
     {
-        Instantiate(missilePrefab, missileSpawnPoint.position, Quaternion.identity);
-        Debug.Log("Strza³");
+        // Odwrócenie w przypadku, gdy gracz znajduje siê po lewej stronie statku
+        if (player.position.x < transform.position.x && !isMovingLeft)
+        {
+            ChangeDirection();
+            isMovingLeft = true;
+            isChangingDirection = true;
+        }
+        // Odwrócenie w przypadku, gdy gracz znajduje siê po prawej stronie statku
+        else if (player.position.x > transform.position.x && isMovingLeft)
+        {
+            ChangeDirection();
+            isMovingLeft = false;
+            isChangingDirection = true;
+        }
+    }
+
+    //metoda obs³ugi wystrza³u szar¿y pocisków po zni¿eniu siê statku kosmicznego
+    private void PerformBulletCharge()
+    {
+        for(int i = 0; i<10; i++)
+        {
+            Debug.Log("STRZA£ Z SZAR¯Y POCISKÓW");
+        }
+        isStarting = true; //po zakoñczeniu ataku wracamy do punktu wyjœcia, czyli do startowania (bo statek jest znowu na ziemi)
+        isChangingDirection = false; 
     }
 
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        isBombing = true;
-    //    }
-    //    else if (collision.gameObject.CompareTag("Terrain"))
-    //    {
-    //        isShooting = true;
-    //        StartCoroutine(ShootSeries());
-    //    }
-    //}
-    //private IEnumerator ShootSeries()
-    //{
-    //    // Zni¿anie siê do wysokoœci terraina
-    //    while (transform.position.y > terrain.transform.position.y)
-    //    {
-    //        transform.Translate(Vector2.down * movementSpeed * Time.deltaTime);
-    //        yield return null;
-    //    }
+    //strzelanie do gracza zwyk³ym pociskiem co 2 sekundy
+    private IEnumerator ShootBulletCoroutine()
+    {
+        while (true)
+        {
+            //Debug.Log("Strzelam pociskiem");
+            Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
+            yield return new WaitForSeconds(2f);
+        }
+    }
 
-    //    Debug.Log("Rozpoczynam seriê strza³ów");
+    //strzelanie do gracza rakiet¹ co 5 sekund
+    private IEnumerator ShootMissileCoroutine()
+    {
+        while (true)
+        {
+            Debug.Log("Strzelam Rakiet¹");
+            yield return new WaitForSeconds(5f);
+        }
+    }
 
-    //    // Symulacja serii strza³ów
-    //    for (int i = 0; i < 5; i++)
-    //    {
-    //        ShootMissile();
-    //        yield return new WaitForSeconds(missileCooldown);
-    //    }
-
-    //    Debug.Log("Koniec serii strza³ów");
-
-    //    // Powrót na wy¿sz¹ wysokoœæ
-    //    while (transform.position.y < 10f)
-    //    {
-    //        transform.Translate(Vector2.up * movementSpeed * Time.deltaTime);
-    //        yield return null;
-    //    }
-
-    //    isShooting = false;
-    //}
+    //specjalny atak zni¿ania siê helikoptera do poziomu ziemi i strzelania w niego seri¹ pocisków
+    //raz na 15 sekund
+    private IEnumerator PerformBulletChargeCoroutine()
+    {
+        yield return new WaitForSeconds(15f);
+        isFlying = false;
+        canDropBomb = false;
+        isBulletChargeActive = true;
+        StopAllCoroutines();
+    }
 }

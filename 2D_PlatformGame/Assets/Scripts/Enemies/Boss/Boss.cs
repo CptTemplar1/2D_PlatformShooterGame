@@ -13,11 +13,14 @@ public class Boss : MonoBehaviour
 
     protected HealthStatus healthStatus; // referencja do komponentu życia
 
+    protected Transform player; //obiekt gracza do obliczania odległości od gracza
+
     [HideInInspector]
     public bool isDead;
 
     protected virtual void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform; // znalezienie gracza przez tag
         healthStatus = GetComponent<HealthStatus>();
     }
 

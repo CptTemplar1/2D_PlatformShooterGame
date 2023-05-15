@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6680781171086293448}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BombDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3499879375376517425}
   - component: {fileID: 3634260290312757639}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsMediumTurretSideViewLeft (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3500287792062238949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,9 +164,10 @@ GameObject:
   - component: {fileID: 3479514818972681991}
   - component: {fileID: 3158590122132467002}
   - component: {fileID: 2080628556119849794}
-  m_Layer: 0
+  - component: {fileID: 1300542969}
+  m_Layer: 7
   m_Name: Boss3
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,13 +179,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3501707075336405043}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3500287792062238949}
   - {fileID: 6680781171086293448}
+  - {fileID: 4995566890589652732}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -441,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9d355b0a0b69b43be435fd6dbc833d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionDamage: 10
+  collisionDamage: 0
   cooldownTime: 1.5
   isDead: 0
   movementSpeed: 5
@@ -454,9 +456,40 @@ MonoBehaviour:
   bombPrefab: {fileID: 1084890406425518, guid: cc37bc98d98663343a34aa2a097f4150, type: 3}
   bombSpawnPoint: {fileID: 6680781171086293448}
   terrain: {fileID: 0}
-  startingHeight: 20
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  bulletFirePoint: {fileID: 4995566890589652732}
+  bulletPrefab: {fileID: 939813775615585362, guid: 4fcabc27b6d13344880a000f2da2af2e, type: 3}
+  startingHeight: 10
   startingSpeed: 10
   health: {fileID: 0}
+--- !u!61 &1300542969
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501707075336405043}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04851532, y: -10.673519}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15.3, y: 4.13}
+    newSize: {x: 15.3, y: 4.13}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 15.20297, y: 21.20763}
+  m_EdgeRadius: 0
 --- !u!1 &3501841023517947917
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3500148346662439251}
   - component: {fileID: 3634081883400573109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsSmallTurretSideViewLeft (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3498201832821037093}
   - component: {fileID: 3634193032895856897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsMediumTurretBarrelSideViewLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3498595512556226925}
   - component: {fileID: 3633816205734355839}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsMediumTurretBarrelSideViewLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3500422667871906435}
   - component: {fileID: 3632169292148478263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsMediumTurretSideViewLeft (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3500095858571455617}
   - component: {fileID: 3633765846206543251}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsMediumTurretBarrelSideViewLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,7 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3498400902249721199}
   - component: {fileID: 3633595439431597635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsMediumTurretSideViewLeft (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,6 +997,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3503354480360318641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4995566890589652732}
+  m_Layer: 7
+  m_Name: bulletFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4995566890589652732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503354480360318641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.52, y: -2.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3500367291661896991}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3503772213037396649
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +1038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3500383447239695319}
   - component: {fileID: 3633895114383077211}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2DShipsSmallTurretBarrelSideViewLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
