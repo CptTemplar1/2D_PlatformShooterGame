@@ -16,6 +16,11 @@ public static class StaticCoins
         coins = amount;
     }
 
+    static public void addBossCoins(int amount)
+    {
+        coins += amount;
+    }
+
     static public int get()
     {
         return coins;
@@ -24,5 +29,10 @@ public static class StaticCoins
     static public void minus(int amount)
     {
         coins -= amount;
+    }
+
+    static public void poka()
+    {
+        Debug.Log(coins);
     }
 }
