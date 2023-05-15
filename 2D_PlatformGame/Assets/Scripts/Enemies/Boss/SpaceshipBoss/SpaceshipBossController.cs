@@ -28,7 +28,9 @@ public class SpaceshipBossController : Boss
     private bool isFlying = false; //flaga okreœlaj¹ca czy statek jest w trakcie latania lewo/prawo
     private bool canDropBomb = false; //flaga okreœlaj¹ca czy statek mo¿e zrzuciæ bombê
     private bool isBulletChargeActive = false; //flaga okreœlaj¹ca czy helikopter wykonuje aktualnie szar¿ê pocisków (Zni¿enie siê i du¿a salwa)
+    private bool hasPerformedBulletCharge = false; // Flaga informuj¹ca, czy metoda obs³ugi szar¿y pocisków zosta³a ju¿ wywo³ana (zapobiega wielokrotnemu wywo³aniu)
     private bool isChangingDirection = false; //flaga okreœlaj¹ca czy statek w³aœnie nie zmieni³ kierunku lotu, dziêki niej statek nie buguje siê i nie zmienia kierunku wiele razy
+
 
     //Tymczasowe dodanie zdrowia graczowi
     public HealthStatus health;
@@ -123,7 +125,11 @@ public class SpaceshipBossController : Boss
                     //jeœli statek jest ju¿ nad ziemi¹
                     else
                     {
-                        Invoke("PerformBulletCharge", 2f); //wystrzelenie serii pocisków po 2 sekundach od wyl¹dowania
+                        if (!hasPerformedBulletCharge)
+                        {
+                            hasPerformedBulletCharge = true;
+                            Invoke("PerformBulletCharge", 2f); // Wywo³anie metody po 2 sekundach od wyl¹dowania
+                        }
                     }
                 }
             }
@@ -187,8 +193,14 @@ public class SpaceshipBossController : Boss
         {
             Debug.Log("STRZA£ Z SZAR¯Y POCISKÓW");
         }
+        Invoke("RestartBehaviour", 2f);
+    }
+
+    //metoda restartuj¹ca flagi, aby helikopter znowu rozpcozyna³ swoje zachowanie od startowania
+    private void RestartBehaviour()
+    {
         isStarting = true; //po zakoñczeniu ataku wracamy do punktu wyjœcia, czyli do startowania (bo statek jest znowu na ziemi)
-        isChangingDirection = false; 
+        isChangingDirection = false;
     }
 
 
@@ -197,7 +209,6 @@ public class SpaceshipBossController : Boss
     {
         while (true)
         {
-            //Debug.Log("Strzelam pociskiem");
             Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
             yield return new WaitForSeconds(2f);
         }
