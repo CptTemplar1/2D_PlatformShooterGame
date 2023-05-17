@@ -201,6 +201,7 @@ public class SpaceshipBossController : Boss
     {
         isStarting = true; //po zakoñczeniu ataku wracamy do punktu wyjœcia, czyli do startowania (bo statek jest znowu na ziemi)
         isChangingDirection = false;
+        hasPerformedBulletCharge = false;
     }
 
 
