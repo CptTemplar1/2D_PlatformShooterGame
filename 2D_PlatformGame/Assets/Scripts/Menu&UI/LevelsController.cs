@@ -25,4 +25,9 @@ public class LevelsController : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+    //metoda wczytuj¹ca pi¹ty poziom
+    public void PlayNeptune5()
+    {
+        SceneManager.LoadScene(5);
+    }
 }
