@@ -30,4 +30,9 @@ public class LevelsController : MonoBehaviour
     {
         SceneManager.LoadScene(5);
     }
+    //metoda wczytujaca szosty poziom
+    public void PlayVenus6()
+    {
+        SceneManager.LoadScene(6);
+    }
 }

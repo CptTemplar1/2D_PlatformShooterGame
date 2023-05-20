@@ -31,22 +31,19 @@ public class SpaceshipBossController : Boss
     private bool hasPerformedBulletCharge = false; // Flaga informuj¹ca, czy metoda obs³ugi szar¿y pocisków zosta³a ju¿ wywo³ana (zapobiega wielokrotnemu wywo³aniu)
     private bool isChangingDirection = false; //flaga okreœlaj¹ca czy statek w³aœnie nie zmieni³ kierunku lotu, dziêki niej statek nie buguje siê i nie zmienia kierunku wiele razy
 
-
-    //Tymczasowe dodanie zdrowia graczowi
-    public HealthStatus health;
-
+    private Transform player;
 
     protected override void Awake()
     {
         base.Awake(); //wykonanie metody Awake z klasy bazowej
 
-        //Tymczasowe dodanie zdrowia graczowi
-        health.health = 100;
-
         //TODO: DODAJ AUTOMATYCZNE DOSTOSOWANIE WIELKOŒCI BOXCOLLIDERA2D NA PODSTAWIE ZMIENNEJ StartingHeight
     }
 
-
+    private void Start()
+    {
+        player = GameObject.Find("Player").GetComponent<Transform>();
+    }
 
     protected override void Update()
     {
