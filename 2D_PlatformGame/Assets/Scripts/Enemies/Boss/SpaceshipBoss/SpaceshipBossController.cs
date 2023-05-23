@@ -6,12 +6,14 @@ using static UnityEngine.UI.Image;
 public class SpaceshipBossController : Boss
 {
     public float movementSpeed = 5f; // prêdkoœæ poruszania siê bossa
-    public float leftBoundary = -10f; // lewa granica ruchu bossa
-    public float rightBoundary = 10f; // prawa granica ruchu bossa
+    public float leftBoundary = -25f; // lewa granica ruchu bossa
+    public float rightBoundary = 25f; // prawa granica ruchu bossa
     public float bombingCooldown = 5f; // czas cooldownu przed kolejnym zrzutem bomby
     public float missileCooldown = 1f; // czas cooldownu miêdzy strza³ami pocisków
+    public float bulletChargeCooldown = 15f; // czas cooldownu ataku seri¹
     public GameObject missilePrefab; // prefabrykat pocisku
     public Transform missileSpawnPoint; // punkt, z którego zostan¹ wystrzelone pociski
+    public Transform chargeAttackSpawnPoint; // punkt, z którego zostan¹ wystrzelone pociski podczas specjalnego ataku
     public GameObject bombPrefab; // prefabrykat bomby
     public Transform bombSpawnPoint; // punkt, z którego zostanie zrzucona bomba
     public GameObject terrain; // referencja do terenu
@@ -189,8 +191,19 @@ public class SpaceshipBossController : Boss
         for(int i = 0; i<10; i++)
         {
             Debug.Log("STRZA£ Z SZAR¯Y POCISKÓW");
+            StartCoroutine(ShootBulletChargeCoroutine());
         }
         Invoke("RestartBehaviour", 2f);
+    }
+
+    //strzelanie do gracza zwyk³ym pociskiem w trakcie ataku specjalnego
+    private IEnumerator ShootBulletChargeCoroutine()
+    {
+        while (true)
+        {
+            Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 
     //metoda restartuj¹ca flagi, aby helikopter znowu rozpcozyna³ swoje zachowanie od startowania
@@ -202,13 +215,13 @@ public class SpaceshipBossController : Boss
     }
 
 
-    //strzelanie do gracza zwyk³ym pociskiem co 2 sekundy
+    //strzelanie do gracza zwyk³ym pociskiem co okreœlony czas
     private IEnumerator ShootBulletCoroutine()
     {
         while (true)
         {
             Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(missileCooldown);
         }
     }
 
@@ -218,7 +231,7 @@ public class SpaceshipBossController : Boss
         while (true)
         {
             Debug.Log("Strzelam Rakiet¹");
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(bombingCooldown);
         }
     }
 
@@ -226,7 +239,7 @@ public class SpaceshipBossController : Boss
     //raz na 15 sekund
     private IEnumerator PerformBulletChargeCoroutine()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(bulletChargeCooldown);
         isFlying = false;
         canDropBomb = false;
         isBulletChargeActive = true;
