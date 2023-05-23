@@ -42,7 +42,7 @@ public class SpaceshipBossController : Boss
 
     private void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected override void Update()
