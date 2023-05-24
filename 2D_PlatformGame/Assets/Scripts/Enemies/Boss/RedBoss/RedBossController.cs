@@ -34,7 +34,8 @@ public class RedBossController : Boss
             anim.SetTrigger("death");
             if(onceDeath == false)
             {
-                int coins = StaticCoins.get() + 100;
+                StaticCoins.addBossCoins(100);
+                int coins = StaticCoins.get();
                 coinsHandler.coins = coins;
                 coinAmount.text = coins.ToString();
                 onceDeath = true;
