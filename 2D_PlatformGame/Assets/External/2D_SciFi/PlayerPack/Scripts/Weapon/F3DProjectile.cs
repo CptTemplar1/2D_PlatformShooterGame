@@ -48,7 +48,7 @@ public class F3DProjectile : F3DGenericProjectile
             _trailMaterial.SetColor("_TintColor", _trailColor);
         }
     }
-
+    
     private Color _trailColor;
 
     // Update is called once per frame

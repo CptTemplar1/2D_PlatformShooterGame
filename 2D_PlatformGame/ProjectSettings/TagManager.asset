@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - LevelManager
   - Bullet
+  - Coin
   layers:
   - Default
   - TransparentFX
