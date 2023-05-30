@@ -21,6 +21,7 @@ public class SpaceshipBossController : Boss
 
     public Transform bulletFirePoint; //miejsce wystrza³u zwyk³ego pocisku
     public GameObject bulletPrefab; //prefab zwyk³ego pocisku
+    public GameObject muzzleFlash; //obiekt zawieraj¹cy system cz¹steczek wystrza³u
 
     public float startingHeight = 20f; // docelowa wysokoœæ startowa
     public float startingSpeed = 10f; // prêdkoœæ wznoszenia siê na pocz¹tku
@@ -51,83 +52,92 @@ public class SpaceshipBossController : Boss
     {
         //Jeœli jest martwy to nic nie rób
         if (isDead)
+        {
+            //TODO: dodaj ifa ze sprwdzeniem czy ju¿ spad³ na ziemiê i jeœli tak to nic nie rób, a jeœli nie, to obs³u¿ to spadanie
+            //powinny zespawnowaæ siê ma³e wybuchy w kilku miejscach na statku oraz powinien siê on zacz¹æ paliæ
+            //dodatkowo powinien zacz¹æ spadaæ obracaj¹c siê przy tym w prawo i w lewo
+
+            StopAllCoroutines();
             return;
-
-        //obs³uga startowania
-        if (isStarting)
-        {
-            transform.Translate(startingSpeed * Time.deltaTime * Vector2.up);
-
-            if (transform.position.y >= startingHeight)
-            {
-                //zakoñczenie startu i rozpoczêcie ruchu lewo/prawo
-                isStarting = false;
-                isFlying = true;
-                canDropBomb = true;
-
-                //uruchomienie atakowania gracza po wystartowaniu
-                StartCoroutine(ShootBulletCoroutine());
-                StartCoroutine(ShootMissileCoroutine());
-                StartCoroutine(PerformBulletChargeCoroutine());
-            }
         }
-        //obs³uga zachowania po wystartowaniu
-        else 
+        else
         {
-            //obs³uga latania w lewo/prawo
-            if (isFlying)
+            //obs³uga startowania
+            if (isStarting)
             {
-                // poruszanie siê statku w lewo i prawo wed³ug wyznaczonych granic
-                float movement = isMovingLeft ? -1f : 1f;
-                transform.Translate(movement * movementSpeed * Time.deltaTime * Vector2.right);
+                transform.Translate(startingSpeed * Time.deltaTime * Vector2.up);
 
-                if (!isChangingDirection && (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary))
+                if (transform.position.y >= startingHeight)
                 {
-                    // Sprawdzanie, czy statek nie jest ju¿ w trakcie zmiany kierunku
-                    isChangingDirection = true;
+                    //zakoñczenie startu i rozpoczêcie ruchu lewo/prawo
+                    isStarting = false;
+                    isFlying = true;
+                    canDropBomb = true;
 
-                    // Odwracanie kierunku tylko wtedy, gdy statek nie jest ju¿ w granicy
-                    if ((transform.position.x <= leftBoundary && isMovingLeft) || (transform.position.x >= rightBoundary && !isMovingLeft))
-                    {
-                        isMovingLeft = !isMovingLeft;
-                        ChangeDirection();
-                    }
-                }
-                else if (isChangingDirection && transform.position.x > leftBoundary && transform.position.x < rightBoundary)
-                {
-                    // Resetowanie zmiennej isChangingDirection, gdy statek opuœci granicê
-                    isChangingDirection = false;
+                    //uruchomienie atakowania gracza po wystartowaniu
+                    StartCoroutine(ShootBulletCoroutine());
+                    StartCoroutine(ShootMissileCoroutine());
+                    StartCoroutine(PerformBulletChargeCoroutine());
                 }
             }
-            //obs³uga szar¿y pocisków
-            else if (isBulletChargeActive)
+            //obs³uga zachowania po wystartowaniu
+            else
             {
-                //pojedyncze wykonanie metody odwrócenia statku, przez co nie zmienia ju¿ kierunku po pierwszym zwrocie
-                if (!isChangingDirection)
+                //obs³uga latania w lewo/prawo
+                if (isFlying)
                 {
-                    ChangeDirectrionToPlayer();
-                }
-                //rzucamy RayCasta pionowo w dó³, ¿eby znaleŸæ miejsce do l¹dowania
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~ignoreLayer);
-                if (hit.collider != null)
-                {
-                    float terrainHeight = hit.point.y;
-                    float targetHeight = terrainHeight + 3f; // podnosimy lekko docelow¹ wysokoœæ, bo transform statku jest na jego œrodku, przez co statek wpad³by w pod³ogê
-                    float currentHeight = transform.position.y;
+                    // poruszanie siê statku w lewo i prawo wed³ug wyznaczonych granic
+                    float movement = isMovingLeft ? -1f : 1f;
+                    transform.Translate(movement * movementSpeed * Time.deltaTime * Vector2.right);
 
-                    // Zmniejszaj wysokoœæ statku, jeœli jest wy¿ej ni¿ docelowa wysokoœæ
-                    if (currentHeight > targetHeight)
+                    if (!isChangingDirection && (transform.position.x <= leftBoundary || transform.position.x >= rightBoundary))
                     {
-                        float newY = Mathf.MoveTowards(currentHeight, targetHeight, startingSpeed * Time.deltaTime);
-                        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-                    }
-                    //jeœli statek jest ju¿ nad ziemi¹
-                    else
-                    {
-                        if (!hasPerformedBulletCharge)
+                        // Sprawdzanie, czy statek nie jest ju¿ w trakcie zmiany kierunku
+                        isChangingDirection = true;
+
+                        // Odwracanie kierunku tylko wtedy, gdy statek nie jest ju¿ w granicy
+                        if ((transform.position.x <= leftBoundary && isMovingLeft) || (transform.position.x >= rightBoundary && !isMovingLeft))
                         {
-                            hasPerformedBulletCharge = true;
-                            Invoke("PerformBulletCharge", 2f); // Wywo³anie metody po 2 sekundach od wyl¹dowania
+                            isMovingLeft = !isMovingLeft;
+                            ChangeDirection();
+                        }
+                    }
+                    else if (isChangingDirection && transform.position.x > leftBoundary && transform.position.x < rightBoundary)
+                    {
+                        // Resetowanie zmiennej isChangingDirection, gdy statek opuœci granicê
+                        isChangingDirection = false;
+                    }
+                }
+                //obs³uga szar¿y pocisków
+                else if (isBulletChargeActive)
+                {
+                    //pojedyncze wykonanie metody odwrócenia statku, przez co nie zmienia ju¿ kierunku po pierwszym zwrocie
+                    if (!isChangingDirection)
+                    {
+                        ChangeDirectrionToPlayer();
+                    }
+                    //rzucamy RayCasta pionowo w dó³, ¿eby znaleŸæ miejsce do l¹dowania
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~ignoreLayer);
+                    if (hit.collider != null)
+                    {
+                        float terrainHeight = hit.point.y;
+                        float targetHeight = terrainHeight + 3f; // podnosimy lekko docelow¹ wysokoœæ, bo transform statku jest na jego œrodku, przez co statek wpad³by w pod³ogê
+                        float currentHeight = transform.position.y;
+
+                        // Zmniejszaj wysokoœæ statku, jeœli jest wy¿ej ni¿ docelowa wysokoœæ
+                        if (currentHeight > targetHeight)
+                        {
+                            float newY = Mathf.MoveTowards(currentHeight, targetHeight, startingSpeed * Time.deltaTime);
+                            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+                        }
+                        //jeœli statek jest ju¿ nad ziemi¹
+                        else
+                        {
+                            if (!hasPerformedBulletCharge)
+                            {
+                                hasPerformedBulletCharge = true;
+                                Invoke("PerformBulletCharge", 2f); // Wywo³anie metody po 2 sekundach od wyl¹dowania
+                            }
                         }
                     }
                 }
@@ -201,7 +211,7 @@ public class SpaceshipBossController : Boss
         }
     }
 
-    //metoda restartuj¹ca flagi, aby helikopter znowu rozpcozyna³ swoje zachowanie od startowania
+    //metoda restartuj¹ca flagi, aby helikopter znowu rozpoczyna³ swoje zachowanie od startowania
     private void RestartBehaviour()
     {
         isStarting = true; //po zakoñczeniu ataku wracamy do punktu wyjœcia, czyli do startowania (bo statek jest znowu na ziemi)
@@ -215,10 +225,14 @@ public class SpaceshipBossController : Boss
     {
         while (true)
         {
-            Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
+            //TODO: Poprawiæ spawnowanie siê rozb³ysku, ¿eby by³ skierowany w stronê gracza
+            GameObject flash = Instantiate(muzzleFlash, bulletFirePoint.position, Quaternion.Euler(0, 0, -90)); //zespawnowanie rozb³ysku wystrza³u skierowanego wstêpnie w dó³
+            Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation); //zespawnowanie pocisku lec¹cego w stronê gracza
+            Destroy(flash, 5f); //usuwanie obiektu rozb³ysku po strzale po up³ywie 5 sekund
             yield return new WaitForSeconds(missileCooldown);
         }
     }
+
 
     //strzelanie do gracza rakiet¹ co 5 sekund
     private IEnumerator ShootMissileCoroutine()
