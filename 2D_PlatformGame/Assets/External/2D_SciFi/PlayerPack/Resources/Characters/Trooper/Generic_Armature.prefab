@@ -84,7 +84,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -512268567
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 446d3edd09ab9694e9d671c628406e0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -21592,7 +21592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e24af3eafc9f4391eb3240a7e5abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RandomizeAtStart: 0
   CharacterId: 0
   Head: {fileID: 212000010261083858}
   Body: {fileID: 212000012665819168}
@@ -21658,6 +21657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  activeArmor: 0
   health: 0
 --- !u!114 &114000012022282460
 MonoBehaviour:
@@ -21711,7 +21711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0513e5368f000e94a8fd103f02135aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RandomWeaponAtStart: 0
   EquippedSlot: 0
   EquippedWeapon: 0
   Slots:
@@ -21786,19 +21785,9 @@ MonoBehaviour:
   FootstepsJump: {fileID: 82000013921491618}
   FootstepsLand: {fileID: 82000010163478882}
   FootstepsSandClips:
-  - {fileID: 8300000, guid: 9c2de882d5d20d94ea2d766cb339c21a, type: 3}
-  - {fileID: 8300000, guid: f118b1b2fa3416842b77b78b68ffef69, type: 3}
-  - {fileID: 8300000, guid: cc93f8b45ceaf524cbef3acc52963ad8, type: 3}
-  - {fileID: 8300000, guid: 48997f650b281074c80d1cff18f219b6, type: 3}
-  - {fileID: 8300000, guid: 39c002b8117c3944b84d9b02f3ebedb9, type: 3}
-  - {fileID: 8300000, guid: 8d36cc7ae5afdf34082ebfa378e37d55, type: 3}
-  - {fileID: 8300000, guid: 09762700a429de548aa10ad3caae79b0, type: 3}
-  - {fileID: 8300000, guid: 57a76ca2b22da8e438e83327524885b2, type: 3}
+  - {fileID: 8300000, guid: 07ae1bf778081944495f612e12dad20d, type: 3}
   FootstepsSandLandClips:
-  - {fileID: 8300000, guid: 5496fe80dab42ee4f821ec5dd7ba07f5, type: 3}
-  - {fileID: 8300000, guid: 528c93e42492d19418ce93cece0ed1d9, type: 3}
-  - {fileID: 8300000, guid: c0a619ea4128d144fb6988456936ac2b, type: 3}
-  - {fileID: 8300000, guid: 8b25e8b461cc9794ebaf75cbf3ea6d32, type: 3}
+  - {fileID: 8300000, guid: 9024bddc7c225214fa8afada7e9a3074, type: 3}
   FootstepsSandCrouchClips:
   - {fileID: 8300000, guid: 488ed13d48233ab448df5363d9e45366, type: 3}
   - {fileID: 8300000, guid: cac6e13debedb24458873c4d29fb2f68, type: 3}
@@ -21838,16 +21827,9 @@ MonoBehaviour:
   FootstepsMetalCrouchPitchRandom: {x: 0.8, y: 1}
   FootstepsMetalCrouchVolumeRandom: {x: 0.5, y: 0.8}
   FootstepsJumpClips:
-  - {fileID: 8300000, guid: 483e92e674548944f8d4e770a85812e1, type: 3}
-  - {fileID: 8300000, guid: c62c8bcc9b0a8a74c9b75d07d8cc3dff, type: 3}
-  - {fileID: 8300000, guid: 5c9f8d65db4022a41ad0291f05f54352, type: 3}
-  - {fileID: 8300000, guid: d2642d380cc13f0418a37b1747bcf32c, type: 3}
-  - {fileID: 8300000, guid: 9f8b98f18d24ab24280c2f7647389c21, type: 3}
+  - {fileID: 8300000, guid: 3645873aae321244f9e7213c8beaab7f, type: 3}
   FootstepsDoubleJumpClips:
-  - {fileID: 8300000, guid: befaa8a3589e91c47ac0a82488f591bd, type: 3}
-  - {fileID: 8300000, guid: 15906314827793a46842ffb64644541e, type: 3}
-  - {fileID: 8300000, guid: b2128d5ef6ba9d84d860c1b269a827ff, type: 3}
-  - {fileID: 8300000, guid: 205a1c8fab155a444a9c87e04daa0f82, type: 3}
+  - {fileID: 8300000, guid: 3645873aae321244f9e7213c8beaab7f, type: 3}
   FootstepsJumpPitchRandom: {x: 0.8, y: 1.1}
   FootstepsJumpVolumeRandom: {x: 0.3, y: 0.4}
   FootstepsDoubleJumpPitchRandom: {x: 0.8, y: 1}
