@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - LevelManager
   - Bullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -18,13 +19,13 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Coin
   - Enemy
   - Player
   - Obstacle
-  - 
-  - 
-  - 
+  - Projectile
+  - Bomb
+  - BombingDetection
   - 
   - 
   - 

@@ -135,23 +135,18 @@ public class SpaceshipBossController : Boss
         }
     }
 
-    //kolizja gracza z polem do zrzutu bomby
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && canDropBomb)
-        {
-            DropBomb();
-        }
-    }
-
     //metoda obs³uguj¹ca zrzut bomby przez statek kosmiczny
-    private void DropBomb()
+    public void DropBomb()
     {
-        GameObject bomb = Instantiate(bombPrefab, bombSpawnPoint);
-        bomb.transform.SetParent(null); // Ustawienie rodzica na null, aby bomby by³y niezale¿ne
-        canDropBomb = false; // Ustawienie flagi na false, aby zablokowaæ kolejne zrzuty
+        //jeœli cooldown zrzutu bomby ju¿ up³yn¹³, to zrzuæ bombê
+        if (canDropBomb)
+        {
+            GameObject bomb = Instantiate(bombPrefab, bombSpawnPoint);
+            bomb.transform.SetParent(null); // Ustawienie rodzica na null, aby bomby by³y niezale¿ne
+            canDropBomb = false; // Ustawienie flagi na false, aby zablokowaæ kolejne zrzuty
 
-        Invoke("ResetBombCooldown", 3f); // Zresetowanie czsu zrzutu bomby po okreœlonym czasie
+            Invoke("ResetBombCooldown", 3f); // Zresetowanie czsu zrzutu bomby po okreœlonym czasie
+        }
     }
 
     //metoda resetuj¹ca flagê od zrzucania bomby (statek mo¿e zrzuciæ kolejn¹)

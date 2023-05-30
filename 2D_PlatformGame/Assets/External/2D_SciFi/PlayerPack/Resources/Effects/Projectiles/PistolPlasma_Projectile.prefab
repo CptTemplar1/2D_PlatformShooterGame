@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000012916649024}
   - component: {fileID: 198000011766472232}
   - component: {fileID: 199000012592786008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Plasma_Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4710,7 +4710,7 @@ GameObject:
   - component: {fileID: 4000011646382740}
   - component: {fileID: 198000010461324188}
   - component: {fileID: 199000013419089408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Plasma_Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9413,7 +9413,7 @@ GameObject:
   - component: {fileID: 58000010180636626}
   - component: {fileID: 114000012019213518}
   - component: {fileID: 82000012311922470}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: PistolPlasma_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14343,7 +14343,7 @@ GameObject:
   - component: {fileID: 4000010191590890}
   - component: {fileID: 198000012877120160}
   - component: {fileID: 199000011382038530}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Plasma_Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

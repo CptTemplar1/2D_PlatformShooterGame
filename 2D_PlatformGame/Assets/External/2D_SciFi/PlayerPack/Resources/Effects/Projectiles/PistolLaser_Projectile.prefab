@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 58000011886352618}
   - component: {fileID: 114000013109374052}
   - component: {fileID: 82000011561656862}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: PistolLaser_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4944,7 +4944,7 @@ GameObject:
   - component: {fileID: 4000011707093774}
   - component: {fileID: 198000012483360958}
   - component: {fileID: 199000014209088438}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Laser_Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9643,7 +9643,7 @@ GameObject:
   - component: {fileID: 4000010589360786}
   - component: {fileID: 198000010283208646}
   - component: {fileID: 199000012699855392}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Laser_Glow_Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

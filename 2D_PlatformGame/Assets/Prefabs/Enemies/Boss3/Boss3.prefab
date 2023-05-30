@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &214638392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214638393}
+  m_Layer: 7
+  m_Name: ChargeFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &214638393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214638392}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.11, y: -1.48, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3500367291661896991}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2439725721680657917
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6680781171086293448}
-  m_Layer: 7
+  - component: {fileID: 7027503845358939430}
+  - component: {fileID: 2831430029042114389}
+  m_Layer: 12
   m_Name: BombDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +64,44 @@ Transform:
   m_Father: {fileID: 3500367291661896991}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7027503845358939430
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439725721680657917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04851532, y: -9.505837}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15.3, y: 4.13}
+    newSize: {x: 15.3, y: 4.13}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 15.20297, y: 23.542994}
+  m_EdgeRadius: 0
+--- !u!114 &2831430029042114389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439725721680657917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0573b6e2484291a40bdc2319ec883d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3501609887384743865
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,9 +233,8 @@ GameObject:
   - component: {fileID: 3500367291661896991}
   - component: {fileID: 3634133243784502893}
   - component: {fileID: 3479514818972681991}
-  - component: {fileID: 3158590122132467002}
   - component: {fileID: 2080628556119849794}
-  - component: {fileID: 1300542969}
+  - component: {fileID: 2034785258}
   m_Layer: 7
   m_Name: Boss3
   m_TagString: Boss
@@ -187,6 +257,7 @@ Transform:
   - {fileID: 3500287792062238949}
   - {fileID: 6680781171086293448}
   - {fileID: 4995566890589652732}
+  - {fileID: 214638393}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -416,21 +487,6 @@ PolygonCollider2D:
       - {x: 0.06, y: -1.915}
       - {x: 0.35999998, y: -1.915}
       - {x: 0.5, y: -1.8249999}
---- !u!114 &3158590122132467002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3501707075336405043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf62d96d917787479019fafb9f46277, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  activeArmor: 0
-  health: 0
 --- !u!114 &2080628556119849794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,12 +503,14 @@ MonoBehaviour:
   cooldownTime: 1.5
   isDead: 0
   movementSpeed: 5
-  leftBoundary: -10
-  rightBoundary: 10
-  bombingCooldown: 5
-  missileCooldown: 1
+  leftBoundary: -25
+  rightBoundary: 25
+  bombingCooldown: 3
+  missileCooldown: 0.5
+  bulletChargeCooldown: 15
   missilePrefab: {fileID: 0}
-  missileSpawnPoint: {fileID: 0}
+  missileSpawnPoint: {fileID: 4995566890589652732}
+  chargeAttackSpawnPoint: {fileID: 214638393}
   bombPrefab: {fileID: 1084890406425518, guid: cc37bc98d98663343a34aa2a097f4150, type: 3}
   bombSpawnPoint: {fileID: 6680781171086293448}
   terrain: {fileID: 0}
@@ -463,33 +521,20 @@ MonoBehaviour:
   bulletPrefab: {fileID: 939813775615585362, guid: 4fcabc27b6d13344880a000f2da2af2e, type: 3}
   startingHeight: 10
   startingSpeed: 10
-  health: {fileID: 0}
---- !u!61 &1300542969
-BoxCollider2D:
+--- !u!114 &2034785258
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3501707075336405043}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.04851532, y: -10.673519}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.3, y: 4.13}
-    newSize: {x: 15.3, y: 4.13}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15.20297, y: 21.20763}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704b1c72cb98fcf40a95ce2e88064d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2000
+  health: 0
 --- !u!1 &3501841023517947917
 GameObject:
   m_ObjectHideFlags: 0
