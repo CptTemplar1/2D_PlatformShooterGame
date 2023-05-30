@@ -19,6 +19,9 @@ public class SpaceshipBossController : Boss
     public GameObject terrain; // referencja do terenu
     public LayerMask ignoreLayer; //maska zawieraj¹ca warstwê bossa, ¿eby jego raycast w niego nie trafia³
 
+    public AudioSource cannonAudioSource; //Ÿród³o dŸwiêku strzelania z g³ównego dzia³a
+    public AudioClip cannonAudioClip; //klip odtwarzany przy strzelaniu z g³ównego dzia³a
+
     public Transform bulletFirePoint; //miejsce wystrza³u zwyk³ego pocisku
     public GameObject bulletPrefab; //prefab zwyk³ego pocisku
     public GameObject muzzleFlash; //obiekt zawieraj¹cy system cz¹steczek wystrza³u
@@ -57,7 +60,7 @@ public class SpaceshipBossController : Boss
             //powinny zespawnowaæ siê ma³e wybuchy w kilku miejscach na statku oraz powinien siê on zacz¹æ paliæ
             //dodatkowo powinien zacz¹æ spadaæ obracaj¹c siê przy tym w prawo i w lewo
 
-            StopAllCoroutines();
+
             return;
         }
         else
@@ -219,7 +222,6 @@ public class SpaceshipBossController : Boss
         hasPerformedBulletCharge = false;
     }
 
-
     //strzelanie do gracza zwyk³ym pociskiem co okreœlony czas
     private IEnumerator ShootBulletCoroutine()
     {
@@ -229,6 +231,9 @@ public class SpaceshipBossController : Boss
             GameObject flash = Instantiate(muzzleFlash, bulletFirePoint.position, Quaternion.Euler(0, 0, -90)); //zespawnowanie rozb³ysku wystrza³u skierowanego wstêpnie w dó³
             Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation); //zespawnowanie pocisku lec¹cego w stronê gracza
             Destroy(flash, 5f); //usuwanie obiektu rozb³ysku po strzale po up³ywie 5 sekund
+
+            F3DAudio.PlayOneShotRandom(cannonAudioSource, cannonAudioClip, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dŸwiêku wystrza³u
+
             yield return new WaitForSeconds(missileCooldown);
         }
     }
@@ -253,5 +258,14 @@ public class SpaceshipBossController : Boss
         canDropBomb = false;
         isBulletChargeActive = true;
         StopAllCoroutines();
+    }
+
+    //nadpisanie metody bazowej Die() o dodatkowe zatrzymanie akcji bossa - ustawienie flag i zatrzymanie odliczañ
+    protected override void Die()
+    {
+        base.Die();
+        StopAllCoroutines(); //zatrzymanie wszystkich odliczañ
+        canDropBomb=false;
+        isBulletChargeActive=false;
     }
 }
