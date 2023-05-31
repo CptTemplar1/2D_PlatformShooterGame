@@ -17,6 +17,8 @@ public class ShootingEnemy : Enemy
 
     public LayerMask groundLayer;
 
+    public AudioClip shootingSound; //dŸwiêk wystrza³u przeciwnika
+
     // Start is called before the first frame update
     void Start()
     {
@@ -121,6 +123,7 @@ public class ShootingEnemy : Enemy
         yield return new WaitForSeconds(0.5f);
         // spawnujemy pocisk na scenie w miejscu przed luf¹
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        F3DAudio.PlayOneShotRandom(enemyAudio, shootingSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dŸwiêku strza³u przeciwnika
         isShooting = false;
     }
 

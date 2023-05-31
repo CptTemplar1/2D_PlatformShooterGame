@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     private EnemiesCounter enemiesCounter;
 
-    private AudioSource enemyAudio; //Ÿród³o dŸwiêków przeciwnika
+    protected AudioSource enemyAudio; //Ÿród³o dŸwiêków przeciwnika
     public AudioClip deathSound; //dŸwiêk œmierci przeciwnika
 
     //zainicjowanie aktualnego ¿ycia wartoœci¹ maksymaln¹

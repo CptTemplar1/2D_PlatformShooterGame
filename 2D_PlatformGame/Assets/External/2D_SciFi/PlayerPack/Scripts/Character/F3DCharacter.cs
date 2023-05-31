@@ -9,7 +9,8 @@ public class F3DCharacter : MonoBehaviour
     private float _hitTriggerTimer;
     private Rigidbody2D _rBody;
     private F3DWeaponController _weaponController;
-    private bool _isDead;
+    [HideInInspector]
+    public bool _isDead;
 
     public AudioSource playerAudio; //źródło dźwięków zachowania gracza (obrażenia, śmierć, itd.)
     public AudioClip onDamageSound; //dźwięk otrzymywania obrażeń

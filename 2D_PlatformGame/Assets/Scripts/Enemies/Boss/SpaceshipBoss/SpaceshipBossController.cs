@@ -55,7 +55,8 @@ public class SpaceshipBossController : Boss
     private bool isChangingDirection = false; //flaga okreœlaj¹ca czy statek w³aœnie nie zmieni³ kierunku lotu, dziêki niej statek nie buguje siê i nie zmienia kierunku wiele razy
     private bool hasFallen = false;  //flaga okreœlaj¹ca czy helikopter po œmierci spad³ ju¿ na ziemiê
 
-    private Transform player;
+    private GameObject player; //obiekt gracza
+    private F3DCharacter playerCharacter; //komponent gracza
 
     protected override void Awake()
     {
@@ -66,11 +67,21 @@ public class SpaceshipBossController : Boss
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerCharacter = player.GetComponent<F3DCharacter>();
     }
 
     protected override void Update()
     {
+        //jeœli gracz jest martwy to przestañ do niego strzelaæ
+        if (playerCharacter._isDead)
+        {
+            StopSounds();
+            canDropBomb = false;
+            isBulletChargeActive = false;
+            StopAllCoroutines();
+        }
+        
         //Jeœli jest martwy to nic nie rób
         if (isDead)
         {
@@ -242,14 +253,14 @@ public class SpaceshipBossController : Boss
     private void ChangeDirectrionToPlayer()
     {
         // Odwrócenie w przypadku, gdy gracz znajduje siê po lewej stronie statku
-        if (player.position.x < transform.position.x && !isMovingLeft)
+        if (player.transform.position.x < transform.position.x && !isMovingLeft)
         {
             ChangeDirection();
             isMovingLeft = true;
             isChangingDirection = true;
         }
         // Odwrócenie w przypadku, gdy gracz znajduje siê po prawej stronie statku
-        else if (player.position.x > transform.position.x && isMovingLeft)
+        else if (player.transform.position.x > transform.position.x && isMovingLeft)
         {
             ChangeDirection();
             isMovingLeft = false;
