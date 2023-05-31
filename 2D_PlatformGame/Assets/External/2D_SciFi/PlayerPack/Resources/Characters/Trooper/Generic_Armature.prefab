@@ -23437,6 +23437,7 @@ MonoBehaviour:
   playerAudio: {fileID: 6608246212288009601}
   onDamageSound: {fileID: 8300000, guid: e9595aa0e26a7f544bc2fb79bc6bb96b, type: 3}
   onDeathSound: {fileID: 8300000, guid: c52ddde4d4954cd47aec9307112c0987, type: 3}
+  metalGearSolidDeathSound: {fileID: 8300000, guid: 90ae83c897b65e9478b522be3b12c508, type: 3}
 --- !u!114 &435701264951730253
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class F3DCharacter : MonoBehaviour
     public AudioSource playerAudio; //źródło dźwięków zachowania gracza (obrażenia, śmierć, itd.)
     public AudioClip onDamageSound; //dźwięk otrzymywania obrażeń
     public AudioClip onDeathSound; //dźwięk podczas śmierci
+    public AudioClip metalGearSolidDeathSound; //dźwięk śmierci z metal gear solid
 
     private HealthStatus healthStatus; // referencja do komponentu życia
     
@@ -63,6 +64,7 @@ public class F3DCharacter : MonoBehaviour
         if (healthStatus.health <= 0)
         {
             F3DAudio.PlayOneShotRandom(playerAudio, onDeathSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dźwięku śmierci
+            F3DAudio.PlayOneShotRandom(playerAudio, metalGearSolidDeathSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dźwięku śmierci z metal gear solid
 
             healthStatus.health = 0;
             _isDead = true;
