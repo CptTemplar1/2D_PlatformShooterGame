@@ -6,6 +6,10 @@ using Random = UnityEngine.Random;
 
 public class F3DWeaponController : MonoBehaviour
 {
+    public AudioSource knifeSoundSource; //źródło dźwięku ataku nożem
+    public AudioClip knifeSlashSound; //dźwięk cięcia nożem
+    public AudioClip knifeStabSound; //dźwięk dźgnięcia nożem
+    
     public int EquippedSlot;
     public int EquippedWeapon;
     public List<WeaponSlot> Slots;
@@ -62,14 +66,20 @@ public class F3DWeaponController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (EquippedSlot == 8 && EquippedWeapon == 0)
+            {
                 Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(false);
+                F3DAudio.PlayOneShotRandom(knifeSoundSource, knifeStabSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dźwięku ataku nożem
+            }
             else
                 Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
         }
         if (Input.GetMouseButtonDown(1))
         {
             if (EquippedSlot == 8 && EquippedWeapon == 0)
+            {
                 Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(true);
+                F3DAudio.PlayOneShotRandom(knifeSoundSource, knifeSlashSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dźwięku ataku nożem
+            }
         }
 
         // Stop
