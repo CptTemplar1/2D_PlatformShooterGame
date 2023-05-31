@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        //odliczanie po wygranym poziomie
         if(startPassedLevelCounter == true)
         {
             playerConfetti.SetActive(true);//w³¹czenie konfetti nad graczem po wygranej
@@ -48,10 +49,11 @@ public class LevelManager : MonoBehaviour
             if (time <= 0)
             {
                 timeCounter.SetActive(false);
-                pauseAfterLevel();
+                pauseAfterPassedLevel();
                 startPassedLevelCounter = false;
             }
         }
+        //odliczanie po przegranym poziomie
         if(startDeathCounter == true)
         {
             timeCounter.SetActive(true);
@@ -61,7 +63,7 @@ public class LevelManager : MonoBehaviour
             if (time <= 0)
             {
                 timeCounter.SetActive(false);
-                pauseMenu.PauseGame();
+                pauseAfterFailedLevel();
                 startDeathCounter = false;
             }
         }
@@ -84,12 +86,20 @@ public class LevelManager : MonoBehaviour
         }
     }
     //metoda wykonywana po zadanym czasie
-    void pauseAfterLevel()
+    //metoda w³¹czaj¹ca ekran po wygranej rundzie
+    void pauseAfterPassedLevel()
     {
         //dodaj coiny do wszystkich coinow gracza
         StaticCoins.add(coinsHandler.coins);
         PassedLevels.setPassedLevel(SceneManager.GetActiveScene().buildIndex);
-        afterMission.PauseGame();
+        afterMission.FinishLevel(true);
+    }
+
+    //metoda wykonywana po zadanym czasie
+    //metoda w³¹czaj¹ca ekran po przegranej rundzie
+    void pauseAfterFailedLevel()
+    {
+        afterMission.FinishLevel(false);
     }
 
     //metoda znajduj¹ca wszystkie obiekty "Enemy"

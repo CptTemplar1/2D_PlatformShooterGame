@@ -10,13 +10,20 @@ public class AfterMission : MonoBehaviour
 
     public static bool GameIsPaused = false; // flaga okreœlaj¹ca czy gra jest zapauzowana
 
-    public GameObject afterMissionUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po w³¹czeniu pauseMenu
+    public GameObject afterSuccessfulMissionUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po wygranym poziomie
+    public GameObject afterFailedMissionUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po wprzegranym poziomie
 
-
-    // metoda pauzuj¹ca grê
-    public void PauseGame()
+    // metoda pauzuj¹ca grê i w³¹czaj¹ca odpowiedni panel w zale¿noœci czy runda zosta³a wygrana
+    public void FinishLevel(bool success)
     {
-        afterMissionUI.SetActive(true);
+        if (success)
+        {
+            afterSuccessfulMissionUI.SetActive(true);
+        }
+        else
+        {
+            afterFailedMissionUI.SetActive(true);
+        }
 
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -35,9 +42,19 @@ public class AfterMission : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(mainMenuScene);
-            Debug.Log("Nie ma wiêcej poziomów, wyjdŸ do menu!"); // obs³uga przypadku, gdy nie ma wiêcej poziomów
+            Debug.Log("Nie ma wiêcej poziomów, wychodzê do menu!"); // obs³uga przypadku, gdy nie ma wiêcej poziomów
         }
+    }
+
+    // metoda ³aduj¹ca od nowa ten sam level
+    public void RestartLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
     // metoda wychodz¹ca z gry do Menu g³ównego
