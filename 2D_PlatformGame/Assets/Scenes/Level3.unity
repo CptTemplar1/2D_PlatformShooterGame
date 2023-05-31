@@ -310,6 +310,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &873542456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3678481584548373244, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
+  m_PrefabInstance: {fileID: 1681844979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &889038244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8352,6 +8357,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 862391727775688473, guid: e18920a398643544daf47a178ddd52ab, type: 3}
+      propertyPath: playerConfetti
+      value: 
+      objectReference: {fileID: 873542456}
     - target: {fileID: 862391727775688478, guid: e18920a398643544daf47a178ddd52ab, type: 3}
       propertyPath: m_Name
       value: LevelManager

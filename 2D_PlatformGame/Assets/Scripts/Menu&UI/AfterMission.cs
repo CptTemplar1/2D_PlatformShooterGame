@@ -17,6 +17,7 @@ public class AfterMission : MonoBehaviour
     public void PauseGame()
     {
         afterMissionUI.SetActive(true);
+
         Time.timeScale = 0f;
         GameIsPaused = true;
     }

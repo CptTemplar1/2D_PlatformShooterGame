@@ -1450,6 +1450,10 @@ PrefabInstance:
       propertyPath: Slots.Array.data[8].Weapons.Array.data[0]
       value: 
       objectReference: {fileID: 416266201}
+    - target: {fileID: 4036068948808037540, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
 --- !u!114 &448822487 stripped
@@ -1463,6 +1467,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf62d96d917787479019fafb9f46277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &448822488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3678481584548373244, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
+  m_PrefabInstance: {fileID: 448822486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &498515587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23864,6 +23873,10 @@ PrefabInstance:
       propertyPath: timeCounter
       value: 
       objectReference: {fileID: 1255877114}
+    - target: {fileID: 862391727775688473, guid: e18920a398643544daf47a178ddd52ab, type: 3}
+      propertyPath: playerConfetti
+      value: 
+      objectReference: {fileID: 448822488}
     - target: {fileID: 862391727775688478, guid: e18920a398643544daf47a178ddd52ab, type: 3}
       propertyPath: m_Name
       value: LevelManager

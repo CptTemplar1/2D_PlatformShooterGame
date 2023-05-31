@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
     private GameObject timeCounter;
     private TMP_Text timeCounterText;
 
+    public GameObject playerConfetti; //obiekt przechowuj¹cy konfetti nad graczem. Konfetti uruchamiamy po wygranym levelu
+
     private void Start()
     {
         StartCoroutine(findEnemies());
@@ -37,6 +39,8 @@ public class LevelManager : MonoBehaviour
     {
         if(startPassedLevelCounter == true)
         {
+            playerConfetti.SetActive(true);//w³¹czenie konfetti nad graczem po wygranej
+
             timeCounter.SetActive(true);
             time -= Time.deltaTime;
             timeCounterText.text = Mathf.Clamp(Mathf.CeilToInt(time), 0, int.MaxValue).ToString();

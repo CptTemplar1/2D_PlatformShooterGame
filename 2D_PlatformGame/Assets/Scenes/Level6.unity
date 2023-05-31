@@ -188,6 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575a165585203ca4da0f4907d61fc18d, type: 3}
+--- !u!1 &197392515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3678481584548373244, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
+  m_PrefabInstance: {fileID: 944292093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &275040050
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3001,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 862391727775688473, guid: e18920a398643544daf47a178ddd52ab, type: 3}
+      propertyPath: playerConfetti
+      value: 
+      objectReference: {fileID: 197392515}
     - target: {fileID: 862391727775688478, guid: e18920a398643544daf47a178ddd52ab, type: 3}
       propertyPath: m_Name
       value: LevelManager

@@ -1962,6 +1962,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf62d96d917787479019fafb9f46277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &448822488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3678481584548373244, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
+  m_PrefabInstance: {fileID: 448822486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &453796655
 GameObject:
   m_ObjectHideFlags: 0
@@ -27230,6 +27235,10 @@ PrefabInstance:
       propertyPath: timeCounter
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 862391727775688473, guid: e18920a398643544daf47a178ddd52ab, type: 3}
+      propertyPath: playerConfetti
+      value: 
+      objectReference: {fileID: 448822488}
     - target: {fileID: 862391727775688478, guid: e18920a398643544daf47a178ddd52ab, type: 3}
       propertyPath: m_Name
       value: LevelManager
