@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,8 +10,9 @@ public class SpaceshipBossController : Boss
     public float leftBoundary = -25f; // lewa granica ruchu bossa
     public float rightBoundary = 25f; // prawa granica ruchu bossa
     public float bombingCooldown = 5f; // czas cooldownu przed kolejnym zrzutem bomby
-    public float missileCooldown = 1f; // czas cooldownu miêdzy strza³ami pocisków
+    public float bulletCooldown = 1f; // czas cooldownu miêdzy strza³ami pocisków
     public float bulletChargeCooldown = 15f; // czas cooldownu ataku seri¹
+    public float missileCooldown = 5f; //czas cooldownu strzelania rakiet¹ samonaprowadzan¹
     
     public GameObject missilePrefab; // prefabrykat pocisku
     public Transform missileSpawnPoint; // punkt, z którego zostan¹ wystrzelone pociski
@@ -41,6 +43,9 @@ public class SpaceshipBossController : Boss
     private bool hasPlayedStartingSound = false; //flaga okreœlaj¹ca czy czy dŸwiêk startowania zosta³ ju¿ odtworzony
     private bool hasPlayedFlyingSound = false; //flaga okreœlaj¹ca czy czy dŸwiêk latania zosta³ ju¿ odtworzony
 
+    public AudioSource deathSoundSource; //Ÿród³o dŸwiêku spadania po œmierci
+    public GameObject deathExplosions; //obiekt przechowuj¹cy eksplozje statku, które maj¹ pojawiæ siê dopiero po œmierci
+
     private bool isStarting = true; // flaga okreœlaj¹ca, czy statek kosmiczny jest w fazie startowania
     private bool isMovingLeft = true; // flaga okreœlaj¹ca, czy statek porusza siê w lewo (do zmiany kierunku)
     private bool isFlying = false; //flaga okreœlaj¹ca czy statek jest w trakcie latania lewo/prawo
@@ -48,6 +53,7 @@ public class SpaceshipBossController : Boss
     private bool isBulletChargeActive = false; //flaga okreœlaj¹ca czy helikopter wykonuje aktualnie szar¿ê pocisków (Zni¿enie siê i du¿a salwa)
     private bool hasPerformedBulletCharge = false; // Flaga informuj¹ca, czy metoda obs³ugi szar¿y pocisków zosta³a ju¿ wywo³ana (zapobiega wielokrotnemu wywo³aniu)
     private bool isChangingDirection = false; //flaga okreœlaj¹ca czy statek w³aœnie nie zmieni³ kierunku lotu, dziêki niej statek nie buguje siê i nie zmienia kierunku wiele razy
+    private bool hasFallen = false;  //flaga okreœlaj¹ca czy helikopter po œmierci spad³ ju¿ na ziemiê
 
     private Transform player;
 
@@ -68,9 +74,31 @@ public class SpaceshipBossController : Boss
         //Jeœli jest martwy to nic nie rób
         if (isDead)
         {
-            //TODO: dodaj ifa ze sprwdzeniem czy ju¿ spad³ na ziemiê i jeœli tak to nic nie rób, a jeœli nie, to obs³u¿ to spadanie
-            //powinny zespawnowaæ siê ma³e wybuchy w kilku miejscach na statku oraz powinien siê on zacz¹æ paliæ
-            //dodatkowo powinien zacz¹æ spadaæ obracaj¹c siê przy tym w prawo i w lewo
+            //obs³uga spadania statku kosmicznego na ziemiê po zestrzeleniu
+            if (!hasFallen)
+            {
+                //rzucamy RayCasta pionowo w dó³, ¿eby znaleŸæ miejsce na ziemi
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, ~ignoreLayer);
+                if (hit.collider != null)
+                {
+                    float terrainHeight = hit.point.y;
+                    float targetHeight = terrainHeight + 1f; // podnosimy lekko docelow¹ wysokoœæ, bo transform statku jest na jego œrodku, przez co statek wpad³by w pod³ogê
+                    float currentHeight = transform.position.y;
+
+                    // Zmniejszaj wysokoœæ statku, jeœli jest wy¿ej ni¿ docelowa wysokoœæ
+                    if (currentHeight > targetHeight)
+                    {
+                        float newY = Mathf.MoveTowards(currentHeight, targetHeight, startingSpeed * Time.deltaTime);
+                        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+                    }
+                    //jeœli statek jest ju¿ na ziemi
+                    else
+                    {
+                        hasFallen = true;
+                        StopCoroutine(ChangeDirectionWhileFalling()); //wy³¹czenie obracania po spadniêciu na ziemiê
+                    }
+                }
+            }
 
 
             return;
@@ -270,7 +298,7 @@ public class SpaceshipBossController : Boss
 
             F3DAudio.PlayOneShotRandom(cannonAudioSource, cannonAudioClip, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dŸwiêku wystrza³u
 
-            yield return new WaitForSeconds(missileCooldown);
+            yield return new WaitForSeconds(bulletCooldown);
         }
     }
 
@@ -281,7 +309,7 @@ public class SpaceshipBossController : Boss
         while (true)
         {
             Debug.Log("Strzelam Rakiet¹");
-            yield return new WaitForSeconds(bombingCooldown);
+            yield return new WaitForSeconds(missileCooldown);
         }
     }
 
@@ -296,6 +324,16 @@ public class SpaceshipBossController : Boss
         StopAllCoroutines();
     }
 
+    //obkrêcanie siê statku kosmicznego podczas spadania
+    private IEnumerator ChangeDirectionWhileFalling()
+    {
+        while (true)
+        {
+            ChangeDirection();
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
     //nadpisanie metody bazowej Die() o dodatkowe zatrzymanie akcji bossa - ustawienie flag i zatrzymanie odliczañ
     protected override void Die()
     {
@@ -303,7 +341,16 @@ public class SpaceshipBossController : Boss
         StopAllCoroutines(); //zatrzymanie wszystkich odliczañ
         canDropBomb=false;
         isBulletChargeActive=false;
+        StopSounds(); //zatrzymanie dŸwiêków po œmierci
 
+        deathSoundSource.Play(); //odtwarzanie dŸwiêku spadania
+        StartCoroutine(ChangeDirectionWhileFalling()); //w³¹czenie obracania siê statku podczas spadania po œmierci
+        deathExplosions.SetActive(true); //w³¹czenie wybuchów na statku po jego œmierci
+    }
+
+    //metoda stopuj¹ca dŸwiêki bossa po zabiciu gracza
+    private void StopSounds()
+    {
         //zatrzymanie dŸwiêków bossa
         flyingSoundSource.Stop();
         startingSoundSource.Stop();

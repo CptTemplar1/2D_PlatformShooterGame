@@ -14,6 +14,6 @@ public class BombController : MonoBehaviour
         Vector3 collisionPosition = collision.GetContact(0).point; // Pobranie pozycji zderzenia
         Destroy(gameObject); // Usuniêcie obiektu bomby ze sceny
         GameObject bombExplosion = Instantiate(explosion, collisionPosition, Quaternion.identity); // Spawnowanie wybuchu na pozycji zderzenia
-        Destroy(bombExplosion, 2f); //usuwanie obiektu wybuchu po up³ywie 2 sekund
+        Destroy(bombExplosion, 1.2f); //usuwanie obiektu wybuchu po up³ywie 2 sekund
     }
 }
