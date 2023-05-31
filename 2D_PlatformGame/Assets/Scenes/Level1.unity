@@ -542,6 +542,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1193667952}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 0}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -1986,6 +1987,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1306717701}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 0}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -21593,6 +21595,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 724957344}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 0}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -21974,6 +21977,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1595678081}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 0}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -22374,6 +22378,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1047152945}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 0}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -24219,6 +24224,14 @@ PrefabInstance:
     - target: {fileID: 4343668415501409656, guid: 718e047c0dcdec54ab4d769f9d6ef40c, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880404754524699075, guid: 718e047c0dcdec54ab4d769f9d6ef40c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880404754524699075, guid: 718e047c0dcdec54ab4d769f9d6ef40c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880404755338410700, guid: 718e047c0dcdec54ab4d769f9d6ef40c, type: 3}
       propertyPath: healthStatus

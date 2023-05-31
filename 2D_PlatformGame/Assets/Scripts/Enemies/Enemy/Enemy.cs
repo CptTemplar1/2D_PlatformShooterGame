@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour
     {
         if(isDead == false)
         {
+            enemyAudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>(); //przypisanie Ÿród³a dŸwiêku do gracza przy œmierci potwora, bo inaczej dŸwiêk nie zd¹¿a³ siê odtworzyæ przed œmierci¹ potwora
             F3DAudio.PlayOneShotRandom(enemyAudio, deathSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dŸwiêku œmierci potwora
 
             enemiesCounter = GameObject.Find("EnemiesCounter").GetComponent<EnemiesCounter>();

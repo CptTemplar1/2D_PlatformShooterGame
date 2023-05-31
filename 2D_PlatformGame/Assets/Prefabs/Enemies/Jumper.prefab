@@ -231,8 +231,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
-  enemyAudio: {fileID: 0}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   jumpForce: 8
   jumpCooldown: 2
