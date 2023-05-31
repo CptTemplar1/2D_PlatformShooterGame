@@ -11,6 +11,10 @@ public class F3DCharacter : MonoBehaviour
     private F3DWeaponController _weaponController;
     private bool _isDead;
 
+    public AudioSource playerAudio; //źródło dźwięków zachowania gracza (obrażenia, śmierć, itd.)
+    public AudioClip onDamageSound; //dźwięk otrzymywania obrażeń
+    public AudioClip onDeathSound; //dźwięk podczas śmierci
+
     private HealthStatus healthStatus; // referencja do komponentu życia
     
     private LevelManager levelManager;
@@ -39,10 +43,11 @@ public class F3DCharacter : MonoBehaviour
             return;
 
 
-
         //Zadaj obrażenia i odrzuć gracza do tyłu
         if (healthStatus.health > 0)
         {
+            F3DAudio.PlayOneShotRandom(playerAudio, onDamageSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dźwięku otrzymywania obrażeń
+
             Vector2 knockbackForce;
             //Odrzuć gracza do tyłu po otrzymaniu obrażeń
             if (range == false)
@@ -57,6 +62,8 @@ public class F3DCharacter : MonoBehaviour
         //obsłuż sytuację, gdy życie spadnie poniżej zera
         if (healthStatus.health <= 0)
         {
+            F3DAudio.PlayOneShotRandom(playerAudio, onDeathSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dźwięku śmierci
+
             healthStatus.health = 0;
             _isDead = true;
 

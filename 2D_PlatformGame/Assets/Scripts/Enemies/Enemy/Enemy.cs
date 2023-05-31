@@ -26,6 +26,9 @@ public class Enemy : MonoBehaviour
 
     private EnemiesCounter enemiesCounter;
 
+    public AudioSource enemyAudio; //Ÿród³o dŸwiêków przeciwnika
+    public AudioClip deathSound; //dŸwiêk œmierci przeciwnika
+
     //zainicjowanie aktualnego ¿ycia wartoœci¹ maksymaln¹
     protected virtual void Awake()
     {
@@ -67,6 +70,8 @@ public class Enemy : MonoBehaviour
     {
         if(isDead == false)
         {
+            F3DAudio.PlayOneShotRandom(enemyAudio, deathSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dŸwiêku œmierci potwora
+
             enemiesCounter = GameObject.Find("EnemiesCounter").GetComponent<EnemiesCounter>();
             enemiesCounter.decreaseEnemiesCounter();
             isDead = true;
