@@ -303,5 +303,12 @@ public class SpaceshipBossController : Boss
         StopAllCoroutines(); //zatrzymanie wszystkich odliczañ
         canDropBomb=false;
         isBulletChargeActive=false;
+
+        //zatrzymanie dŸwiêków bossa
+        flyingSoundSource.Stop();
+        startingSoundSource.Stop();
+        cannonAudioSource.Stop();
+        chargeAttackChargingSource.Stop();
+        chargeAttackCannonSource.Stop();
     }
 }
