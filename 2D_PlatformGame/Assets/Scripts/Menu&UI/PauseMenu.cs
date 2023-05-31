@@ -12,10 +12,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po w³¹czeniu pauseMenu
 
+    public GameObject afterMission; //obiekt ekranu po wygranej rundzie
+
     private void Update()
     {
         // przycisk ESC w³¹cza PauseMenu
-        if (Input.GetKeyUp(KeyCode.Escape))
+        //dodatkowo sprawdzamy czy nie jest aktywny ekran wygranej
+        if (Input.GetKeyUp(KeyCode.Escape) && !afterMission.activeSelf)
         {
             if (GameIsPaused) 
                 ResumeGame();

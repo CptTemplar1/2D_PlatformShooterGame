@@ -1560,6 +1560,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
+--- !u!1 &498515588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4382102369063505161, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
+  m_PrefabInstance: {fileID: 498515587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &513262036 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114000011605495496, guid: 16801b1d55f90e14b936c002e549ab0d, type: 3}
@@ -20060,6 +20065,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8261291935052221577, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
+      propertyPath: afterMission
+      value: 
+      objectReference: {fileID: 498515588}
     - target: {fileID: 8261291935052221578, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
