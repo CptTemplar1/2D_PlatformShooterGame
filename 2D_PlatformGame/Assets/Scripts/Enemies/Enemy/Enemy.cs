@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     private EnemiesCounter enemiesCounter;
 
-    public AudioSource enemyAudio; //Ÿród³o dŸwiêków przeciwnika
+    private AudioSource enemyAudio; //Ÿród³o dŸwiêków przeciwnika
     public AudioClip deathSound; //dŸwiêk œmierci przeciwnika
 
     //zainicjowanie aktualnego ¿ycia wartoœci¹ maksymaln¹
@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     {
         health = healthMax;
         isDead = false;
+
+        enemyAudio = gameObject.GetComponent<AudioSource>(); //pobranie komponentu Ÿród³a dŸwiêku
     }
 
     //zwraca wartoœæ aktualnego zdrowia w skali od 0 do 1
