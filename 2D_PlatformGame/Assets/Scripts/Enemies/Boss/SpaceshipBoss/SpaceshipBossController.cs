@@ -11,9 +11,16 @@ public class SpaceshipBossController : Boss
     public float bombingCooldown = 5f; // czas cooldownu przed kolejnym zrzutem bomby
     public float missileCooldown = 1f; // czas cooldownu miêdzy strza³ami pocisków
     public float bulletChargeCooldown = 15f; // czas cooldownu ataku seri¹
+    
     public GameObject missilePrefab; // prefabrykat pocisku
     public Transform missileSpawnPoint; // punkt, z którego zostan¹ wystrzelone pociski
+    
     public Transform chargeAttackSpawnPoint; // punkt, z którego zostan¹ wystrzelone pociski podczas specjalnego ataku
+    public GameObject chargeAttackBullet; //obiekt pocisku lec¹cego prosto
+    public AudioSource chargeAttackChargingSource; //Ÿród³o dŸwiêku ³adowania szar¿y pocisków
+    public AudioSource chargeAttackCannonSource; //Ÿród³o dŸwiêku wystrza³u podczas szar¿y pocisków
+    public AudioClip chargeAttackBulletClip; //klip podczas wystrza³u z dzia³a podczas szar¿y pocisków
+
     public GameObject bombPrefab; // prefabrykat bomby
     public Transform bombSpawnPoint; // punkt, z którego zostanie zrzucona bomba
     public GameObject terrain; // referencja do terenu
@@ -28,6 +35,11 @@ public class SpaceshipBossController : Boss
 
     public float startingHeight = 20f; // docelowa wysokoœæ startowa
     public float startingSpeed = 10f; // prêdkoœæ wznoszenia siê na pocz¹tku
+
+    public AudioSource startingSoundSource; //Ÿród³o dŸwiêków startowania bossa
+    public AudioSource flyingSoundSource; //Ÿród³o dŸwiêków latania bossa
+    private bool hasPlayedStartingSound = false; //flaga okreœlaj¹ca czy czy dŸwiêk startowania zosta³ ju¿ odtworzony
+    private bool hasPlayedFlyingSound = false; //flaga okreœlaj¹ca czy czy dŸwiêk latania zosta³ ju¿ odtworzony
 
     private bool isStarting = true; // flaga okreœlaj¹ca, czy statek kosmiczny jest w fazie startowania
     private bool isMovingLeft = true; // flaga okreœlaj¹ca, czy statek porusza siê w lewo (do zmiany kierunku)
@@ -68,6 +80,13 @@ public class SpaceshipBossController : Boss
             //obs³uga startowania
             if (isStarting)
             {
+                //odtworzenie dŸwiêku startu tylko raz
+                if (!hasPlayedStartingSound)
+                {
+                    startingSoundSource.Play(); // odtworzenie dŸwiêku startu statku
+                    hasPlayedStartingSound = true; // ustawienie flagi na true po odtworzeniu dŸwiêku
+                }
+
                 transform.Translate(startingSpeed * Time.deltaTime * Vector2.up);
 
                 if (transform.position.y >= startingHeight)
@@ -76,6 +95,8 @@ public class SpaceshipBossController : Boss
                     isStarting = false;
                     isFlying = true;
                     canDropBomb = true;
+
+                    hasPlayedStartingSound = false;
 
                     //uruchomienie atakowania gracza po wystartowaniu
                     StartCoroutine(ShootBulletCoroutine());
@@ -89,6 +110,13 @@ public class SpaceshipBossController : Boss
                 //obs³uga latania w lewo/prawo
                 if (isFlying)
                 {
+                    //w³¹czenie odtwarzania dŸwiêku latania
+                    if (!hasPlayedFlyingSound)
+                    {
+                        flyingSoundSource.Play();
+                        hasPlayedFlyingSound = true;
+                    }
+                    
                     // poruszanie siê statku w lewo i prawo wed³ug wyznaczonych granic
                     float movement = isMovingLeft ? -1f : 1f;
                     transform.Translate(movement * movementSpeed * Time.deltaTime * Vector2.right);
@@ -114,6 +142,9 @@ public class SpaceshipBossController : Boss
                 //obs³uga szar¿y pocisków
                 else if (isBulletChargeActive)
                 {
+                    flyingSoundSource.Stop(); //zastopowanie dŸwiêku latania podczas przeprowadzania ataku
+                    hasPlayedFlyingSound = false;
+
                     //pojedyncze wykonanie metody odwrócenia statku, przez co nie zmienia ju¿ kierunku po pierwszym zwrocie
                     if (!isChangingDirection)
                     {
@@ -139,6 +170,8 @@ public class SpaceshipBossController : Boss
                             if (!hasPerformedBulletCharge)
                             {
                                 hasPerformedBulletCharge = true;
+
+                                chargeAttackChargingSource.Play(); //odtworzenie dŸwiêku ³adowania szar¿y pocisków
                                 Invoke("PerformBulletCharge", 2f); // Wywo³anie metody po 2 sekundach od wyl¹dowania
                             }
                         }
@@ -165,7 +198,10 @@ public class SpaceshipBossController : Boss
     //metoda resetuj¹ca flagê od zrzucania bomby (statek mo¿e zrzuciæ kolejn¹)
     private void ResetBombCooldown()
     {
-        canDropBomb = true; // Ustawienie flagi na true, aby umo¿liwiæ zrzut kolejnej bomby
+        if(hasPerformedBulletCharge != true)
+        {
+            canDropBomb = true; // Ustawienie flagi na true, aby umo¿liwiæ zrzut kolejnej bomby
+        }
     }
 
     //metoda zmiany kierunku ruchu statku kosmicznego
@@ -196,22 +232,22 @@ public class SpaceshipBossController : Boss
     //metoda obs³ugi wystrza³u szar¿y pocisków po zni¿eniu siê statku kosmicznego
     private void PerformBulletCharge()
     {
-        for(int i = 0; i<10; i++)
+        float cooldown = 0.1f;
+        for (int i = 0; i < 20; i++)
         {
-            Debug.Log("STRZA£ Z SZAR¯Y POCISKÓW");
-            StartCoroutine(ShootBulletChargeCoroutine());
+            Invoke("SpawnChargeBullet", cooldown);
+            cooldown += 0.1f;
         }
-        Invoke("RestartBehaviour", 2f);
+        Invoke("RestartBehaviour", 3f);
     }
 
-    //strzelanie do gracza zwyk³ym pociskiem w trakcie ataku specjalnego
-    private IEnumerator ShootBulletChargeCoroutine()
+    //metoda spawnuj¹ca obiekt pocisku specjalnego podczas szar¿y pocisków
+    //wykorzystywana do opóŸniania pawnu przez Invoke
+    private void SpawnChargeBullet()
     {
-        while (true)
-        {
-            Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
-            yield return new WaitForSeconds(0.3f);
-        }
+        GameObject bullet = Instantiate(chargeAttackBullet, chargeAttackSpawnPoint);
+        bullet.transform.SetParent(null); // Ustawienie rodzica na null, aby pociski by³y niezale¿ne
+        F3DAudio.PlayOneShotRandom(chargeAttackCannonSource, chargeAttackBulletClip, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f)); //odtworzenie dŸwiêku wystrza³u
     }
 
     //metoda restartuj¹ca flagi, aby helikopter znowu rozpoczyna³ swoje zachowanie od startowania

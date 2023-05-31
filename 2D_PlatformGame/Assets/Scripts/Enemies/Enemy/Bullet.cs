@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
 
     public void Awake()
     {
-        this.tag = "Bullet";
+        tag = "Bullet";
         // Pobieranie pozycji gracza
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // znalezienie gracza przez tag
         // Zamiana na vector2
@@ -80,7 +80,9 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player"))
         {
-            F3DCharacter player = collision.GetComponent<F3DCharacter>();
+            //F3DCharacter player = collision.GetComponent<F3DCharacter>(); //nie dzia³a dla g³owy
+            F3DCharacter player = collision.GetComponentInParent<F3DCharacter>();
+           
             if (player != null)
             {
                 player.OnDamage(damage, true);

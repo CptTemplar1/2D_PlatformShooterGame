@@ -9,18 +9,21 @@ public class StraightBullet : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject impactEffect;
 
-    // Zmienna przechowuj¹ca pozycjê gracza
-    private Transform playerTransform;
+    private Transform target; //pozycja obiektu, w którego stronê bêdzie lecia³ pocisk
+
     private Vector2 targetPosition;
     private Vector2 direction;
 
     public void Awake()
     {
         tag = "Bullet";
-        // Pobieranie pozycji gracza
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // znalezienie gracza przez tag
+
+        target = GameObject.FindGameObjectWithTag("BulletTarget").transform; // znalezienie gcelu pocisku przez tag
+
+        float randomOffset = Random.Range(-1f, 1f); //losowanie wartoœci odchy³u dla pocisku
+
         // Zamiana na vector2
-        targetPosition = new Vector2(playerTransform.transform.position.x, playerTransform.transform.position.y + 1.0f);
+        targetPosition = new Vector2(target.position.x, target.position.y + randomOffset);
 
         // Pobranie referencji do Rigidbody2D pocisku
         rb = GetComponent<Rigidbody2D>();
@@ -41,7 +44,7 @@ public class StraightBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player"))
         {
-            F3DCharacter player = collision.GetComponent<F3DCharacter>();
+            F3DCharacter player = collision.GetComponentInParent<F3DCharacter>();
             if (player != null)
             {
                 player.OnDamage(damage, true);

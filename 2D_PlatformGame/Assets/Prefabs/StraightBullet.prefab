@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7225887018576053843}
   - component: {fileID: 946950974416682443}
   - component: {fileID: 4161466988877475544}
-  - component: {fileID: 7296520368493256830}
+  - component: {fileID: -7993963005966778736}
   m_Layer: 0
   m_Name: StraightBullet
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939813775615585362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.649, y: 2.983, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 487b10e46753346918225fa5f287a155, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cd30868a44d44b629d279c30fbf7c3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.118951574
---- !u!114 &7296520368493256830
+--- !u!114 &-7993963005966778736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,10 +133,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 939813775615585362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc192f34cdb7a444a3febfe2f7d1a6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d6183d657c0bbd48ba109c989ba15ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 20
+  damage: 10
   rb: {fileID: 946950974416682443}
   impactEffect: {fileID: 1473625048454486, guid: 91e0323859c09284eb1537f51b753255, type: 3}

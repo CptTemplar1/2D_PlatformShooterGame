@@ -29,6 +29,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        AudioListener.pause = true; // Zapauzuj wszystkie dŸwiêki
         GameIsPaused = true;
     }
 
@@ -37,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        AudioListener.pause = false; // Odpauzuj wszystkie dŸwiêki
         GameIsPaused = false;
     }
 
@@ -44,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     public void GoBackToMenu()
     {
         Time.timeScale = 1f;
+        AudioListener.pause = false; // Odpauzuj wszystkie dŸwiêki
         SceneManager.LoadScene(mainMenuScene);
     }
 

@@ -12,6 +12,7 @@ TagManager:
   - LevelManager
   - Bullet
   - Boss
+  - BulletTarget
   layers:
   - Default
   - TransparentFX
