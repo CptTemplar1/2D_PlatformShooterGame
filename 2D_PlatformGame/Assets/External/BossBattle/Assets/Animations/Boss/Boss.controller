@@ -92,6 +92,8 @@ MonoBehaviour:
   minTime: 1.5
   maxTime: 3
   speed: 8
+  jumpSound: {fileID: 8300000, guid: e20424fbe929da049baeec10244d7392, type: 3}
+  landingSound: {fileID: 8300000, guid: 30e8aa7d2b053d94ab08dea1a7b2e471, type: 3}
 --- !u!114 &114231047897284406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac5d4caf7a8f354eafd601241495a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roarSound: {fileID: 8300000, guid: 9d266046026166e47a8265e997179b47, type: 3}
 --- !u!114 &114383238256985098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac5d4caf7a8f354eafd601241495a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roarSound: {fileID: 0}
 --- !u!114 &114412952181532534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01655b1565e20db4a8d386e3e4d52aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 4ddcd98029e89414b8333e8d82cff107, type: 3}
 --- !u!114 &114476639759776270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +253,8 @@ MonoBehaviour:
   minTime: 1
   maxTime: 2.5
   speed: 3
+  jumpSound: {fileID: 8300000, guid: e20424fbe929da049baeec10244d7392, type: 3}
+  landingSound: {fileID: 8300000, guid: 30e8aa7d2b053d94ab08dea1a7b2e471, type: 3}
 --- !u!1101 &1101019101484025526
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -775,7 +782,7 @@ AnimatorStateMachine:
     m_Position: {x: 636, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102317376427276174}
-    m_Position: {x: 444, y: 216, z: 0}
+    m_Position: {x: 440, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102289494309622488}
     m_Position: {x: 330, y: 100, z: 0}

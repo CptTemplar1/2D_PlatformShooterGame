@@ -8568,6 +8568,10 @@ PrefabInstance:
       propertyPath: collisionDamage
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7952753387836635228, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8237531376505753930, guid: cabfc4e9491d3c340a75428a12e263e1, type: 3}
       propertyPath: m_Layer
       value: 0

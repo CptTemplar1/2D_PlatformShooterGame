@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: terrain
       value: 
       objectReference: {fileID: 995871980}
+    - target: {fileID: 2080628556119849794, guid: 575a165585203ca4da0f4907d61fc18d, type: 3}
+      propertyPath: bulletCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3500367291661896991, guid: 575a165585203ca4da0f4907d61fc18d, type: 3}
       propertyPath: m_RootOrder
       value: 1
