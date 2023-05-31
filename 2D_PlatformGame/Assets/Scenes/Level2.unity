@@ -299,6 +299,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1820917669}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -835,6 +836,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 669073126}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -1420,6 +1422,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 464235446}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -2220,6 +2223,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 378994274}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -2368,6 +2372,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1016314992}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -51433,6 +51438,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1177698898}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -51469,6 +51475,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 70607780}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -51652,7 +51659,7 @@ PrefabInstance:
     - target: {fileID: 8261291936143056197, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2050622910}
+      objectReference: {fileID: 0}
     - target: {fileID: 8261291936143056197, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -52088,6 +52095,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1942908244}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -54139,6 +54147,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1465082662}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -54379,6 +54388,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 827797429}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
+  deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -55628,62 +55638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4382102369063505161, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369084677286, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_Color.a
-      value: 0.7176471
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369084677286, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369084677286, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369084677286, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_text
-      value: "Gratulacje! \nUko\u0144czy\u0142e\u015B poziom!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontSize
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-    - target: {fileID: 4382102369096067296, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 4382102369109942913, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -55772,97 +55726,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: AfterMission
       objectReference: {fileID: 0}
-    - target: {fileID: 4382102369988143471, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 4382102369988143471, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 4382102370152459701, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 4382102370152459701, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 4382102370319004358, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370319004358, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370319004358, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2050622910}
-    - target: {fileID: 4382102370319004358, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370319004358, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SaveStats
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370319004358, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameSaver, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370319004358, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370420149312, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370420149312, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370420149312, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2050622910}
-    - target: {fileID: 4382102370420149312, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370420149312, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SaveStats
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370420149312, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameSaver, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382102370420149312, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
---- !u!1 &2050622909 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4382102369109942972, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
-  m_PrefabInstance: {fileID: 2050622908}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2050622910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2050622909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9fc8d10bf549743a366aa43c2bca8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2073486813
 GameObject:
   m_ObjectHideFlags: 0

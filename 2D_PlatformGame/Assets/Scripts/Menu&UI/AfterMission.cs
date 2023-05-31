@@ -12,6 +12,7 @@ public class AfterMission : MonoBehaviour
 
     public GameObject afterMissionUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po w³¹czeniu pauseMenu
 
+
     // metoda pauzuj¹ca grê
     public void PauseGame()
     {
@@ -33,6 +34,7 @@ public class AfterMission : MonoBehaviour
         }
         else
         {
+            SceneManager.LoadScene(mainMenuScene);
             Debug.Log("Nie ma wiêcej poziomów, wyjdŸ do menu!"); // obs³uga przypadku, gdy nie ma wiêcej poziomów
         }
     }
