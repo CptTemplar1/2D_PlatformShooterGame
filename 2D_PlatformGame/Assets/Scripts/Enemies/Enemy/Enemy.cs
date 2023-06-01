@@ -28,11 +28,15 @@ public class Enemy : MonoBehaviour
 
     protected AudioSource enemyAudio; //Ÿród³o dŸwiêków przeciwnika
     public AudioClip deathSound; //dŸwiêk œmierci przeciwnika
-    //public AudioClip movingSound; //dŸwiêk poruszania siê potwora //ZA G£OŒNO I SIÊ ROBI SZUM STRASZNY
+
+    //ZA G£OŒNO I SIÊ ROBI SZUM STRASZNY
+    /*
+    //public AudioClip movingSound; //dŸwiêk poruszania siê potwora 
 
     //zmienne do odtwarzania dŸwiêku poruszania siê co jakiœ czas
     protected float lastPlayTime = 0f;
     public float playInterval = 0.5f;
+    */
 
     //zainicjowanie aktualnego ¿ycia wartoœci¹ maksymaln¹
     protected virtual void Awake()
