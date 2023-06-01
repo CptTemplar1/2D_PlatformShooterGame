@@ -35,6 +35,17 @@ public class ShootingEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
+        //PRZEZ ODTWARZANIE DWIÊKU CHODZENIA KA¯DEGO POTWORA JEST ZA G£OŒNO I SIÊ ROBI SZUM STRASZNY
+        //if (animator.GetBool("isRunning"))
+        //{
+        //    float currentTime = Time.time;
+        //    if (currentTime - lastPlayTime >= playInterval)
+        //    {
+        //        F3DAudio.PlayOneShotRandom(enemyAudio, movingSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f));
+        //        lastPlayTime = currentTime;
+        //    }
+        //}
+
         Vector2 playerVec = new Vector2(player.transform.position.x, player.transform.position.y + 1.0f); // przeliczenie pozycji gracza na vector2
 
         //jeœli gracz jest w zasiêgu wykrywania

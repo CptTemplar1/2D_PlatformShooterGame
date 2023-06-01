@@ -22,6 +22,17 @@ public class JumpingEnemyController : Enemy
 
     void Update()
     {
+        //PRZEZ ODTWARZANIE DWIÊKU CHODZENIA KA¯DEGO POTWORA JEST ZA G£OŒNO I SIÊ ROBI SZUM STRASZNY
+        //if (animator.GetBool("isJumping"))
+        //{
+        //    float currentTime = Time.time;
+        //    if (currentTime - lastPlayTime >= playInterval)
+        //    {
+        //        F3DAudio.PlayOneShotRandom(enemyAudio, movingSound, new Vector2(0.9f, 1f), new Vector2(0.9f, 1f));
+        //        lastPlayTime = currentTime;
+        //    }
+        //}
+
         jumpTimer -= Time.deltaTime; //odejmowanie czasu od licznika skoku
 
         //jeœli gracz jest w zasiêgu wykrywania i up³yn¹³ czas cooldownu skoku

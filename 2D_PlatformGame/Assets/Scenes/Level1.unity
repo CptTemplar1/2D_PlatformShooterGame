@@ -543,6 +543,8 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
+  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
+  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -1971,6 +1973,8 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
+  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
+  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -21599,6 +21603,8 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
+  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
+  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -22340,6 +22346,8 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
+  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
+  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -24028,6 +24036,10 @@ PrefabInstance:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
+    - target: {fileID: 5632264249692514258, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
+      propertyPath: playInterval
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999799, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_RootOrder
       value: 0

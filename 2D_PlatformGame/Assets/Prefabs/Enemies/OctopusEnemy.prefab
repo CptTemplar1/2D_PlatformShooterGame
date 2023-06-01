@@ -178,8 +178,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
-  enemyAudio: {fileID: 3884645325617024083}
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
+  movingSound: {fileID: 8300000, guid: bfbd7fc73a77d084d9534c4765bafa3f, type: 3}
+  playInterval: 0.5
   speed: 5
   walkingSide: 0
   isWalkingBack: 0
