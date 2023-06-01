@@ -6,59 +6,61 @@ using UnityEngine.SceneManagement;
 using static F3DWeaponController;
 
 public class GameSaver : MonoBehaviour
-{ 
-//    void Awake()
-//    {
-//        //odczyt coinow
-//        StaticCoins.add(PlayerPrefs.GetInt("Coins", 0));
-//        if(SceneManager.GetActiveScene().name == "Menu")
-//            FindObjectOfType<CoinsHandler>().refresh();
-        
-//        //odczyt czy to pierwsze wystartowanie gry
-//        NewGameStatic.isStarted = GetBool("isStarted");
+{
+    void Awake()
+    {
+        //odczyt coinow
+        StaticCoins.add(PlayerPrefs.GetInt("Coins", 0));
+        if (SceneManager.GetActiveScene().name == "Menu")
+            FindObjectOfType<CoinsHandler>().refresh();
 
-//        //odczyt posiadanych broni
-//        StaticWepaonSkin.ownedWeapon[WeaponType.Pistol] = GetBool("Pistol");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.PistolLaser] = GetBool("PistolLaser");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.PistolPlasma] = GetBool("PistolPlasma");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.Assault] = GetBool("Assault");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.AssaultPlasma] = GetBool("AssaultPlasma");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.Shotgun] = GetBool("Shotgun");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.Sniper] = GetBool("Sniper");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.Machinegun] = GetBool("Machinegun");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.Knife] = GetBool("Knife");
-//        StaticWepaonSkin.ownedWeapon[WeaponType.Melee] = GetBool("Melee");
+        //odczyt czy to pierwsze wystartowanie gry
+        NewGameStatic.isStarted = GetBool("isStarted");
 
-//        //odczyt posiadanych zbroi
-//        StaticWepaonSkin.ownedArmor[0] = GetBool("Basic");
-//        StaticWepaonSkin.ownedArmor[1] = GetBool("Knight");
-//        StaticWepaonSkin.ownedArmor[2] = GetBool("Toxic");
-//        StaticWepaonSkin.ownedArmor[3] = GetBool("Soldier");
-//        StaticWepaonSkin.ownedArmor[4] = GetBool("LuxoJr");
-//        StaticWepaonSkin.ownedArmor[5] = GetBool("Titan");
+        //odczyt posiadanych broni
+        StaticWepaonSkin.ownedWeapon[WeaponType.Pistol] = GetBool("Pistol");
+        StaticWepaonSkin.ownedWeapon[WeaponType.PistolLaser] = GetBool("PistolLaser");
+        StaticWepaonSkin.ownedWeapon[WeaponType.PistolPlasma] = GetBool("PistolPlasma");
+        StaticWepaonSkin.ownedWeapon[WeaponType.Assault] = GetBool("Assault");
+        StaticWepaonSkin.ownedWeapon[WeaponType.AssaultPlasma] = GetBool("AssaultPlasma");
+        StaticWepaonSkin.ownedWeapon[WeaponType.Shotgun] = GetBool("Shotgun");
+        StaticWepaonSkin.ownedWeapon[WeaponType.Sniper] = GetBool("Sniper");
+        StaticWepaonSkin.ownedWeapon[WeaponType.Machinegun] = GetBool("Machinegun");
+        StaticWepaonSkin.ownedWeapon[WeaponType.Knife] = GetBool("Knife");
+        StaticWepaonSkin.ownedWeapon[WeaponType.Melee] = GetBool("Melee");
 
-//        //odczyt hp zbroi
-//        StaticWepaonSkin.ownedArmorHp[0] = PlayerPrefs.GetInt("BasicHP");
-//        StaticWepaonSkin.ownedArmorHp[1] = PlayerPrefs.GetInt("KnightHP");
-//        StaticWepaonSkin.ownedArmorHp[2] = PlayerPrefs.GetInt("ToxicHP");
-//        StaticWepaonSkin.ownedArmorHp[3] = PlayerPrefs.GetInt("SoldierHP");
-//        StaticWepaonSkin.ownedArmorHp[4] = PlayerPrefs.GetInt("LuxoJrHP");
-//        StaticWepaonSkin.ownedArmorHp[5] = PlayerPrefs.GetInt("TitanHP");
+        //odczyt posiadanych zbroi
+        StaticWepaonSkin.ownedArmor[0] = GetBool("Basic");
+        StaticWepaonSkin.ownedArmor[1] = GetBool("Knight");
+        StaticWepaonSkin.ownedArmor[2] = GetBool("Toxic");
+        StaticWepaonSkin.ownedArmor[3] = GetBool("Soldier");
+        StaticWepaonSkin.ownedArmor[4] = GetBool("LuxoJr");
+        StaticWepaonSkin.ownedArmor[5] = GetBool("Titan");
 
-//        //odczyt aktualnie za³o¿onej zbroi
-//        StaticWepaonSkin.setCurrentArmor(PlayerPrefs.GetInt("CurrentArmor"));
+        //odczyt hp zbroi
+        StaticWepaonSkin.ownedArmorHp[0] = PlayerPrefs.GetInt("BasicHP");
+        StaticWepaonSkin.ownedArmorHp[1] = PlayerPrefs.GetInt("KnightHP");
+        StaticWepaonSkin.ownedArmorHp[2] = PlayerPrefs.GetInt("ToxicHP");
+        StaticWepaonSkin.ownedArmorHp[3] = PlayerPrefs.GetInt("SoldierHP");
+        StaticWepaonSkin.ownedArmorHp[4] = PlayerPrefs.GetInt("LuxoJrHP");
+        StaticWepaonSkin.ownedArmorHp[5] = PlayerPrefs.GetInt("TitanHP");
 
-//        //odczyt ukoñczonych leveli
-//        PassedLevels.passedLevels[1] = GetBool("Level1");
-//        PassedLevels.passedLevels[2] = GetBool("Level2");
-//        PassedLevels.passedLevels[3] = GetBool("Level3");
-//        PassedLevels.passedLevels[4] = GetBool("Level4");
-//        PassedLevels.passedLevels[5] = GetBool("Level5");
-//        PassedLevels.passedLevels[6] = GetBool("Level6");
-//        PassedLevels.passedLevels[7] = GetBool("Level7");
-//        PassedLevels.passedLevels[8] = GetBool("Level8");
-//        PassedLevels.passedLevels[9] = GetBool("Level9");
-//    }
+        //odczyt aktualnie za³o¿onej zbroi
+        StaticWepaonSkin.setCurrentArmor(PlayerPrefs.GetInt("CurrentArmor"));
+
+        //odczyt ukoñczonych leveli
+        PassedLevels.passedLevels[1] = GetBool("Level1");
+        PassedLevels.passedLevels[2] = GetBool("Level2");
+        PassedLevels.passedLevels[3] = GetBool("Level3");
+        PassedLevels.passedLevels[4] = GetBool("Level4");
+        PassedLevels.passedLevels[5] = GetBool("Level5");
+        PassedLevels.passedLevels[6] = GetBool("Level6");
+        PassedLevels.passedLevels[7] = GetBool("Level7");
+        PassedLevels.passedLevels[8] = GetBool("Level8");
+        PassedLevels.passedLevels[9] = GetBool("Level9");
+
+        //SetBool("isStarted", true);
+    }
 
     //metoda zapisuje wszystkie wa¿ne statystyki oraz dane
     public void SaveStats()
