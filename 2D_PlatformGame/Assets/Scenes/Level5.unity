@@ -24099,6 +24099,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4382102369063505161, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
   m_PrefabInstance: {fileID: 1236504086}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1236504088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6932769628549020074, guid: e23a6523fccad8b40800bea3334f8406, type: 3}
+  m_PrefabInstance: {fileID: 1236504086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1240037416
 GameObject:
   m_ObjectHideFlags: 0
@@ -26915,6 +26920,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261291935052221577, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
       propertyPath: afterMission
+      value: 
+      objectReference: {fileID: 1236504087}
+    - target: {fileID: 8261291935052221577, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
+      propertyPath: afterFailedMission
+      value: 
+      objectReference: {fileID: 1236504088}
+    - target: {fileID: 8261291935052221577, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
+      propertyPath: afterSuccessfulMission
       value: 
       objectReference: {fileID: 1236504087}
     - target: {fileID: 8261291935052221578, guid: 88ebb1b5d78e0f34489f430b1948330f, type: 3}
