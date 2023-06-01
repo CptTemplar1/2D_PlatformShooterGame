@@ -10,6 +10,8 @@ public class RedBossController : Boss
     private TMP_Text coinAmount;
     bool onceDeath = false;
 
+    public GameObject deathBlood; //obiekt przechowywuj¹cy rozpryski krwi po œmierci bossa
+
     protected override void Awake()
     {
         base.Awake();  //wykonanie metody Awake z klasy bazowej Boss
@@ -28,6 +30,8 @@ public class RedBossController : Boss
 
         if (healthStatus.health <= 0)
         {
+            deathBlood.SetActive(true); //w³¹czenie particli œmierci bossa
+
             anim.ResetTrigger("jump");
             anim.ResetTrigger("idle");
             anim.SetTrigger("idle");
@@ -40,6 +44,8 @@ public class RedBossController : Boss
                 coinAmount.text = coins.ToString();
                 onceDeath = true;
             }
+
+
         }
         else
         {
