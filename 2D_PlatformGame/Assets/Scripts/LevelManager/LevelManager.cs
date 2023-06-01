@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject playerConfetti; //obiekt przechowuj¹cy konfetti nad graczem. Konfetti uruchamiamy po wygranym levelu
 
+    private AudioSource levelMusic; //Ÿród³o dŸwiêku muzyki w tle dla danego levelu
+
     private void Start()
     {
         StartCoroutine(findEnemies());
@@ -33,6 +35,8 @@ public class LevelManager : MonoBehaviour
         timeCounter = GameObject.Find("TimeCounter");
         timeCounterText = GameObject.Find("Counter").GetComponent<TMP_Text>();
         timeCounter.SetActive(false);
+
+        levelMusic = GameObject.Find("Main Camera").GetComponent<AudioSource>(); //pobranie komponentu audio source z g³ównej kamery graj¹cej muzykê w tle
     }
 
     private void Update()
@@ -41,6 +45,7 @@ public class LevelManager : MonoBehaviour
         if(startPassedLevelCounter == true)
         {
             playerConfetti.SetActive(true);//w³¹czenie konfetti nad graczem po wygranej
+            EnableBackgroundMusic(false); //zastopowanie muzyki w tle
 
             timeCounter.SetActive(true);
             time -= Time.deltaTime;
@@ -56,6 +61,8 @@ public class LevelManager : MonoBehaviour
         //odliczanie po przegranym poziomie
         if(startDeathCounter == true)
         {
+            EnableBackgroundMusic(false); //zastopowanie muzyki w tle
+
             timeCounter.SetActive(true);
             time -= Time.deltaTime;
             timeCounterText.text = Mathf.Clamp(Mathf.CeilToInt(time), 0, int.MaxValue).ToString();
@@ -114,5 +121,14 @@ public class LevelManager : MonoBehaviour
         }
         numberOfEnemies = enemies.Length;
         enemiesCounter.setEnemiesCounter(numberOfEnemies);
+    }
+
+    //metoda zatrzymuj¹ca lub wznawiaj¹ca muzykê w tle
+    private void EnableBackgroundMusic(bool status)
+    {
+        if (status)
+            levelMusic.Play();
+        else
+            levelMusic.Stop();
     }
 }
