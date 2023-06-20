@@ -410,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &133093178
 Transform:
   m_ObjectHideFlags: 0
@@ -543,8 +543,6 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
-  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
-  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -785,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer
@@ -906,7 +904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &283151008
 Transform:
   m_ObjectHideFlags: 0
@@ -1835,7 +1833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &529253098
 Transform:
   m_ObjectHideFlags: 0
@@ -1973,8 +1971,6 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
-  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
-  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -2219,7 +2215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer
@@ -2659,7 +2655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &922013721
 Transform:
   m_ObjectHideFlags: 0
@@ -20341,7 +20337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1116903218
 Transform:
   m_ObjectHideFlags: 0
@@ -20682,7 +20678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer
@@ -20731,7 +20727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1252022971
 Transform:
   m_ObjectHideFlags: 0
@@ -21475,7 +21471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1465384059
 Transform:
   m_ObjectHideFlags: 0
@@ -21603,8 +21599,6 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
-  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
-  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -21820,7 +21814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1586982816
 Transform:
   m_ObjectHideFlags: 0
@@ -21853,7 +21847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1597499855
 Transform:
   m_ObjectHideFlags: 0
@@ -21966,7 +21960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1619482425
 Transform:
   m_ObjectHideFlags: 0
@@ -22346,8 +22340,6 @@ MonoBehaviour:
   money: {fileID: 8781571137009656881, guid: 1898b72060d87ed4ca5fd9689e2d6b7c, type: 3}
   collisionDamage: 25
   deathSound: {fileID: 8300000, guid: a23ec802b212c704b9ad0a100d35b6b2, type: 3}
-  movingSound: {fileID: 8300000, guid: 97937e286c65919428b58958bd2cfdc4, type: 3}
-  playInterval: 1.2
   speed: 4
   walkingSide: 0
   isWalkingBack: 0
@@ -22374,7 +22366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1705096071
 Transform:
   m_ObjectHideFlags: 0
@@ -22407,7 +22399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723419517
 Transform:
   m_ObjectHideFlags: 0
@@ -23010,7 +23002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1853970046
 Transform:
   m_ObjectHideFlags: 0
@@ -23671,7 +23663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2056272529
 Transform:
   m_ObjectHideFlags: 0
@@ -23754,7 +23746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer
