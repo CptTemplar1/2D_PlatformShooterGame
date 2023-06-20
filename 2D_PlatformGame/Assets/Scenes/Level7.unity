@@ -410,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &133093178
 Transform:
   m_ObjectHideFlags: 0
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer
@@ -904,7 +904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &283151008
 Transform:
   m_ObjectHideFlags: 0
@@ -1833,7 +1833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &529253098
 Transform:
   m_ObjectHideFlags: 0
@@ -2215,7 +2215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer
@@ -2655,7 +2655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &922013721
 Transform:
   m_ObjectHideFlags: 0
@@ -20337,7 +20337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1116903218
 Transform:
   m_ObjectHideFlags: 0
@@ -20678,7 +20678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer
@@ -20727,7 +20727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1252022971
 Transform:
   m_ObjectHideFlags: 0
@@ -21471,7 +21471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1465384059
 Transform:
   m_ObjectHideFlags: 0
@@ -21814,7 +21814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1586982816
 Transform:
   m_ObjectHideFlags: 0
@@ -21847,7 +21847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1597499855
 Transform:
   m_ObjectHideFlags: 0
@@ -21960,7 +21960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1619482425
 Transform:
   m_ObjectHideFlags: 0
@@ -22366,7 +22366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1705096071
 Transform:
   m_ObjectHideFlags: 0
@@ -22399,7 +22399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723419517
 Transform:
   m_ObjectHideFlags: 0
@@ -23002,7 +23002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1853970046
 Transform:
   m_ObjectHideFlags: 0
@@ -23663,7 +23663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2056272529
 Transform:
   m_ObjectHideFlags: 0
@@ -23746,7 +23746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212846484683999800, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647916233767464056, guid: 0be97aa1bf18d5e47bfd00b20bfee8b9, type: 3}
       propertyPath: m_SortingLayer

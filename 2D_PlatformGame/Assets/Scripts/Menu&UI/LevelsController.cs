@@ -35,4 +35,19 @@ public class LevelsController : MonoBehaviour
     {
         SceneManager.LoadScene(6);
     }
+    //metoda wczytujaca siodmy poziom
+    public void PlaySaturn7()
+    {
+        SceneManager.LoadScene(7);
+    }
+    //metoda wczytujaca osmy poziom
+    public void PlayUranus8()
+    {
+        SceneManager.LoadScene(8);
+    }
+    //metoda wczytujaca dziewi¹ty poziom
+    public void PlayPluto9()
+    {
+        SceneManager.LoadScene(9);
+    }
 }

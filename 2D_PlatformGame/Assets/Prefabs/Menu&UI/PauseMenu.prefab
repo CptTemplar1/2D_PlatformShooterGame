@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 8261291935052221572}
   - component: {fileID: 8261291935052221573}
   - component: {fileID: 8261291935052221577}
+  - component: {fileID: 7616418416378370329}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -250,6 +251,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuScene: Menu
   pauseMenuUI: {fileID: 8261291935466626241}
+  afterSuccessfulMission: {fileID: 0}
+  afterFailedMission: {fileID: 0}
+--- !u!114 &7616418416378370329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8261291935052221574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9fc8d10bf549743a366aa43c2bca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8261291935053623944
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +650,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7616418416378370329}
+        m_TargetAssemblyTypeName: GameSaver, Assembly-CSharp
+        m_MethodName: SaveStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8261291936143056199
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +787,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8261291935052221577}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7616418416378370329}
+        m_TargetAssemblyTypeName: GameSaver, Assembly-CSharp
+        m_MethodName: SaveStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

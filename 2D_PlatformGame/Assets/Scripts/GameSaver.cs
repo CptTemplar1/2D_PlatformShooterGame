@@ -6,19 +6,28 @@ public class GameSaver : MonoBehaviour
 {
     void Awake()
     {
+        //odczyt czy to pierwsze wystartowanie gry
+        NewGameStatic.isStarted = GetBool("isStarted");
+
         //po w³¹czeniu gry od razu inicjalizujemy dane zapisywane w PlayerPrefs
         //poprzednio wykonywane to by³o dopiero po klikniêciu któregoœ przycisku z Menu, przez co jeœli nowy u¿ytkownik uruchomi³ grê, to 
         //kod poni¿ej nie mia³ co odczytaæ (bo przycisk z menu nie by³ jeszcze klikniêty, przez co dane by³y puste)
-        NewGameStatic.setNewGame();
-        SaveStats();
+        if (NewGameStatic.isStarted == false)
+        {
+            NewGameStatic.isStarted = true;
+
+            StaticWepaonSkin.resetWeapon();
+            StaticWepaonSkin.resetArmor();
+            PassedLevels.resetPassedLevels();
+            SaveStats();
+        }
+        //NewGameStatic.setNewGame();
+        Debug.Log(NewGameStatic.isStarted);
 
         //odczyt coinow
         StaticCoins.add(PlayerPrefs.GetInt("Coins", 0));
         if (SceneManager.GetActiveScene().name == "Menu")
             FindObjectOfType<CoinsHandler>().refresh();
-
-        //odczyt czy to pierwsze wystartowanie gry
-        NewGameStatic.isStarted = GetBool("isStarted");
 
         //odczyt posiadanych broni
         StaticWepaonSkin.ownedWeapon[WeaponType.Pistol] = GetBool("Pistol");
@@ -61,18 +70,15 @@ public class GameSaver : MonoBehaviour
         PassedLevels.passedLevels[7] = GetBool("Level7");
         PassedLevels.passedLevels[8] = GetBool("Level8");
         PassedLevels.passedLevels[9] = GetBool("Level9");
-
-        //SetBool("isStarted", true);
-
-        //NewGameStatic.isStarted = false;
-        //SaveStats();
     }
 
     //metoda zapisuje wszystkie wa¿ne statystyki oraz dane
     public void SaveStats()
     {
+        Debug.Log("Wykunujê zapisywanie");
         //zapis coinow
         PlayerPrefs.SetInt("Coins", StaticCoins.get());
+        Debug.Log("Liczba coinów " + StaticCoins.get());
 
         //zapis czy to pierwsze wystartowanie gry
         SetBool("isStarted", NewGameStatic.isStarted);
@@ -120,7 +126,7 @@ public class GameSaver : MonoBehaviour
         SetBool("Level9", PassedLevels.passedLevels[9]);
     }
 
-    //Testowe dodawanie 1000 coinow
+    //Testowe dodawanie 100 coinow
     public void Update()
     {
         if (Input.GetKey(KeyCode.P))
