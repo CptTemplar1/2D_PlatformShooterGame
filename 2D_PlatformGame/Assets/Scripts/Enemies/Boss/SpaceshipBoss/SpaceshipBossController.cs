@@ -55,20 +55,14 @@ public class SpaceshipBossController : Boss
     private bool isChangingDirection = false; //flaga okreœlaj¹ca czy statek w³aœnie nie zmieni³ kierunku lotu, dziêki niej statek nie buguje siê i nie zmienia kierunku wiele razy
     private bool hasFallen = false;  //flaga okreœlaj¹ca czy helikopter po œmierci spad³ ju¿ na ziemiê
 
-    private GameObject player; //obiekt gracza
-    private F3DCharacter playerCharacter; //komponent gracza
+    public GameObject player; //obiekt gracza
+    public F3DCharacter playerCharacter; //komponent gracza
 
     protected override void Awake()
     {
         base.Awake(); //wykonanie metody Awake z klasy bazowej
 
         //TODO: DODAJ AUTOMATYCZNE DOSTOSOWANIE WIELKOŒCI BOXCOLLIDERA2D NA PODSTAWIE ZMIENNEJ StartingHeight
-    }
-
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerCharacter = player.GetComponent<F3DCharacter>();
     }
 
     protected override void Update()
