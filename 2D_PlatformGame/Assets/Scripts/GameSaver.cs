@@ -21,8 +21,6 @@ public class GameSaver : MonoBehaviour
             PassedLevels.resetPassedLevels();
             SaveStats();
         }
-        //NewGameStatic.setNewGame();
-        Debug.Log(NewGameStatic.isStarted);
 
         //odczyt coinow
         StaticCoins.add(PlayerPrefs.GetInt("Coins", 0));
@@ -75,10 +73,8 @@ public class GameSaver : MonoBehaviour
     //metoda zapisuje wszystkie wa¿ne statystyki oraz dane
     public void SaveStats()
     {
-        Debug.Log("Wykunujê zapisywanie");
         //zapis coinow
         PlayerPrefs.SetInt("Coins", StaticCoins.get());
-        Debug.Log("Liczba coinów " + StaticCoins.get());
 
         //zapis czy to pierwsze wystartowanie gry
         SetBool("isStarted", NewGameStatic.isStarted);

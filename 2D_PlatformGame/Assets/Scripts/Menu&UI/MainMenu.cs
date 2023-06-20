@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -59,6 +60,13 @@ public class MainMenu : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.R))
         {
             ResetGame();
+        }
+
+
+        //TYMCZASOWE W£¥CZENIE KONSOLI (WYWO£ANIE B£ÊDU)
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            throw new Exception("W£¥CZENIE KONSOLI - NIE ZWRACAÆ UWAGI");
         }
     }
 
