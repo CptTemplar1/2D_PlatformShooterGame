@@ -4062,7 +4062,7 @@ MonoBehaviour:
   AudioInfo:
     MixerGroup: {fileID: 243000013063711068, guid: fad90282630270c49909b57ef61569be, type: 2}
     Shot:
-    - {fileID: 8300000, guid: 95261f1320ad3664ba7d651c0ba42a04, type: 3}
+    - {fileID: 8300000, guid: 9e031f449fbffa34d9e51347615b0f96, type: 3}
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.8, y: 1}
     ShotPitch: {x: 0.8, y: 1}
@@ -14987,10 +14987,7 @@ MonoBehaviour:
   AudioInfo:
     MixerGroup: {fileID: 243000010517244734, guid: fad90282630270c49909b57ef61569be, type: 2}
     Shot:
-    - {fileID: 8300000, guid: 21da994ad51aa1c47b197f6947bc21b2, type: 3}
-    - {fileID: 8300000, guid: 79972227a93a4f8448ae4a091480ef5c, type: 3}
-    - {fileID: 8300000, guid: 76e06c572862c364ca525aea83700d54, type: 3}
-    - {fileID: 8300000, guid: 6400a123b8fa00e45b9b2bc75307f38a, type: 3}
+    - {fileID: 8300000, guid: e28dc94d3551b3e4081e334f130d7697, type: 3}
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.9, y: 1}
     ShotPitch: {x: 0.95, y: 1}
@@ -15808,7 +15805,8 @@ MonoBehaviour:
   ProjectileScaleX: {x: 0, y: 1}
   AudioInfo:
     MixerGroup: {fileID: 243000011943259204, guid: fad90282630270c49909b57ef61569be, type: 2}
-    Shot: []
+    Shot:
+    - {fileID: 8300000, guid: 1c09c8e72094d7e489be6a072e9a8b3f, type: 3}
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.8, y: 1}
     ShotPitch: {x: 0.9, y: 1}
@@ -16639,10 +16637,7 @@ MonoBehaviour:
   AudioInfo:
     MixerGroup: {fileID: 243000013250620262, guid: fad90282630270c49909b57ef61569be, type: 2}
     Shot:
-    - {fileID: 8300000, guid: a5b4a3afa557ba14a8fe72c4ec40299b, type: 3}
-    - {fileID: 8300000, guid: 3a501cd4800a62b4395233172fa25f13, type: 3}
-    - {fileID: 8300000, guid: e45560c663e368a4ca37e1c3c546689d, type: 3}
-    - {fileID: 8300000, guid: 366e396032f4afa4ba74ab4ae18956db, type: 3}
+    - {fileID: 8300000, guid: be4942977b772eb4a8d2f63c885a1ce1, type: 3}
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.9, y: 1}
     ShotPitch: {x: 0.75, y: 0.85}
@@ -20972,10 +20967,7 @@ MonoBehaviour:
   AudioInfo:
     MixerGroup: {fileID: 243000011329115824, guid: fad90282630270c49909b57ef61569be, type: 2}
     Shot:
-    - {fileID: 8300000, guid: c049cb0246f27374caa0a5181e5c81f9, type: 3}
-    - {fileID: 8300000, guid: 95f82b569a493d74db50cdc5a80f77e4, type: 3}
-    - {fileID: 8300000, guid: ca18e4a0955f5a741b55d620efdd7242, type: 3}
-    - {fileID: 8300000, guid: 1d898ceabe4a7da46a9527a91007b223, type: 3}
+    - {fileID: 8300000, guid: 22e2aa0290ddb1740b460b08a4a2affe, type: 3}
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.9, y: 1}
     ShotPitch: {x: 0.9, y: 1}
@@ -24418,10 +24410,7 @@ MonoBehaviour:
   AudioInfo:
     MixerGroup: {fileID: 243000013758425836, guid: fad90282630270c49909b57ef61569be, type: 2}
     Shot:
-    - {fileID: 8300000, guid: c9a9a6fc27e2edb409bd081f90616508, type: 3}
-    - {fileID: 8300000, guid: 3e81cee42e7f4b7409450d665f7cd054, type: 3}
-    - {fileID: 8300000, guid: 285ce37dbd66c4d42b0493398463f38a, type: 3}
-    - {fileID: 8300000, guid: 8e2d2182069910e45ac6bd24013a021b, type: 3}
+    - {fileID: 8300000, guid: 84fadbf0d0e8f7c4497339173328cd8a, type: 3}
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.85, y: 1}
     ShotPitch: {x: 0.85, y: 1}
