@@ -57,4 +57,23 @@ public class MainMenu : MonoBehaviour
         if (PassedLevels.passedLevels[9] == true)
             passedImages[8].gameObject.SetActive(true);
     }
+
+
+    private void Update()
+    {
+        //Resetowanie gry przy pomocy klawiszy CTRL + ALT + R
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.R))
+        {
+            ResetGame();
+        }
+    }
+
+    private void ResetGame()
+    {
+        PlayerPrefs.DeleteAll(); //usuniêcie wszystkich zapisanych rzeczy (czyœci playerPrefs)
+        PlayerPrefs.SetInt("isStarted", 1); //ustawienie playerPrefs okreœlaj¹cego czy to pierwsza gra na 0 (false)
+
+        Application.Quit(); //wyjœcie z gry po resecie
+        Debug.Log("Zresetowano PlayerPrefs");
+    }
 }

@@ -116,7 +116,7 @@ public class GameSaver : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.P))
         {
-            StaticCoins.addBossCoins(1000);
+            StaticCoins.addBossCoins(100);
             if (SceneManager.GetActiveScene().name == "Menu")
                 FindObjectOfType<CoinsHandler>().refresh();
         }
