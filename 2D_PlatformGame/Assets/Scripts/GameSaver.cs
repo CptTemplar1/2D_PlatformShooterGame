@@ -6,6 +6,12 @@ public class GameSaver : MonoBehaviour
 {
     void Awake()
     {
+        //po w³¹czeniu gry od razu inicjalizujemy dane zapisywane w PlayerPrefs
+        //poprzednio wykonywane to by³o dopiero po klikniêciu któregoœ przycisku z Menu, przez co jeœli nowy u¿ytkownik uruchomi³ grê, to 
+        //kod poni¿ej nie mia³ co odczytaæ (bo przycisk z menu nie by³ jeszcze klikniêty, przez co dane by³y puste)
+        NewGameStatic.setNewGame();
+        SaveStats();
+
         //odczyt coinow
         StaticCoins.add(PlayerPrefs.GetInt("Coins", 0));
         if (SceneManager.GetActiveScene().name == "Menu")
@@ -57,6 +63,9 @@ public class GameSaver : MonoBehaviour
         PassedLevels.passedLevels[9] = GetBool("Level9");
 
         //SetBool("isStarted", true);
+
+        //NewGameStatic.isStarted = false;
+        //SaveStats();
     }
 
     //metoda zapisuje wszystkie wa¿ne statystyki oraz dane

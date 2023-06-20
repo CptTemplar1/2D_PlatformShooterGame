@@ -9,12 +9,6 @@ public class MainMenu : MonoBehaviour
 {
     public List<GameObject> passedImages = new List<GameObject>(); // lista przechowuj¹ca wygrane levle
 
-    //metoda u¿ywana do resetowania poiadanej broni na pocz¹tku rozgrywki
-    public void StartNewGame()
-    {
-        NewGameStatic.setNewGame();
-    }
-
     // metoda zamykania gry
     public void QuitGame()
     {
@@ -71,7 +65,7 @@ public class MainMenu : MonoBehaviour
     private void ResetGame()
     {
         PlayerPrefs.DeleteAll(); //usuniêcie wszystkich zapisanych rzeczy (czyœci playerPrefs)
-        PlayerPrefs.SetInt("isStarted", 1); //ustawienie playerPrefs okreœlaj¹cego czy to pierwsza gra na 0 (false)
+        PlayerPrefs.SetInt("isStarted", 0); //ustawienie playerPrefs okreœlaj¹cego czy to pierwsza gra na 0 (false)
 
         Application.Quit(); //wyjœcie z gry po resecie
         Debug.Log("Zresetowano PlayerPrefs");
