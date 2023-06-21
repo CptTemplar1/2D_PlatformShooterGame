@@ -14987,7 +14987,7 @@ MonoBehaviour:
   AudioInfo:
     MixerGroup: {fileID: 243000010517244734, guid: fad90282630270c49909b57ef61569be, type: 2}
     Shot:
-    - {fileID: 8300000, guid: e28dc94d3551b3e4081e334f130d7697, type: 3}
+    - {fileID: 8300000, guid: 1a53c5ee8c1a529419addd31cc634ad6, type: 3}
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.9, y: 1}
     ShotPitch: {x: 0.95, y: 1}
@@ -15805,8 +15805,7 @@ MonoBehaviour:
   ProjectileScaleX: {x: 0, y: 1}
   AudioInfo:
     MixerGroup: {fileID: 243000011943259204, guid: fad90282630270c49909b57ef61569be, type: 2}
-    Shot:
-    - {fileID: 8300000, guid: 1c09c8e72094d7e489be6a072e9a8b3f, type: 3}
+    Shot: []
     ShotLastUniqiueIndex: 0
     ShotVolume: {x: 0.8, y: 1}
     ShotPitch: {x: 0.9, y: 1}
@@ -15901,15 +15900,15 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    Loop: {fileID: 8300000, guid: c00b030dc8d674a4598ed9af93a768ad, type: 3}
-    LoopEnd: {fileID: 8300000, guid: 9476ec2da2510b84f809de1783f89605, type: 3}
+    Loop: {fileID: 0}
+    LoopEnd: {fileID: 8300000, guid: ec669b3efa49d9e41b76afd9bbd46b45, type: 3}
     LoopVolume: 1
     LoopPitch: 1
     LoopPitchRandomRange: {x: 0, y: 0}
     LoopPitchOffsetRate: 0
-    SpinLoop: {fileID: 8300000, guid: 883fca8ad751f5b48a9ace02fa78dde5, type: 3}
-    SpinStart: {fileID: 8300000, guid: 2f4a9766ae9c1a74c96c6fa50db8dba2, type: 3}
-    SpinEnd: {fileID: 8300000, guid: 0e99ba2157e7c5342bd6e1a0b0402203, type: 3}
+    SpinLoop: {fileID: 8300000, guid: 55630346d536b99468ac87b3b0adeb57, type: 3}
+    SpinStart: {fileID: 8300000, guid: 1bbaaa8655ecd3b47b65f3da23a25985, type: 3}
+    SpinEnd: {fileID: 0}
     SpinVolume: 0.4
     SpinPitch: 1
     Reload: []
